@@ -9,10 +9,10 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'YC.io',
-  description: 'Web app for mannaging medical devices',
-}
+// export const metadata: Metadata = {
+//   title: 'YC.io',
+//   description: 'Web app for mannaging medical devices',
+// }
 
 export default function RootLayout({
   children,
