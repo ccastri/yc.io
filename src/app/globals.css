@@ -11,3 +11,19 @@
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   width: 100%;
 }
+
+/* Hide scrollbar track */
+::-webkit-scrollbar {
+  width: 6px;
+  /* Set to a value other than 0 if you want to show some space for the scrollbar */
+}
+
+/* Hide scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Optionally, you can also hide the scrollbar corner */
+::-webkit-scrollbar-corner {
+  display: none;
+}

@@ -10,9 +10,9 @@ const Navbar = () => {
     const [showCronograma, setShowCronograma] = useState(false);
     const [showDocumentos, setShowDocumentos] = useState(false);
       const [showTecnovigilancia, setShowTecnovigilancia] = useState(false);
+      const router = useRouter();
 
       const SubMenu = ({ parentRoute, options }:any) => {
-          const router = useRouter();
           const handleOptionClick = (option: string) => {
               // Assuming your routes are in the format '/option' (e.g., '/Mantenimiento', '/Calibracion', etc.)
               router.push(`/${parentRoute}/${option}`);
@@ -81,13 +81,15 @@ console.log(isToggle)
         className="hover:bg-gradient-to-b hover:from-[#3B2F3C] hover:to-slate-500 text-white px-4 py-2 rounded-full relative"
         onMouseEnter={() => setShowDocumentos(true)}
         onMouseLeave={() => setShowDocumentos(false)}
-      >
+        >
         Documentos
         <span className='ml-2'>
 
         <KeyboardArrowDownIcon className={`absolute right-0 ${showDocumentos ? 'opacity-100' : 'opacity-0'}`} />
         </span>
-        {showDocumentos && <SubMenu options={['Hojas de vida', 'Informes calibracion', 'Reportes mantenimiento']} />}
+        {showDocumentos && <SubMenu 
+        parentRoute="documentos"
+        options={['hojas de vida', 'Informes calibracion', 'Reportes mantenimiento']} />}
       </p>
 
       <p
@@ -98,6 +100,27 @@ console.log(isToggle)
         Tecnovigilancia
         <KeyboardArrowDownIcon className={`absolute right-0  ${showTecnovigilancia ? 'opacity-100' : 'opacity-0'}`} />
         {showTecnovigilancia && <SubMenu options={['Reportes eventos adversos', 'Seguimiento y calibracion']} />}
+      </p>
+      <p
+        className="hover:bg-gradient-to-b hover:from-[#3B2F3C] hover:to-slate-500 text-white px-4 py-2 rounded-full relative"
+        onClick={()=>router.push('/')}
+      >
+        Iniciar sesion
+        {/* <span className='ml-2'>
+
+        <KeyboardArrowDownIcon className={`absolute right-0 ${showDocumentos ? 'opacity-100' : 'opacity-0'}`} />
+        </span> */}
+        
+      </p>
+      <p
+        className="hover:bg-gradient-to-b hover:from-[#3B2F3C] hover:to-slate-500 text-white px-4 py-2 rounded-full relative"
+      >
+        Registrarse
+        {/* <span className='ml-2'>
+
+        <KeyboardArrowDownIcon className={`absolute right-0 ${showDocumentos ? 'opacity-100' : 'opacity-0'}`} />
+        </span> */}
+        
       </p>
     </div>
 
@@ -111,27 +134,41 @@ console.log(isToggle)
         onClick={()=>setIsToggle(!isToggle)}
         />
 
-      <ul className="space-y-2">
+      <ul className="space-y-2 mt-12 items-center justify-center overflow-y-auto h-3/4 scrollbar-hide">
         <li
-          className="flex justify-between cursor-pointer"
-          onClick={() => setShowCronograma(!showCronograma)}
+         className={`flex justify-between cursor-pointer p-3 ${showCronograma && 'bg-slate-900'}`}
+          onClick={() => setShowCronograma(!setShowCronograma)}
+           onMouseEnter={() => setShowCronograma(true)}
+        // onMouseLeave={() => setShowCronograma(false)}
         >
           <span>Cronograma</span>
           <KeyboardArrowDownIcon
-            className={`opacity-0 ${showCronograma ? 'opacity-100' : ''}`}
+            className={`opacity-0 hover:opacity-100 ${showCronograma ? 'opacity-100' : ''}`}
+        //      onMouseEnter={() => setShowCronograma(true)}
+        // onMouseLeave={() => setShowCronograma(false)}
           />
         </li>
         {showCronograma && (
-          <ul className="pl-4">
-            <li className="cursor-pointer">Mantenimiento</li>
-            <li className="cursor-pointer">Calibracion</li>
-            <li className="cursor-pointer">Capacitacion</li>
-          </ul>
+        <ul className="pl-4">
+         <li  
+         className="cursor-pointer hover:bg-gradient-to-b hover:from-[#3B2F3C] divide-y hover:to-slate-500 text-white px-4 py-2 rounded relative"
+         onClick={()=>router.push('/cronograma/mantenimiento')}
+         >Mantenimientos</li>
+         <li 
+         className="cursor-pointer hover:bg-gradient-to-b hover:from-[#3B2F3C] divide-y hover:to-slate-500 text-white px-4 py-2 rounded relative"
+         onClick={()=>router.push('/cronograma/calibracion')}
+         >Calibracion</li>
+         <li 
+         className="cursor-pointer hover:bg-gradient-to-b hover:from-[#3B2F3C] divide-y hover:to-slate-500 text-white px-4 py-2 rounded relative"
+         onClick={()=>router.push('/cronograma/capacitacion')}
+         >Reportes de calibracion</li>
+       </ul>
         )}
 
         <li
-          className="flex justify-between cursor-pointer"
+         className={`flex justify-between cursor-pointer p-3 ${showDocumentos && 'bg-slate-900'}`}
           onClick={() => setShowDocumentos(!showDocumentos)}
+           onMouseEnter={() => setShowDocumentos(true)}
         >
           <span>Documentos</span>
           <KeyboardArrowDownIcon
@@ -139,16 +176,26 @@ console.log(isToggle)
           />
         </li>
         {showDocumentos && (
-          <ul className="pl-4">
-            <li className="cursor-pointer">Hojas de vida</li>
-            <li className="cursor-pointer">Informes calibracion</li>
-            <li className="cursor-pointer">Reportes mantenimiento</li>
+           <ul className="pl-4">
+            <li  
+            className="cursor-pointer hover:bg-gradient-to-b hover:from-[#3B2F3C] divide-y hover:to-slate-500 text-white px-4 py-2 rounded relative"
+            onClick={()=>router.push('/documentos/hdv')}
+            >Hojas de vida</li>
+            <li 
+            className="cursor-pointer hover:bg-gradient-to-b hover:from-[#3B2F3C] divide-y hover:to-slate-500 text-white px-4 py-2 rounded relative"
+            onClick={()=>router.push('/documentos/mantenimientos')}
+            >Informes de mantenimiento</li>
+            <li 
+            className="cursor-pointer hover:bg-gradient-to-b hover:from-[#3B2F3C] divide-y hover:to-slate-500 text-white px-4 py-2 rounded relative"
+            onClick={()=>router.push('/documentos/calibraciones')}
+            >Reportes de calibracion</li>
           </ul>
-        )}
+          )}
 
         <li
-          className="flex justify-between cursor-pointer"
-          onClick={() => setShowTecnovigilancia(!showTecnovigilancia)}
+          className={`flex justify-between cursor-pointer p-3 ${showTecnovigilancia && 'bg-slate-900'}`}
+          onClick={() => setShowTecnovigilancia(!setShowTecnovigilancia)}
+           onMouseEnter={() => setShowTecnovigilancia(true)}
         >
           <span>Tecnovigilancia</span>
           <KeyboardArrowDownIcon
@@ -157,8 +204,14 @@ console.log(isToggle)
         </li>
         {showTecnovigilancia && (
           <ul className="pl-4">
-            <li className="cursor-pointer">Reportes eventos adversos</li>
-            <li className="cursor-pointer">Seguimiento y calibracion</li>
+            <li  
+            className="cursor-pointer hover:bg-gradient-to-b hover:from-[#3B2F3C] divide-y hover:to-slate-500 text-white px-4 py-2 rounded relative"
+            onClick={()=>router.push('/tecnovigilancia/reportes')}
+            >Reportes eventos adversos</li>
+            <li 
+            className="cursor-pointer hover:bg-gradient-to-b hover:from-[#3B2F3C] divide-y hover:to-slate-500 text-white px-4 py-2 rounded relative"
+            onClick={()=>router.push('/tecnovigilancia/seguimiento')}
+            >Seguimiento y calibracion</li>
           </ul>
         )}
       </ul>
