@@ -96,7 +96,7 @@ const location=[
 
 
   return (
-<div className="relative w-100 xl:flex h-screen bg-slate-200 overflow-y-hidden  xl:flex-col transition-all duration-200  ">
+<div className="relative mt-16 w-100 xl:flex h-screen bg-slate-200 overflow-y-hidden  xl:flex-col transition-all duration-200  ">
   <div className=" w-full h-screen  bg-slate-400 opacity- xl:w-[50%] transition-all duration-200 transform -skew-y-12  overflow-y-hidden"  >
     <h1 className= ' text-xl font-bold text-slate-300'>¿Qué esperas para empezar?</h1>
     <div className= "space-x-6 text-slate-100">
@@ -110,7 +110,7 @@ const location=[
     </div>
 
     <div className=' absolute flex z-10 h-full w-full px-4 transform skew-y-12 my-auto overflow-auto  scrollbar-track-transparent overflow-y-scroll scrollbar-thin scrollbar-thumb-slate-100 scrollbar-thumb-rounded-md'>
-      <div className='shadow-2xl mt-14 flex flex-col w-full space-y-4 my-auto py-10 opacity-50 items-center hover:opacity-90 bg-orange-200 shadow-slate-900 px-4 transition-all duration-300 transform '>
+      <div className='shadow-2xl mt-14 flex flex-col w-full space-y-4 my-auto py-10 opacity-50 items-center hover:opacity-90 bg-[#E6D2B1] shadow-slate-900 px-4 transition-all duration-300 transform '>
         <h1 className= 'text-slate-500 font-bold text-2xl '>Login</h1>
         <form action="" className="p-2 text-md text-center flex flex-col transition-all duration-300 transform  md:grid md:grid-cols-2 md:justify-evenly w-auto gap-8 text-slate-100 mx-auto">
           <label  className=' text-md text-center flex flex-col  w-auto text-slate-100 mx-auto '>
@@ -202,7 +202,7 @@ const location=[
   
           </select>
             </label>
-          <input type='submit' className='bg-slate-700 mt-4 py-2 mb-6 md:ml-[25%] rounded-full md:justify-center transform hover:scale-125 hover:bg-slate-500 focus:outline-none transition-all duration-150 hover:ease-in-out col-span-2 md:w-1/2' placeholder='Submit'/>
+          <input type='submit' className='bg-slate-700 hover:opacity-75 mt-4 py-2 mb-6 md:ml-[25%] rounded-full md:justify-center transform hover:scale-125 hover:bg-slate-500 focus:outline-none transition-all duration-150 hover:ease-in-out col-span-2 md:w-1/2' placeholder='Submit'/>
         </form>
       </div>
     </div>

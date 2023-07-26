@@ -2,6 +2,7 @@
 import {useState} from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import LanguageIcon from '@mui/icons-material/Language';
 import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
@@ -18,12 +19,12 @@ const Navbar = () => {
           };
         return (
             <div 
-    className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y  divide-gray-100 rounded-md bg-slate-300 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+    className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y  divide-gray-100 rounded-md bg-slate-300 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-dashed"
     >
       {options.map((option:string, index:number) => (
         <p 
         onClick={()=>handleOptionClick(option)}
-        key={index} className="text-white  block px-4 py-2 text-sm cursor-pointer hover:bg-slate-400" role="menuitem">
+        key={index} className="text-white  block px-4 py-2 text-sm cursor-pointer  hover:bg-slate-400" role="menuitem">
           {option}
         </p>
       ))}
@@ -37,7 +38,7 @@ console.log(isToggle)
   return (
     <main className='w-auto'>
     <div 
-        className={`h-12 fixed z-50 w-full items-center px-4 text-slate-100 bg-slate-500 opacity-20 hover:opacity-100 transition-opacity ${
+        className={`h-16 fixed z-50 w-full items-center px-4 text-slate-100 bg-[#3B2F3C] opacity-20 hover:opacity-100 transition-opacity ${
           isToggle && 'opacity-0 pointer-events-none'}`}>
         <div className='flex h-full items-center justify-between cursor-pointer'>
 
@@ -46,10 +47,23 @@ console.log(isToggle)
         className='xl:hidden'
         onClick={()=>setIsToggle(!isToggle)}
         />
+        
 
 <div className="flex group opacity-0 flex-row items-center space-x-4 xl:opacity-100 xl:justify-end w-full">
+     
+      <div className='flex flex-row space-x-2 my-auto justify-center items-center h-full'>
+        {/* <span> */}
+
+      < LanguageIcon
+      className='transform rotate-45 items-center '/>
+        {/* </span> */}
+      <span
+      className='text-xl items-center'
+      >ES
+        </span> 
+        </div>
       <p
-        className="hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 text-white px-4 py-2 rounded-lg relative"
+        className="hover:bg-gradient-to-b hover:from-[#3B2F3C] hover:to-slate-500 text-white px-4 py-2 rounded-full relative"
         onMouseEnter={() => setShowCronograma(true)}
         onMouseLeave={() => setShowCronograma(false)}
       >
@@ -64,22 +78,25 @@ console.log(isToggle)
       </p>
 
       <p
-        className="hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 text-white px-4 py-2 rounded-lg relative"
+        className="hover:bg-gradient-to-b hover:from-[#3B2F3C] hover:to-slate-500 text-white px-4 py-2 rounded-full relative"
         onMouseEnter={() => setShowDocumentos(true)}
         onMouseLeave={() => setShowDocumentos(false)}
       >
         Documentos
-        <KeyboardArrowDownIcon className={`absolute right-4 ${showDocumentos ? 'opacity-100' : 'opacity-0'}`} />
+        <span className='ml-2'>
+
+        <KeyboardArrowDownIcon className={`absolute right-0 ${showDocumentos ? 'opacity-100' : 'opacity-0'}`} />
+        </span>
         {showDocumentos && <SubMenu options={['Hojas de vida', 'Informes calibracion', 'Reportes mantenimiento']} />}
       </p>
 
       <p
-        className="hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 text-white px-4 py-2 rounded-lg relative"
+        className="bg-white font-semibold text-[#3B2F3C] px-4 py-2 rounded-full relative w-44"
         onMouseEnter={() => setShowTecnovigilancia(true)}
         onMouseLeave={() => setShowTecnovigilancia(false)}
       >
         Tecnovigilancia
-        <KeyboardArrowDownIcon className={`absolute right-4 ${showTecnovigilancia ? 'opacity-100' : 'opacity-0'}`} />
+        <KeyboardArrowDownIcon className={`absolute right-0  ${showTecnovigilancia ? 'opacity-100' : 'opacity-0'}`} />
         {showTecnovigilancia && <SubMenu options={['Reportes eventos adversos', 'Seguimiento y calibracion']} />}
       </p>
     </div>
@@ -91,8 +108,6 @@ console.log(isToggle)
           }`}
         >
         <MenuIcon
-        // onClick={()=>console.log('click')}
-        
         onClick={()=>setIsToggle(!isToggle)}
         />
 
