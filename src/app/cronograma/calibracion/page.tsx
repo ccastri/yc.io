@@ -32,7 +32,7 @@ const Calibracion = () => {
     <div className='flex h-full mt-12 border-2 border-green-500 w-full ' >
       {/* <DatePicker/> */}
       <div
-        className='w-full p-4 bg-[#FDF7E9] border-2 border-blue-500'>
+        className='w-full p-4 bg-[#Ffff] border-2 border-blue-500'>
 
       <FullCalendar
       editable

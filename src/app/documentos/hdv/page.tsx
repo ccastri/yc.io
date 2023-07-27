@@ -257,9 +257,9 @@ const page = () => {
               <div className=' border-2 border-black  bg-slate-100'>
                 <label className=''>
                     <select name="" id="" className='w-full'>
-                      <option value="">CLASE I</option>
-                      <option value="">CLASE II</option>
-                      <option value="">CLASE III</option>
+                      <option value="">SI</option>
+                      <option value="">NO</option>
+                      <option value="">ANUAL</option>
                     </select>
                 </label>
               </div>
@@ -302,11 +302,73 @@ const page = () => {
             <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
             <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
             </div>
+            
           </div>
           <div>
 
              </div>
       </div>
+
+      <div className='flex mb-32 w-full'>
+    <div className='grid h-full grid-cols-10 w-full border-2 border-black'>
+      <div className='col-span-3 h-full border-2 border-black'>
+        <h1>LOGO DE LA EMPRESA</h1>
+      </div>
+      <div className='h-28 col-span-7 border-2 border-black'>
+        <div className='flex flex-col h-full w-full'>
+          <div className='border-2 h-8 w-full border-slate-300'><h1>Hoja de Vida</h1></div>
+          <div className='border-2 h-20 w-full border-slate-300 grid grid-cols-7'>
+            <div className='flex flex-col border-2 col-span-2 border-black h-full w-full'>
+              <p className='text-xs border-b-2 border-black'>F-GRCU-052</p>
+              <p className='text-xs text-center my-auto'>VIGENTE</p>
+            </div>
+            <div className='col-span-3 w-full h-full flex px-2 border-2 border-black'>
+              <h2 className='text-center my-auto'> Gestion de recursos</h2>
+            </div>
+            <div className='flex flex-col border-2 col-span-2 border-black'>
+              <p className='text-xs border border-black'>VERSION 2.0</p>
+              <p className='text-xs pt-8 text-center h-full'>PAG. 1 DE 2</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+            <h2 className='bg-blue-200  col-span-10'>LISTA DE CHEQUEO DE DOCUMENTOS SOPORTES ANEXOS A LA HOJA DE VIDA</h2>
+             <div className='col-span-5 border-2 border-black h-40'>
+            <p  className='bg-slate-100 w-full h-auto border border-black' >COPIA REGISTRO SANITARIO O PERMISO DE COMERCIALIZACIÓN</p>
+            <p  className='bg-slate-100 w-full h-auto border border-black' >COPIA REGISTRO DE IMPORTACIÓN (SOLO IMPORTADOS)						</p>
+            <p  className='bg-slate-100 w-full h-8 border border-black' >COPIA FACTURA						</p>
+            <p  className='bg-slate-100 w-full h-8 border border-black' >COPIA DE INGRESO AL ALMÁCEN</p>
+            <p  className='bg-slate-100 w-full h-auto border border-black' >COPIA DE ACTA DE RECIBO A SATISFACCIÓN		</p>
+            <p  className='bg-slate-100 w-full h-8 border border-black' >GUÍA RAPIDA DE OPERACIÓN</p>
+            <p  className='bg-slate-100 w-full h-auto border border-black' >RECOMENDACIÓN DEL FABRICANTE PARA USO DE ACCESORIOS Y CONSUMIBLES</p>
+            <p  className='bg-slate-100 w-full h-auto border border-black' > RECOMENDACIÓN DEL FABRICANTE PARA ASEGURAMIENTO METROLÓGICO</p>
+            <p  className='bg-slate-100 w-full h-auto border border-black' >ESTIMATIVO DE COSTO DE ACCESORIOS Y CONSUMIBLES</p>
+            <p  className='bg-slate-100 w-full h-auto border border-black' >RECOMENDACIONES DE LIMPIEZA Y DESINFECCIÓN</p>
+            <p  className='bg-slate-100 w-full h-8 border border-black' >REGISTRO DE CAPACITACIÓN	</p>
+
+            </div>
+            <div className='col-span-5 border-2 border-black'>
+            <select className='bg-slate-100 w-full h-8 p-9 border border-black' >
+              <option value="">AX</option>
+              <option value="">NAX</option>
+              <option value="">NA</option>
+              <option value="">NR</option>
+              <option value="">NT</option></select>
+            <input type="text" className='bg-slate-100 w-full h-8 p-9 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 p-6 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 p-3 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 p-9 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-24 p-12 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-12 p-6 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-12 p-6 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            </div>
+      </div>  
+      
+    </div>
     </>
   )
 }
