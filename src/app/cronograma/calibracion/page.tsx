@@ -29,7 +29,7 @@ const Calibracion = () => {
   return (
     // <main>
 
-    <div className='flexh-full mt-12 border-2 border-green-500 w-full ' >
+    <div className='flex h-full mt-12 border-2 border-green-500 w-full ' >
       {/* <DatePicker/> */}
       <div
         className='w-full p-4 bg-[#FDF7E9] border-2 border-blue-500'>
@@ -47,12 +47,15 @@ const Calibracion = () => {
         plugins={[dayGridPlugin, interactionPlugin ]}
         // views={["dayGridMonth", "dayGridWeek", "dayGridDay"]}
         initialView="dayGridMonth"
-        
         // events={[
-        //   { title: 'event 1', date: '2023-07-05' },
-        //   { title: 'event 2', date: '2019-04-02' }
-        // ]}
-        />
+          //   { title: 'event 1', date: '2023-07-05' },
+          //   { title: 'event 2', date: '2019-04-02' }
+          // ]}
+          />
+        <h2>Aqui podemos ir listando los eventos
+          <br />
+          Esto crece pa abajooooo. EJ. UNA LISTA DE SERVICIOS PENDIENTES PARA QUE TODOS LOS TRABAJADORES VAYAN EN LINEA CON EL CALENDARIO
+        </h2>
         </div>
     </div>
     // </main>

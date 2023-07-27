@@ -38,13 +38,13 @@ console.log(isToggle)
   return (
     <main className='w-auto'>
     <div 
-        className={`h-16 fixed z-50 w-full items-center px-4 text-slate-100 bg-[#3B2F3C] opacity-20 hover:opacity-100 transition-opacity ${
+        className={`group h-16 fixed z-50 w-full items-center px-4 text-slate-100 bg-[#3B2F3C] opacity-20 hover:opacity-100 transition-opacity ${
           isToggle && 'opacity-0 pointer-events-none'}`}>
         <div className='flex h-full items-center justify-between cursor-pointer'>
 
         <MenuIcon
         // onClick={()=>console.log('click')}
-        className='xl:hidden'
+        className='xl:hidden group-hidden'
         onClick={()=>setIsToggle(!isToggle)}
         />
         

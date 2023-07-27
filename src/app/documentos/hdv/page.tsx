@@ -6,7 +6,7 @@ const page = () => {
   return (
     // Header
     <>
-    <div className='mt-16 h-28 w-full'>
+    <div className='flex  w-full'>
     <div className='grid h-full grid-cols-10 w-full border-2 border-black'>
       <div className='col-span-3 h-full border-2 border-black'>
         <h1>LOGO DE LA EMPRESA</h1>
@@ -127,68 +127,190 @@ const page = () => {
        <DatePicker/>
 
         </div>
-        {/* <div className="grid grid-cols-3 gap-2">
-          <input type="text" className='bg-slate-100 w-full h-7 border border-black' />
-          <input type="text" className='bg-slate-100 w-full h-7 border border-black' />
-          <input type="text" className='bg-slate-100 w-full h-7 border border-black' />
-        </div> */}
-        
       </div>
     </div>
-  {/* </div> */}
       </div>
       </>
       {/* IV. Registro tecnico de instalacion */}
-      <>
-      <h2 className='w-full text-center'>Registo tecnico de instalacion</h2>
-      <div className='grid h-32 grid-cols-10'>
+      <div className='h-32'>
+      <h2 className='w-full text-center bg-blue-200'>IV.REGISTRO TECNICO DE INSTALACION</h2>
+      <div className='grid h-20 grid-cols-10'>
         
         <div className='col-span-3 border-2 border-black flex'>
           <div className='col-span-2 w-full'>
 
-          <p className="border-r-2 border-t-2 w-20 border-black text-xs">Tension (V)</p>
-          <p className="border-r-2 border-t-2 w-20 border-black text-xs">POTENCIA (W)</p>
-          <p className="border-r-2 border-y-2 w-20 border-black text-xs">Presion (mmHg)</p>
+          <p className="border-r-2 border-t-2 w-20 h-8 border-black text-xs">Tension (V)</p>
+          <p className="border-r-2 border-t-2 w-20 h-8 border-black text-xs">POTENCIA (W)</p>
+          <p className="border-r-2 border-y-2 w-20 h-10 border-black text-xs">Presion (mmHg)</p>
           </div>
         <div className='col-span-1 border-2 border-black'>
 
-      <input type="text" className='bg-slate-100 w-16 h-7 border border-black' />
-      <input type="text" className='bg-slate-100 w-16 h-7 border border-black' />
-      <input type="text" className='bg-slate-100 w-16 h-7 border border-black' />
+      <input type="text" className='bg-slate-100 w-16 h-8 border border-black' />
+      <input type="text" className='bg-slate-100 w-16 h-8 border border-black' />
+      <input type="text" className='bg-slate-100 w-16 h-9 border border-black' />
         </div>
         </div>
 
         <div className='col-span-7 border-2 border-black flex'>
           <div className='col-span-3 border-2 border-black h-full w-full'>
 
-          <p className="border-r-2 border-t-2 w-28 border-black text-xs">CORRIENTE (A)</p>
-          <p className="border-r-2 border-t-2 w-28 border-black text-xs">FRECUENCIA (HZ)</p>
+          <p className="border-r-2 border-t-2 w-28 h-8 border-black text-xs">CORRIENTE (A)</p>
+          <p className="border-r-2 border-t-2 w-28 h-8 border-black text-xs">FRECUENCIA (HZ)</p>
           <p className="border-r-2 border-y-2 w-28 border-black text-xs">RANGO DE TEMPERATURA</p>
           </div>
         <div className='col-span-1 border-2 border-black'>
 
-      <input type="text" className='bg-slate-100 w-24 h-7 border border-black' />
-      <input type="text" className='bg-slate-100 w-24 h-7 border border-black' />
-      <input type="text" className='bg-slate-100 w-24 h-7 border border-black' />
+      <input type="text" className='bg-slate-100 w-20 h-8 border border-black' />
+      <input type="text" className='bg-slate-100 w-20 h-8 border border-black' />
+      <input type="text" className='bg-slate-100 w-20 h-9 border border-black' />
         </div>
           <div className='col-span-2 border-2 border-black'>
 
-          <p className="border-r-2 border-t-2 w-full border-black text-xs">PESO (kg)</p>
-          <p className="border-r-2 border-t-2 w-full border-black text-xs">Velocidad:</p>
-          <p className="border-r-2 border-y-2 w-full border-black text-xs">Predominante</p>
+          <p className="border-r-2 border-t-2 w-[90px] h-8 border-black text-xs">PESO (kg)</p>
+          <p className="border-r-2 border-t-2 w-[90px] h-8 border-black text-xs">Velocidad:</p>
+          <p className="border-r-2 border-y-2 w-[90px] h-9 border-black text-xs">Predominante</p>
           </div>
-        <div className='col-span-2 border-2 border-black'>
+        <div className='col-span-1 border-2 border-black'>
 
-      <input type="text" className='bg-slate-100 w-16 h-7 border border-black' />
-      <input type="text" className='bg-slate-100 w-16 h-7 border border-black' />
-      <input type="text" className='bg-slate-100 w-16 h-7 border border-black' />
+      <input type="text" className='bg-slate-100 w-12 h-8 border border-black' />
+      <input type="text" className='bg-slate-100 w-12 h-8 border border-black' />
+      <input type="text" className='bg-slate-100 w-12 h-9 border border-black' />
         </div>
         </div>
       </div>
-      </>
+      </div>
+      {/* V.REGISTRO TECNICO DE FUNCIONAMIENTO Y VI. CLASIFICACION BIOMEDICA */}
+      <div className=' flex flex-row'>
+          <div className=' grid grid-cols-10  border-2  border-black'>
+            <h2 className='bg-blue-200 h- col-span-10'>V. REGISTRO TECNICO DE FUNCIONAMIENTO</h2>
+            <div className='col-span-5 border-2 border-black'>
+              <p className="border-r-2 border-t-2 h-8 border-black text-xs">RANGO DE VOLTAJE  </p>
+              <p className="border-r-2 border-t-2 h-8 border-black text-xs">RANGO DE CORRIENTE  </p>
+              <p className="border-r-2 border-t-2 h-8 border-black text-xs">RANGO DE HUMEDAD  </p>
+              <p className="border-r-2 border-t-2 h-8 border-black text-xs">RANGO DE CORRIENTE  </p>
+              <p className="border-r-2 border-y-2 h-8 border-black text-xs">RANGO DE  FRECUENCIA   </p>
+            </div>
+            <div className='col-span-5 border-2 border-black'>
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            </div>
+              {/* VI. CLASIFICACION BIOMEDICA */}
+              {/*Puse margen pq interrumpia el footer pero queda melo, creo */}
+
+              <div className='grid col-span-5 h-8 w-full border-2 border-black'>
+                <h2 className=' bg-blue-200 h-12  border-2 border-black'>VI. CLASIFICACION BIOMEDICA</h2>
+                <div className=' border-2 border-black  bg-slate-100'>
+
+                <label className=' border-2 border-black'>
+                  <select name="" id="" className='w-full'>
+                    <option value="">DIAGNOSTICO</option>
+                    <option value="">REHABILITACION</option>
+                    <option value="">PREVENCION</option>
+                    <option value="">TRATAMIENTO Y/O MNTO DE VIDA</option>
+                    <option value="">ANALISIS DE LABORATORIO</option>
+                  </select>
+                </label>
+              </div>
+                </div>
+          <div className='grid col-span-5  w-full border-2 border-black'>
+          {/* <div className=' col-span-5 border-2  border-black'> */}
+            <h2 className='bg-blue-200 '> VII. CLASIFICACION SEGUN EL NIVEL DE RIESGO</h2>
+              <div className=' border-2 border-black  bg-slate-100'>
+                <label className=''>
+                    <select name="" id="" className='w-full'>
+                      <option value="">CLASE I</option>
+                      <option value="">CLASE II</option>
+                      <option value="">CLASE III</option>
+                    </select>
+                </label>
+              </div>
+          </div>
+          </div>
+          <div>
+             </div>
+      </div>
+
+
+      
+      {/* VIII. PERIODICIDAD DEL MANTENIMIENTO Y IX. REQUIERE CALIBRACION */}
+      <div className=' flex flex-row'>
+          <div className=' grid grid-cols-10  border-2 h- border-black'>
+         
+              {/* VII. PERIODICIDAD DEL MANTENIMIENTO */}
+              
+
+              <div className='grid col-span-5  w-full border-2 border-black'>
+                <h2 className=' bg-blue-200 h-12'>VII. PERIODICIDAD DEL MANTENIMIENTO</h2>
+                <div className=' border-2 border-black  bg-slate-100'>
+
+                
+                 <input type="text" />
+                
+              </div>
+                </div>
+          <div className='grid col-span-5  w-full border-2 border-black'>
+          {/*  IX. REQUIERE CALIBRACION */}
+            <h2 className='bg-blue-200 h-12'> IX. REQUIERE CALIBRACION</h2>
+              <div className=' border-2 border-black  bg-slate-100'>
+                <label className=''>
+                    <select name="" id="" className='w-full'>
+                      <option value="">CLASE I</option>
+                      <option value="">CLASE II</option>
+                      <option value="">CLASE III</option>
+                    </select>
+                </label>
+              </div>
+          </div>
+            <h2 className='bg-blue-200  col-span-10'>X. ACCESORIOS</h2>
+             <div className='col-span-5 border-2 border-black h-40'>
+               <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+              
+              
+              
+              
+            </div>
+            <div className='col-span-5 border-2 border-black'>
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            </div>
+            <h2 className='bg-blue-200  col-span-10'>XI. OBSERVACIONES</h2>
+             <div className='col-span-5 border-2 border-black h-40'>
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+           
+           
+           
+           
+            </div>
+            <div className='col-span-5 border-2 border-black'>
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            <input type="text" className='bg-slate-100 w-full h-8 border border-black' />
+            </div>
+          </div>
+          <div>
+
+             </div>
+      </div>
     </>
   )
 }
+
 
 export default page
             
