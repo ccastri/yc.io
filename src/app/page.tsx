@@ -108,14 +108,20 @@ const location=[
       ],
 
     },
+
   ]
-    
+    const userTypes =[
+      'Ingeniero',
+      'Profesional en salud',
+      'Tecnico',
+
+    ]
   const methods = useForm<User>();
 
   const { register, handleSubmit, control, formState: { errors  } } = methods
 
   // const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
-  //   const { name, value } = e.currentTarget
+  //   'const' { name, value } = e.currentTarget
   //   setUser({ ...user, [name]: value })
   // }
   // const onSubmit: SubmitHandler<User> = async (data: User) => {
@@ -126,7 +132,7 @@ const location=[
   return (
 <div className="relative mt-16 w-100 xl:flex h-screen bg-slate-200 overflow-y-hidden  xl:flex-col transition-all duration-200  mb-32">
   <div className=" w-full h-screen  bg-slate-400 opacity- xl:w-[50%] transition-all duration-200 transform -skew-y-12  overflow-y-hidden "  >
-    <h1 className= ' text-xl font-bold text-slate-300'>¿Qué esperas para empezar?</h1>
+    <h1 className= ' bg-[#E0C4A0] text-xl font-bold text-slate-100'>¿Qué esperas para empezar?</h1>
     <div className= "space-x-6 text-[#0D202F]">
 
     <HealingIcon/>
@@ -137,9 +143,9 @@ const location=[
     <EngineeringIcon/>
     </div>
 
-    <div className=' absolute flex z-10 h-full w-full px-4 transform skew-y-12 my-auto overflow-auto  scrollbar-track-transparent overflow-y-scroll scrollbar-thin scrollbar-thumb-slate-100 scrollbar-thumb-rounded-md'>
-      <div className='shadow-2xl mt-14 flex flex-col w-full space-y-4 my-auto py-10 opacity-50 items-center hover:opacity-90 bg-[#FFFF] shadow-slate-900 px-4 transition-all duration-300 transform '>
-        <h1 className= 'text-slate-500 font-bold text-2xl '>Login</h1>
+    <div className=' absolute flex z-10 h-full w-full px-8  transform skew-y-12 my-auto overflow-auto  scrollbar-track-transparent overflow-y-scroll scrollbar-thin scrollbar-thumb-slate-100 scrollbar-thumb-rounded-md'>
+      <div className='shadow-2xl mt-14 flex flex-col w-full space-y-4 my-auto py-12 opacity-50 items-center hover:opacity-90 bg-[#FFFF] shadow-slate-900  transition-all duration-300 transform '>
+        <h1 className= 'text-slate-500 font-bold text-2xl text-center py-4 tracking-wide w-full bg-[#E0C4A0] '>Login</h1>
         <form action="" onSubmit={handleSubmit(onSubmit)} className="p-2 text-md text-center flex flex-col transition-all duration-300 transform  md:grid md:grid-cols-2 md:justify-evenly w-auto gap-8 text-[#0D202F] mx-auto">
           <label  className=' text-md text-center flex flex-col  w-auto text-slate-600 mx-auto '>
             Nombre de la empresa
@@ -174,9 +180,9 @@ const location=[
              {...register('ciudad' , {
               required: 'Seleccione la ciudad donde se ubica la empresa',
               })}
-  // defaultValue='Seleccione ciudad'
+
   >
-      <option value="">Seleccione ciudad</option> {/* Set default value as empty string */}
+      <option value="">Seleccione ciudad</option> 
           {location.map((el) =>
             el.name == "city" &&
             el.options.map((city) => (
@@ -195,8 +201,9 @@ const location=[
              {...register('departamento' , {
                required: 'Seleccione el departamento donde se ubica la empresa',
               })}
-              defaultValue="Seleccione departmento"
+              
             >
+              <option value="">Seleccione Departamento</option>
               {location.map(el=> el.name== 'department' && el.options.map(department=> (<option key={department.value}>
                 {department.value}
               </option>)))}
@@ -210,7 +217,7 @@ const location=[
             type='email' 
             className=' focus:outline-none text-center text-sm rounded-full py-2 bg-[#0D202F] w-auto text-slate-500 mx-auto '
              {...register('correo' , {
-              required: 'Digite su correo electronico empresarial',
+               required: 'Digite su correo electronico empresarial',
               })}
               />
               {errors.correo && <span className="text-red-500 font-semibold text-center text-sm w-36">{errors.correo?.message}</span>}
@@ -247,49 +254,38 @@ const location=[
               />
               {errors.confirmarContraseña && <span className="text-red-500 font-semibold text-center text-sm w-36">{errors.confirmarContraseña?.message}</span>}
           </label>
-          <label className='flex flex-col text-md text-center items-center px-2'>
-            Registrarse como:
-          
-          <select
-            // id={field.name}
-            className="text-center w-full items-center  p-2 right-0 rounded-full  text-slate-400 bg-[#0D202F] text-xs  pl-2 text-md focus:outline-dotted hover:decoration-sky-600 font-semibold"
-                        {...register('role' , {
-              required: 'Seleccione el cargo o funcion que desempeña en la empresa',
-              })}
-              
-              >
-            <option key='0' value= '0'>
-              Seleccione rol
-            </option>
-            <option key='1' value= '1'>
-              Especialista en salud
-            </option>
-            <option key='2' value= '2'>
-              Ingeniero
-            </option>
-            <option key='3' value= '3'>
-              Tecnico
-            </option>
-          </select>
-          {errors.role && <span className="text-red-500 font-semibold text-center text-sm w-36">{errors.role?.message}</span>}
-          </label>
-          <label className='flex flex-col text-md text-center items-center w-full'>
-            Aceptar <br/> terminos y condiciones
-          <select
-            className="w-auto text-center items-center  p-2 right-0 rounded-full md:mb-0  text-slate-400 bg-[#0D202F] text-xs  pl-2 hover:underline text-md focus:outline-dotted hover:decoration-sky-600 font-semibold"
-                        {...register('tos' , {
-              required: 'Debe aceptar las politicas para continuar el proceso',
-              })}
-              >
-            <option key='0' value= '0'>
-              No
-            </option>
-            <option key='1' value= '1'>
-              Si
-            </option>
-          </select>
-          {errors.tos && <span className="text-red-500 font-semibold text-center text-sm w-36">{errors.tos?.message}</span>}
-            </label>
+ <label  className='text-md text-center flex flex-col  w-auto text-[#0D202F] mx-auto '>
+  Registrarse como:
+    <select
+     className="text-center w-full items-center bg-[#0D202F]  p-2 right-0 rounded-full  text-slate-400 text-xs text-md focus:outline-none font-semibold" id=""
+      {...register('role', {
+        required: 'Seleccione el cargo o función que desempeña en la empresa',
+      })}
+    >
+       <option value=''>
+       Selecione su cargo
+      </option>
+     {userTypes.map(type=>
+       <option key={type} value={type}>
+        {type}
+      </option>
+        )}
+    </select>
+    {errors.role && <span className="text-red-500 font-semibold text-center text-sm w-36">{errors.role?.message}</span>}
+</label>
+ <label  className='text-md text-center flex flex-col  w-auto text-[#0D202F] mx-auto '>
+  Aceptar <br /> términos y condiciones
+  {/* <div className="relative"> */}
+    <input
+      type="checkbox"
+      className="text-center w-full items-center bg-[#0D202F]  p-2 right-0 rounded-full  text-slate-400 text-xs text-md focus:outline-none font-semibold" id=""
+      {...register('tos', {
+        required: 'Debe aceptar las políticas para continuar el proceso',
+      })}
+    />
+    {errors.tos && <span className="text-red-500 font-semibold text-center text-sm w-36">{errors.tos?.message}</span>}
+  {/* </div> */}
+</label>
           <input type='submit' className='text-slate-300 hover:opacity-75 mt-4 py-2 mb-6 md:ml-[25%] rounded-full md:justify-center transform hover:scale-125 hover:bg-slate-500 hover:text-slate-100 focus:outline-none transition-all duration-150 hover:ease-in-out col-span-2 md:w-1/2 bg-[#00619E]' placeholder='Submit'/>
         </form>
       </div>
@@ -297,7 +293,7 @@ const location=[
 
     <div className=" h-screen  bg-slate-700 pt-36 clip-triangle -rotate-180   w-full"   />
     </div>
-    <div className='absolute  right-0 h-screen  border-black bg-slate-600 hidden xl:flex w-[50%]'>
+    <div className='absolute  right-0 h-screen  border-black bg-[#0D202F] hidden xl:flex w-[50%]'>
       <h1>Here Immmmm</h1>
     </div>
 </div>
