@@ -110,19 +110,7 @@ const location=[
     },
   ]
     
-  const methods = useForm<User>({
-  defaultValues: {
-    empresa:"",
-    nit:"",
-    // ciudad:  location.find((el) => el.name === 'city')?.options[0].value,
-    // departamento: location.find((el) => el.name === 'department')?.options[0].value,
-    correo:"",
-    contraseña:"",
-    confirmarContraseña:"",
-    // role:'',
-    // tos:false,
-    }
-  });
+  const methods = useForm<User>();
 
   const { register, handleSubmit, control, formState: { errors  } } = methods
 
@@ -132,7 +120,7 @@ const location=[
   // }
   // const onSubmit: SubmitHandler<User> = async (data: User) => {
   const onSubmit = async (data: User) => {
-    console.log(`sent ${JSON.stringify(data)}`)
+        alert(JSON.stringify(data));
 
   }
   return (
