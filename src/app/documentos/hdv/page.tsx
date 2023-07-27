@@ -6,7 +6,7 @@ const page = () => {
   return (
     // Header
     <>
-    <div className='flex  w-full'>
+    <div className='flex mt-16  w-full'>
     <div className='grid h-full grid-cols-10 w-full border-2 border-black'>
       <div className='col-span-3 h-full border-2 border-black'>
         <h1>LOGO DE LA EMPRESA</h1>
@@ -349,7 +349,8 @@ const page = () => {
 
             </div>
             <div className='col-span-5 border-2 border-black'>
-            <select className='bg-slate-100 w-full h-8 p-9 border border-black' >
+              
+            <select name="" id="" className='bg-slate-100 w-full h-16 mb-2  border border-black' >
               <option value="">AX</option>
               <option value="">NAX</option>
               <option value="">NA</option>
