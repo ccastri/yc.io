@@ -114,6 +114,7 @@ console.log(isToggle)
       </p>
       <p
         className="hover:bg-gradient-to-b hover:from-[#3B2F3C] hover:to-slate-500 text-white px-4 py-2 rounded-full relative"
+        onClick={()=>router.push('/auth')}
       >
         Registrarse
         {/* <span className='ml-2'>
