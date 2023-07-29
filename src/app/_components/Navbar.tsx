@@ -9,13 +9,16 @@ const Navbar = () => {
     const [isToggle, setIsToggle] = useState<boolean>(false)
     const [showCronograma, setShowCronograma] = useState(false);
     const [showDocumentos, setShowDocumentos] = useState(false);
-      const [showTecnovigilancia, setShowTecnovigilancia] = useState(false);
-      const router = useRouter();
+    const [showTecnovigilancia, setShowTecnovigilancia] = useState(false);
+    const router = useRouter();
+// This is the  sideBar component. 
+// Here youre getting the url parameters from the Submenu html component
 
-      const SubMenu = ({ parentRoute, options }:any) => {
+    const SubMenu = ({ parentRoute, options }:any) => {
           const handleOptionClick = (option: string) => {
               // Assuming your routes are in the format '/option' (e.g., '/Mantenimiento', '/Calibracion', etc.)
-              option=== 'hojas de vida'? router.push(`/${parentRoute.toLowerCase()}/hdv`): router.push(`/${parentRoute.toLowerCase()}/${option.toLowerCase()}`)
+              const parentLowered =  parentRoute.toLowerCase()
+              option=== 'hojas de vida'? router.push(`/${parentLowered}/hdv`): router.push(`/${parentLowered}/${option.toLowerCase()}`)
           };
         return (
             <div 
