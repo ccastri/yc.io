@@ -64,7 +64,7 @@ export const FileUploader = ({ onUpload}:FileUploaderProps) => {
         />
         <span className=' border-2 border-[#FFFFFF] rounded-full my-0 p-1'><CloudUploadIcon sx={{fontSize:'30px'}} className='text-white  items-center rounded-full border-gray-400'/>
         </span>
-        <h2 className='font-semibold text-white opacity-80'>Drag and drop some files here, or click to select files</h2>
+        <h2 className='font-semibold text-xs text-center text-white opacity-80'>Presione o arrastre para añadir archivos</h2>
       </div>
     {/* <ul className='flex flex-col  mx-6 my-auto bottom-0 text-center  h-full rounded-xl flex-wrap'>{filesPreview}</ul> */}
       {/* {files.length === 0 && errors[name] ? <span className="text-red-500 font-bold mx-2 p-2">{errors[name]?.message}</span>: null} */}
