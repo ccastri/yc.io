@@ -103,7 +103,7 @@ console.log(isToggle)
       </p>
       <p
         className="hover:bg-gradient-to-b hover:from-[#3B2F3C] hover:to-slate-500 text-white px-4 py-2 rounded-full relative"
-        onClick={()=>router.push('/')}
+        onClick={()=>router.push('/auth/login')}
       >
         Iniciar sesion
         {/* <span className='ml-2'>
@@ -114,7 +114,7 @@ console.log(isToggle)
       </p>
       <p
         className="hover:bg-gradient-to-b hover:from-[#3B2F3C] hover:to-slate-500 text-white px-4 py-2 rounded-full relative"
-        onClick={()=>router.push('/auth')}
+        onClick={()=>router.push('/auth/regsitrarse')}
       >
         Registrarse
         {/* <span className='ml-2'>
