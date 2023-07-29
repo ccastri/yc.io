@@ -28,26 +28,26 @@ const HdvI = () => {
       <div className="flex flex-col col-span-5 space-y-8 py-4 px-6 ">
         <label className='font-semibold tracking-widest h-7 text-center text-xs'>DEPARTAMENTO
         
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full h-7 border rounded-md' />
+        <input type="text" className=' mb-3  focus:outline-none focus:border-b-blue-500 w-full h-7 border-b' />
         </label>
         <label className='font-semibold tracking-widest h-7 text-center pt-2 text-xs'>MUNICIPIO
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full h-7 border rounded-md'/>
+        <input type="text" className=' mb-3  focus:outline-none focus:border-b-blue-500 w-full h-7 border-b' />
         
         </label>
         <label className='font-semibold tracking-widest h-7 text-center pt-2 text-xs'>ENTIDAD
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full h-7 border rounded-md'/>
+        <input type="text" className=' mb-3  focus:outline-none focus:border-b-blue-500 w-full h-7 border-b' />
         
         </label>
         <label className='font-semibold tracking-widest h-7 text-center pt-2 text-xs'>CORREO
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full h-7 border rounded-md'/>
+        <input type="text" className=' mb-3  focus:outline-none focus:border-b-blue-500 w-full h-7 border-b' />
         
         </label>
         <label className='font-semibold tracking-widest h-7 text-center pt-2 text-xs'>DIRECCION
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full h-7 border rounded-md'/>
+        <input type="text" className=' mb-3  focus:outline-none focus:border-b-blue-500 w-full h-7 border-b' />
         
         </label>
         <label className='font-semibold tracking-widest h-7 text-center pt-2 text-xs'>TELEFONO
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full h-7 border rounded-md'/>
+        <input type="text" className=' mb-3  focus:outline-none focus:border-b-blue-500 w-full h-7 border-b' />
         
         </label>
       </div>

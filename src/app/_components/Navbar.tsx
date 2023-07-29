@@ -15,7 +15,7 @@ const Navbar = () => {
       const SubMenu = ({ parentRoute, options }:any) => {
           const handleOptionClick = (option: string) => {
               // Assuming your routes are in the format '/option' (e.g., '/Mantenimiento', '/Calibracion', etc.)
-              router.push(`/${parentRoute}/${option}`);
+              option=== 'hojas de vida'? router.push(`/${parentRoute.toLowerCase()}/hdv`): router.push(`/${parentRoute.toLowerCase()}/${option.toLowerCase()}`)
           };
         return (
             <div 
@@ -38,7 +38,7 @@ console.log(isToggle)
   return (
     <main className='w-auto'>
     <div 
-        className={`group h-16 fixed z-50 w-full items-center px-4 text-slate-100 bg-[#00619E] opacity-20 hover:opacity-100 transition-opacity ${
+        className={`group h-16 fixed z-50 w-full items-center px-4 text-slate-100 bg-[#123CD0] opacity-20 hover:opacity-100 transition-opacity ${
           isToggle && 'opacity-0 pointer-events-none'}`}>
         <div className='flex h-full items-center justify-between cursor-pointer'>
 
@@ -73,7 +73,7 @@ console.log(isToggle)
         {showCronograma && <SubMenu
                             className='cursor-pointer'
                             parentRoute="cronograma"
-                            options={['mantenimiento', 'calibracion', 'capacitacion']} />}
+                            options={['Mantenimiento', 'Calibracion', 'Capacitacion']} />}
             </span>
       </p>
 
@@ -89,7 +89,7 @@ console.log(isToggle)
         </span>
         {showDocumentos && <SubMenu 
         parentRoute="documentos"
-        options={['hojas de vida', 'Informes calibracion', 'Reportes mantenimiento']} />}
+        options={['Hojas de vida', 'Informes calibracion', 'Reportes mantenimiento']} />}
       </p>
 
       <p
@@ -114,7 +114,7 @@ console.log(isToggle)
       </p>
       <p
         className="hover:bg-gradient-to-b hover:from-[#3B2F3C] hover:to-slate-500 text-white px-4 py-2 rounded-full relative"
-        onClick={()=>router.push('/auth/regsitrarse')}
+        onClick={()=>router.push('/auth/registrarse')}
       >
         Registrarse
         {/* <span className='ml-2'>
@@ -127,7 +127,7 @@ console.log(isToggle)
 
         </div>
     </div>
-       {isToggle && <div className={`h-screen pt-4 px-4 bg-gray-800 duration-200 text-white fixed top-0 left-0 z-10 w-60 transition-transform transform ${
+       {isToggle && <div className={`h-screen pt-4 px-4 bg-[#123CD0] duration-200 text-white fixed top-0 left-0 z-10 w-60 transition-transform transform ${
             isToggle ? 'translate-x-0' : '-translate-x-60'
           }`}
         >

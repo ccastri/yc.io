@@ -35,7 +35,7 @@ export default function RootLayout({
           {children}
          </LocalizationProvider>
         </main>
-        {/* <Footer/> */}
+        <Footer/>
       </body>
     </html>
   )
