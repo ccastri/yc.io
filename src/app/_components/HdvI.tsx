@@ -17,7 +17,8 @@ const HdvI = () => {
     console.log('data submited')
   };
     return (
-    <div className='w-full xl:flex transition-all duration-150 h-full overflow-y-auto mb-20 bg-[#FFF]'><div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
+    <div className='w-full xl:flex transition-all duration-150 h-full overflow-y-auto mb-20 bg-[#FFF]'>
+      <div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
 
       <h2 className ="w-full text-[#FAFAFA] font-semibold tracking-wider "> I. UBICACION GEOGRÁFICA</h2>
       </div>

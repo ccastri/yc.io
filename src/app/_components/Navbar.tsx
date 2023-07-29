@@ -3,6 +3,9 @@ import {useState} from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LanguageIcon from '@mui/icons-material/Language';
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+
 import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
@@ -11,6 +14,9 @@ const Navbar = () => {
     const [showDocumentos, setShowDocumentos] = useState(false);
     const [showTecnovigilancia, setShowTecnovigilancia] = useState(false);
     const router = useRouter();
+    console.log(showCronograma)
+    console.log(showDocumentos)
+    console.log(showTecnovigilancia)
 // This is the  sideBar component. 
 // Here youre getting the url parameters from the Submenu html component
 
@@ -19,6 +25,7 @@ const Navbar = () => {
               // Assuming your routes are in the format '/option' (e.g., '/Mantenimiento', '/Calibracion', etc.)
               const parentLowered =  parentRoute.toLowerCase()
               option=== 'hojas de vida'? router.push(`/${parentLowered}/hdv`): router.push(`/${parentLowered}/${option.toLowerCase()}`)
+
           };
         return (
             <div 
@@ -130,29 +137,30 @@ console.log(isToggle)
 
         </div>
     </div>
-       {isToggle && <div className={`h-screen pt-4 px-4 bg-[#123CD0] duration-200 text-white fixed top-0 left-0 z-10 w-60 transition-transform transform ${
-            isToggle ? 'translate-x-0' : '-translate-x-60'
+       {isToggle && <div className={`h-screen py-4 px-4 z-50 sticky bg-[#123CD0] duration-800 text-white  top-0 left-0 w-full transition transform${
+            isToggle ? 'translate-x-0' : 'translate-x-60'
           }`}
         >
         <MenuIcon
         onClick={()=>setIsToggle(!isToggle)}
         />
-
-      <ul className="space-y-2 mt-12 items-center justify-center overflow-y-auto h-3/4 scrollbar-hide">
+        <div className=' grid-cols-3 '>
+      <ul className="space-y-2 mt-12   overflow-y-auto h-3/4 scrollbar-hide">
         <li
-         className={`flex justify-between cursor-pointer p-3 ${showCronograma && 'bg-slate-900'}`}
-          onClick={() => setShowCronograma(!setShowCronograma)}
-           onMouseEnter={() => setShowCronograma(true)}
-        // onMouseLeave={() => setShowCronograma(false)}
+         className={`flex justify-between cursor-pointer col-span-1 p-3 ${showCronograma && 'bg-slate-900'} space-x-2  rounded group cursor-pointer  text-[#FAFAFA]  hover:shadow-xl hover:border-[#E0C4A0]  mt-4 px-2 py-2 mb-6 hover:rounded-full transform hover:scale-105  focus:outline-none transition-all duration-150 hover:ease-in-out text-md hover:font-semibold   hover-font-semibold hover:border-b-4 border-b-2 hover: tracking-wider `}
+         onClick={() => setShowCronograma(!showCronograma)}
+        //  onMouseEnter={() => setShowCronograma(true)}
+         // onMouseLeave={() => setShowCronograma(false)}
         >
           <span>Cronograma</span>
           <KeyboardArrowDownIcon
-            className={`opacity-0 hover:opacity-100 ${showCronograma ? 'opacity-100' : ''}`}
+            className={`opacity-0  ${showCronograma ? 'opacity-100' : ''}`}
         //      onMouseEnter={() => setShowCronograma(true)}
         // onMouseLeave={() => setShowCronograma(false)}
-          />
+        />
         </li>
         {showCronograma && (
+          
         <ul className="pl-4">
          <li  
          className="cursor-pointer hover:bg-gradient-to-b hover:from-[#3B2F3C] divide-y hover:to-slate-500 text-white px-4 py-2 rounded relative"
@@ -170,17 +178,17 @@ console.log(isToggle)
         )}
 
         <li
-         className={`flex justify-between cursor-pointer p-3 ${showDocumentos && 'bg-slate-900'}`}
-          onClick={() => setShowDocumentos(!showDocumentos)}
-           onMouseEnter={() => setShowDocumentos(true)}
-        >
+         className={`flex col-span-1 justify-between cursor-pointer p-3 ${showDocumentos && 'bg-slate-900'}`}
+         onClick={() => setShowDocumentos(!showDocumentos)}
+        //  onMouseEnter={() => setShowDocumentos(true)}
+         >
           <span>Documentos</span>
           <KeyboardArrowDownIcon
-            className={`opacity-0 ${showDocumentos ? 'opacity-100' : ''}`}
+            className={`opacity-0 ${showDocumentos ? 'opacity-100' : ''} space-x-2  rounded group cursor-pointer  text-[#FAFAFA]  hover:shadow-xl hover:border-[#E0C4A0]  mt-4 px-2 py-2 mb-6 hover:rounded-full transform hover:scale-105  focus:outline-none transition-all duration-150 hover:ease-in-out text-md hover:font-semibold   hover-font-semibold hover:border-b-4 border-b-2 hover: tracking-wider `}
           />
         </li>
         {showDocumentos && (
-           <ul className="pl-4">
+          <ul className="pl-4">
             <li  
             className="cursor-pointer hover:bg-gradient-to-b hover:from-[#3B2F3C] divide-y hover:to-slate-500 text-white px-4 py-2 rounded relative"
             onClick={()=>router.push('/documentos/hdv')}
@@ -197,9 +205,9 @@ console.log(isToggle)
           )}
 
         <li
-          className={`flex justify-between cursor-pointer p-3 ${showTecnovigilancia && 'bg-slate-900'}`}
-          onClick={() => setShowTecnovigilancia(!setShowTecnovigilancia)}
-           onMouseEnter={() => setShowTecnovigilancia(true)}
+          className={`flex w-4/12 col-span-1 justify-between cursor-pointer p-3 ${showTecnovigilancia && 'bg-slate-900'} space-x-2  rounded group cursor-pointer  text-[#FAFAFA]  hover:shadow-xl hover:border-[#E0C4A0]  mt-4 px-2 py-2 mb-6 hover:rounded-full transform hover:scale-105  focus:outline-none transition-all duration-150 hover:ease-in-out text-md hover:font-semibold   hover-font-semibold hover:border-b-4 border-b-2 hover: tracking-wider `}
+          onClick={() => setShowTecnovigilancia(!showTecnovigilancia)}
+          //  onMouseEnter={() => setShowTecnovigilancia(true)}
         >
           <span>Tecnovigilancia</span>
           <KeyboardArrowDownIcon
@@ -219,6 +227,24 @@ console.log(isToggle)
           </ul>
         )}
       </ul>
+        </div>
+      <div className='w-full absolute bottom-4 right-4  px-4 space-y-4 flex flex-col items-end my-6 bg-[#123CD0]'>
+        
+          <div 
+          className='space-x-2  rounded group cursor-pointer  text-[#FAFAFA]  hover:shadow-xl hover:border-[#E0C4A0]  mt-4 px-2 py-2 mb-6 hover:rounded-full transform hover:scale-125  focus:outline-none transition-all duration-150 hover:ease-in-out text-md hover:font-semibold  hover:text-xl hover-font-semibold hover:border-b-4 border-b-2 hover: tracking-wider '
+          onClick={()=>router.push('/auth/login')}
+          >
+
+      <LoginOutlinedIcon/><span className=''/><span className='text-[#FAFAFA]  mt-4 px-4 py-2  text-md hover:font-semibold font-bold'>Iniciar sesion</span>
+          </div>
+          <div className='space-x-2 rounded group cursor-pointer  text-[#FAFAFA]  hover:shadow-xl hover:border-[#E0C4A0]  mt-4 px-4 py-2 mb-6 hover:rounded-full transform hover:scale-125  focus:outline-none transition-all duration-150 hover:ease-in-out text-md hover:font-semibold  hover:text-xl hover-font-semibold hover:border-b-4 border-b-2 hover: tracking-wider '>
+      <SettingsOutlinedIcon 
+      className='group-hover:text-[#E0C4A0]'/><span className='text-[#FAFAFA]  mt-4 px-4 py-2  text-md hover:font-semibold font-bold'
+      onClick={()=>router.push('/auth/registrarse')}
+      >Ajustes</span>
+          </div>
+        
+      </div>
     </div>
     }
   </main>
