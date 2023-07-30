@@ -15,47 +15,47 @@ const HdvIII:React.FC<stepSecondToLast> = ({onChange, prevStep, nextStep}) => {
             >
 
       <div className=" col-span-10 space-y-8 py-4 px-6 ">
-        <label className='font-semibold tracking-widest h-7 text-center text-xs'>AÑO DE FABRICACION
         <div className=' flex flex-wrap'>
+        <label className='font-semibold tracking-widest h-7 text-center text-xs'>AÑO DE FABRICACION
 
-        <DatePicker/>
-        </div>
+        <DatePicker onChange={()=>{onChange}}/>
         </label>
+        </div>
+           <div className=' flex flex-wrap'>
         <label className='font-semibold tracking-widest h-7 text-center pt-2 text-xs'>FECHA DE COMPRA
-           <div className=' flex flex-wrap'>
 
-        <DatePicker/>
-        </div>
+        <DatePicker onChange={()=>{onChange}}/>
         
         </label>
+        </div>
+           <div className=' flex flex-wrap'>
         <label className='font-semibold tracking-widest h-7 text-center pt-2 text-xs'>FECHA DE INSTALACION
-           <div className=' flex flex-wrap'>
 
-        <DatePicker/>
-        </div>
+        <DatePicker onChange={()=>{onChange}}/>
         
         </label>
-        <label className='font-semibold tracking-widest h-7 text-center pt-2 text-xs'>INICIO DE OPERACION
+        </div>
            <div className=' flex w-full'>
+        <label className='font-semibold tracking-widest h-7 text-center pt-2 text-xs'>INICIO DE OPERACION
 
-        <DatePicker/>
-        </div>
+        <DatePicker onChange={()=>{onChange}}/>
         
         </label>
+        </div>
+           <div className=' flex flex-wrap'>
         <label className='font-semibold tracking-widest h-7 text-center pt-2 text-xs'>DIRECCION
-           <div className=' flex flex-wrap'>
 
-        <DatePicker/>
-        </div>
+        <DatePicker onChange={()=>{onChange}}/>
         
         </label>
+        </div>
+           <div className=' flex flex-wrap'>
         <label className='font-semibold tracking-widest h-7 text-center pt-2 text-xs'>VENCIMIENTO DE GARANTIA
-           <div className=' flex flex-wrap'>
 
-        <DatePicker/>
-        </div>
         
+        <DatePicker onChange={()=>{onChange}}/>
         </label>
+        </div>
       </div>
       <HdvButton />   
         </form>

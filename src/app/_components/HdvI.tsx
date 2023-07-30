@@ -16,9 +16,10 @@ type stepOne = {
   nextStep: ()=>void;
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   currentStep: number
+  errors: any
 }
 
-const HdvI:React.FC<stepOne> = ({nextStep, currentStep, onChange}) => {
+const HdvI:React.FC<stepOne> = ({nextStep, currentStep, onChange, errors}) => {
   // Define the form fields configuration
   const formFields: FormFieldConfig[] = [
     { label: 'DEPARTAMENTO', name: 'departamento', type: 'text' },
@@ -58,6 +59,7 @@ const HdvI:React.FC<stepOne> = ({nextStep, currentStep, onChange}) => {
                 onChange={()=>{}}
                 className='mb-3 focus:outline-none focus:border-b-blue-500 w-full h-7 border-b'
               />
+              {errors[field.name] && <span className="text-red-500 font-semibold text-center text-sm w-36">{errors[field.name]?.message}</span>}
             </label>
           ))}
         </div>

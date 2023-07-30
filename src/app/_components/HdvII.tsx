@@ -2,24 +2,27 @@
 import { DatePicker } from '@mui/x-date-pickers'
 import React, { ChangeEvent } from 'react'
 import HdvButton from './HdvButton'
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, UseFormRegister, useForm } from 'react-hook-form';
 import { FormFieldConfig } from '../documentos/hdv/page';
 export type stepSecondToLast = {
   prevStep: ()=>void;
   nextStep: ()=>void;
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
+  onSubmit: ()=>void;
+  register: UseFormRegister<any>
+  errors: any
 }
-  const HdvII:React.FC<stepSecondToLast> = ({nextStep, prevStep, onChange}) => {
+  const HdvII:React.FC<stepSecondToLast> = ({nextStep, prevStep, onChange, register, errors}) => {
 
 
   const formFields: FormFieldConfig[] = [
-    { label: 'EQUIPO', name: 'equipo', type: 'text' },
-    { label: 'MARCA', name: 'marca', type: 'text' },
-    { label: 'MODELO', name: 'modelo', type: 'text' },
-    { label: 'SERIE N°', name: 'serie', type: 'text' },
-    { label: 'ACTIVO FIJO', name: 'activo-fijo', type: 'text' },
-    { label: 'REGISTRO SANITARIO', name: 'registro-sanitario', type: 'text' },
-    { label: 'UBICACION', name: 'ubicacion', type: 'text' },
+    { label: 'EQUIPO', name: 'equipo', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'MARCA', name: 'marca', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'MODELO', name: 'modelo', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'SERIE N°', name: 'serie', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'ACTIVO FIJO', name: 'activo-fijo', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'REGISTRO SANITARIO', name: 'registro-sanitario', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'UBICACION', name: 'ubicacion', type: 'text', validation:'Este campo es obligatorio', },
   ];
 
   return (
@@ -41,9 +44,13 @@ export type stepSecondToLast = {
             <input 
             placeholder='Tu empresa S.A.S.'
             className={` focus:border-blue-500 focus:outline-none text-center text-sm  pt-2 w-40 text-slate-500 mx-auto border-b border-[#0D202F] `}
-            name={`${field.name}`}
+            // name={`${field.name}`}
+             {...register(`${field.name}` , {
+              required: 'Digite el nombre de la empresa a la que pertenece',
+              })}
             onChange={()=>{}}
             />
+            {errors[field.name] && <span className="text-red-500 font-semibold text-center text-sm w-36">{errors[field.name]?.message}</span>}
             </label>
             </div>
         ))}
@@ -58,10 +65,10 @@ export type stepSecondToLast = {
             <div className=' w-[38%]  bg-blue-500 z-50 h-full'/>
             <div className="w-[62%]  flex flex-col  px-12 bg-[#E0C4A0] ">
             <div className="  ">
-            <HdvButton title='Siguiente ' prevStep={prevStep}/>      
+            <HdvButton title='Anterior ' prevStep={prevStep}/>      
           </div>
           <div className="  ">
-            <HdvButton title='Anterior' nextStep={nextStep}/>      
+            <HdvButton title='Siguiente' nextStep={nextStep}/>      
           </div>
           </div>
         </div>
