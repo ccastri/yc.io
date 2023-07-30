@@ -2,8 +2,22 @@
 import { DatePicker } from '@mui/x-date-pickers'
 import React from 'react'
 import HdvButton from './HdvButton'
-// hdvButton
-const HdvII = () => {
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { FormFieldConfig } from '../documentos/hdv/page';
+
+  const HdvII = () => {
+
+
+  const formFields: FormFieldConfig[] = [
+    { label: 'EQUIPO', name: 'equipo', type: 'text' },
+    { label: 'MARCA', name: 'marca', type: 'text' },
+    { label: 'MODELO', name: 'modelo', type: 'text' },
+    { label: 'SERIE N°', name: 'serie', type: 'text' },
+    { label: 'ACTIVO FIJO', name: 'activo-fijo', type: 'text' },
+    { label: 'REGISTRO SANITARIO', name: 'registro-sanitario', type: 'text' },
+    { label: 'UBICACION', name: 'ubicacion', type: 'text' },
+  ];
+
   return (
     <div className='w-full flex h-full mb-20 bg-[#FFF]'>
         <div className='px-4 py-2 rounded-t-md flex flex-row bg-blue-400'>
@@ -14,35 +28,19 @@ const HdvII = () => {
     <form className='grid grid-cols-10 items-center w-full border-2 rounded-b-md h-full '>
 
       <div className="flex flex-col  col-span-10 items-center px-6 py-4 border  h-full space-y-8">
-
-        <label className='font-semibold tracking-widest h-7 text-center text-xs'>
-            EQUIPO:
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full mr-12 h-7 border rounded-md' />
-        </label>
-        <label className='font-semibold tracking-widest h-7 text-center text-xs'>
-            MARCA:
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full mr-12 h-7 border rounded-md' />
-        </label>
-        <label className='font-semibold tracking-widest h-7 text-center text-xs'>
-            MODELO:
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full mr-12 h-7 border rounded-md' />
-        </label>
-        <label className='font-semibold tracking-widest h-7 text-center text-xs'>
-            SERIE N°:
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full mr-12 h-7 border rounded-md' />
-        </label>
-        <label className='font-semibold tracking-widest xl:w-64 h-7 text-center text-xs'>
-            ACTIVO FIJO:
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full mr-12 h-7 border rounded-md' />
-        </label>
-        <label className='font-semibold xl:w-64 tracking-widest h-7 text-center text-xs'>
-            REGISTRO SANITARIO:
-        <input type="text" className='mt-1  mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full mr-12 h-7 border rounded-md' />
-        </label>
-        <label className='font-semibold tracking-widest h-7 xl:w-64 text-center text-xs'>
-            UBICACION:
-        <input type="text" className='mt-1 mb-3 bg-slate-100 focus:outline-none focus:border-blue-500 w-full mr-12 h-7 border rounded-md' />
-        </label>  
+        {formFields.map((field, index)=>(
+          <div  key={index}  className=''>
+          <label  className=' text-md text-center flex flex-col  w-auto text-slate-600 mx-auto '>
+            {field.label}
+            <input 
+            placeholder='Tu empresa S.A.S.'
+            className={` focus:border-blue-500 focus:outline-none text-center text-sm  pt-2 w-40 text-slate-500 mx-auto border-b border-[#0D202F] `}
+            name={`${field.name}`}
+            onChange={()=>{}}
+            />
+            </label>
+            </div>
+        ))}
       </div>
 
         {/* <div className='col-span-10 '>
@@ -51,8 +49,6 @@ const HdvII = () => {
         <div className="relative h-20">
         <div className="absolute mx-auto ">
         <HdvButton />      
-
-        {/* </div> */}
         </div>
         </div>
         </div>

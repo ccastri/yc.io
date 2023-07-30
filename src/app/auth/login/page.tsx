@@ -13,7 +13,9 @@ import HomeRepairServiceOutlinedIcon from '@mui/icons-material/HomeRepairService
 import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
 import PrecisionManufacturingOutlinedIcon from '@mui/icons-material/PrecisionManufacturingOutlined';
 import BuildIcon from '@mui/icons-material/Build';
+import { renderToString } from 'react-dom/server';
 import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined';
+
 import HandymanIcon from '@mui/icons-material/Handyman';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import LocalConvenienceStoreOutlinedIcon from '@mui/icons-material/LocalConvenienceStoreOutlined';
@@ -23,6 +25,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocationCitySharpIcon from '@mui/icons-material/LocationCitySharp';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import { IconButton } from '@mui/material';
+import Image from 'next/image';
 
 type User={
   'empresa' : string,
@@ -143,6 +146,13 @@ const location=[
       alert(JSON.stringify(data));
       
     }
+
+    const iconToSvg = (icon:any) => {
+  const svgString = renderToString(icon);
+  return `data:image/svg+xml;base64,${btoa(svgString)}`;
+};
+const svgString = iconToSvg(<SmartToyOutlinedIcon />);
+
     return (
       // xl:flex clase del primer div
 
@@ -155,29 +165,47 @@ const location=[
     <h1 className= '  px-4 bg-[#E0C4A0] p-6 mt-20  my-auto text-xl text-center font-bold text-slate-100 '>¡Bienvenido abordo!</h1>
     </div>
     <div className= "grid grid-cols-4 my-0 text-[#fafafa]  py-16  items-center ml-6 border rounded  w-[70%] h-full bg-gradient-to-b from-[#123CD0] to-[#E0C4A0]">
-<div className='flex justify-center  items-center'>
-<LocationOnIcon/>
-</div>
-<div className='flex justify-center items-center '>
-<HealingIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<MonitorHeartIcon/>
-</div >
-<div className='flex justify-center items-center'>
-<MedicalInformationIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<BuildIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<HandymanIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<EngineeringIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<LocationCitySharpIcon/>
+      <div className='flex justify-center  items-center'>
+           <LocationOnIcon/>
+           </div>
+           <div className='flex justify-center items-center '>
+           <HealingIcon/>
+           </div>
+           <div className='flex justify-center items-center'>
+            {/* 
+            <Image
+      src={svgString}
+      width={120}
+      height={120}
+      alt="Smart Toy Outlined Icon"
+    />
+            <Image
+      src={svgString}
+      width={120}
+      height={120}
+      alt="Smart Toy Outlined Icon"
+    />
+     */}
+           
+           </div>
+           {/* <div className='flex justify-center items-center'>
+           <MonitorHeartIcon/>
+           </div >
+           <div className='flex justify-center items-center'>
+           <MedicalInformationIcon/>
+           </div> */}
+{/*
+           <div className='flex justify-center items-center'>
+      <BuildIcon/>
+      </div>
+      <div className='flex justify-center items-center'>
+      <HandymanIcon/>
+      </div>
+      <div className='flex justify-center items-center'>
+      <EngineeringIcon/>
+      </div>
+      <div className='flex justify-center items-center'>
+      <LocationCitySharpIcon/>
 </div>
 <div className='flex justify-center items-center'>
 <PrecisionManufacturingOutlinedIcon />
@@ -186,12 +214,8 @@ const location=[
 <LocalConvenienceStoreOutlinedIcon/>
 </div>
 <div className='flex justify-center items-center'>
-  {/* <IconButton> */}
+  
 <HomeRepairServiceOutlinedIcon />
-  {/* </IconButton> */}
-</div>
-<div className='flex justify-center items-center'>
-<SmartToyOutlinedIcon/>
 </div>
 <div className='flex justify-center items-center'>
 <MedicalServicesOutlinedIcon/>
@@ -216,13 +240,14 @@ const location=[
 </div>
 <div className='flex justify-center items-center'>
 <ManageHistoryOutlinedIcon/>
-</div>
+</div> 
+*/}
 
 </div>
 
     <div className=' absolute flex z-10 h-full w-full px-12  transform skew-y-12 my-auto overflow-auto  scrollbar-track-transparent overflow-y-scroll scrollbar-thin scrollbar-thumb-[#747a80] scrollbar-thumb-rounded-md'>
 
-      <div className='shadow-2xl mt-14 flex flex-col w-full space-y-4 my-auto py-16 opacity-30 items-center hover:opacity-100 bg-[#FFFF] shadow-slate-900  transition-all duration-300 transform '>
+      <div className='shadow-2xl mt-14 flex flex-col w-8/12 overflow-y-auto space-y-4 my-auto py-16  items-center opacity-100 bg-[#FFFF] shadow-slate-900  transition-all duration-300 transform '>
         
         <p className= 'text-[#fafafa] font-bold text-2xl text-center w-full py-6 tracking-wider bg-[#E0C4A0] '>Inicio de sesion <span> <LoginOutlinedIcon/></span></p>
         <form action="" onSubmit={handleSubmit(onSubmit)} className="p-2 text-md text-center flex flex-col transition-all duration-300 transform  md:grid md:grid-cols-2 md:justify-evenly w-auto gap-8 text-[#0D202F] mx-auto">
