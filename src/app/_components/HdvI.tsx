@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import {FileUploader} from './DragAndDrop'
 import { useFormContext } from 'react-hook-form';
 import Image from 'next/image';
@@ -11,8 +11,14 @@ import { FormFieldConfig } from '../documentos/hdv/page';
 //   type: string;
 //   // You can add more properties like placeholder, required, etc. as needed
 // }
-const HdvI = () => {
 
+type stepOne = {
+  nextStep: ()=>void;
+  onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
+  currentStep: number
+}
+
+const HdvI:React.FC<stepOne> = ({nextStep, currentStep, onChange}) => {
   // Define the form fields configuration
   const formFields: FormFieldConfig[] = [
     { label: 'DEPARTAMENTO', name: 'departamento', type: 'text' },
@@ -32,11 +38,13 @@ const HdvI = () => {
 
   const handleSubmit = (data: FormData) => {
     // Handle form submission here
+    
     console.log('data submitted');
   };
-    return (
-        <div className='w-full xl:flex transition-all duration-150 h-full overflow-y-auto mb-20 bg-[#FFF]'>
+  return (
+    <div className='w-full xl:flex transition-all duration-150 h-full overflow-y-auto mb-20 bg-[#FFF]'>
       <div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
+      <>{console.log(currentStep)}</>
         <h2 className='w-full text-[#FAFAFA] font-semibold tracking-wider'>I. UBICACION GEOGRÁFICA</h2>
       </div>
       <form action='' className='grid grid-cols-10 w-full border-2 rounded-md h-auto'>
@@ -65,8 +73,8 @@ const HdvI = () => {
           ))}
         </div>
         <div className='col-span-5' />
-        <HdvButton />
       </form>
+        <HdvButton nextStep={nextStep} />
     </div>
   )
 }

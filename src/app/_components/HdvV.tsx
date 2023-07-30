@@ -1,8 +1,9 @@
 import React from 'react'
 import HdvButton from './HdvButton'
+import { stepSecondToLast } from './HdvII'
 
 {/* V.REGISTRO TECNICO DE FUNCIONAMIENTO Y VI. CLASIFICACION BIOMEDICA */}
-const HdvV = () => {
+const HdvV :React.FC<stepSecondToLast> = ({onChange, prevStep, nextStep}) => {
   return (
       <div className=' flex flex-row py-6'>
           <div className=' grid grid-cols-10  border-2  border-black'>

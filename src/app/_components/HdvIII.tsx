@@ -2,8 +2,9 @@
 import { DatePicker } from '@mui/x-date-pickers'
 import React from 'react'
 import HdvButton from './HdvButton'
+import {stepSecondToLast} from './HdvII'
 
-const HdvIII = () => {
+const HdvIII:React.FC<stepSecondToLast> = ({onChange, prevStep, nextStep}) => {
   return (
     <div className='w-full md:flex h-full overflow-y-auto mb-20 bg-[#FFF]'>
     <div className='px-4 py-2 rounded-t-md flex flex-row bg-blue-400'>
