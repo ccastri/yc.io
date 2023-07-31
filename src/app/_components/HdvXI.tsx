@@ -1,7 +1,7 @@
 import React from 'react'
 import { stepSecondToLast } from './HdvII'
 
-const HdvXI:React.FC<stepSecondToLast> = ({onChange, prevStep, nextStep, onSubmit}) => {
+const HdvXI:React.FC<stepSecondToLast> = ({onChange,  onSubmit}) => {
   return (
     <div>
       
