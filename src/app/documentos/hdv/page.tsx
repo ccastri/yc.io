@@ -602,13 +602,12 @@ const Page = () => {
           // currentStep={formStep}
           // prevStep={prevFormStep} 
           // nextStep={nextFormStep}
-          handleClick={scrollToForm}
-          key={index}
-          onSubmit={handleSubmit(onSubmit)}
-          register={register}
-          errors={errors}
-          onChange={handleChange}
-          validation={validation[0]}
+         onChange={handleChange}
+        onSubmit={handleSubmit(onSubmit)}
+        register={register}
+        errors={errors}
+        validation={validation[0]}
+        handleClick={scrollToForm}
           />
         </div>
           )

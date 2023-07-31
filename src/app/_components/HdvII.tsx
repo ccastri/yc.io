@@ -9,7 +9,7 @@ export type stepSecondToLast = {
   // nextStep: ()=>void;
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   onSubmit: ()=>void;
-  register: any // Use your actual form data type here
+  register: {} // Use your actual form data type here
   errors: any
   validation: string | string[]
     handleClick:(index:number)=>void
