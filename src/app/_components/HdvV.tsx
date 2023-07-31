@@ -1,10 +1,14 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import HdvButton from './HdvButton'
 import { stepSecondToLast } from './HdvII'
 
 {/* V.REGISTRO TECNICO DE FUNCIONAMIENTO Y VI. CLASIFICACION BIOMEDICA */}
-const HdvV :React.FC<stepSecondToLast> = ({onChange, prevStep, currentStep, nextStep}) => {
-  console.log(currentStep)
+const HdvV :React.FC<stepSecondToLast> = ({onChange}) => {
+  // console.log(currentStep)
+  const [corriente, setCorriente] = useState(100);
+  const minVal = '0'
+  const maxVal = '100'
   return (
 
       <div className=' flex flex-row py-6'>
@@ -38,7 +42,18 @@ RANGO DE FRECUE NCIA
       <label htmlFor="default-range"   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
         {/* Default range</label> */}
 RANGO DE CORRIENTE
-<input  type="range" value="50"onChange={onChange} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
+<input  
+type="range" 
+value={corriente} 
+onChange={(e) => setCorriente(parseInt(e.target.value))} 
+min={minVal} // Replace 'minValue' with the minimum value you want to set
+max={maxVal} // Replace 'maxValue' with the maximum value you want to set
+className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
+<div className="flex justify-between">
+  <span>Min: {minVal}</span>
+  <span>Current Value: {corriente}</span> {/* This will display the current value */}
+  <span>Max: {maxVal}</span>
+</div>
         </label>
             <div className='w-full right-4'>
 

@@ -5,18 +5,18 @@ import HdvButton from './HdvButton'
 import { DeepMap, FieldError, SubmitHandler, UseFormRegister, useForm } from 'react-hook-form';
 import { FormFieldConfig } from '../documentos/hdv/page';
 export type stepSecondToLast = {
-  prevStep: ()=>void;
-  nextStep: ()=>void;
+  // prevStep: ()=>void;
+  // nextStep: ()=>void;
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   onSubmit: ()=>void;
   register: any // Use your actual form data type here
   errors: any
   validation: string | string[]
-    currentStep?: number;
+    // currentStep?: number;
   // register: UseFormRegister<FormData>; // Use your actual form data type here
   // errors: DeepMap<FormData, FieldError>
 }
-  const HdvII:React.FC<stepSecondToLast> = ({nextStep, currentStep, prevStep, onChange, register, errors, validation}) => {
+  const HdvII:React.FC<stepSecondToLast> = ({onChange, register, errors, validation}) => {
 
 
   const formFields: FormFieldConfig[] = [
@@ -74,10 +74,14 @@ export type stepSecondToLast = {
             <div className=" cols-span-1 mx-4 ">
               {/* fALTA ANIMAR QUE EL CURRENT SE ACTUALICE CON EL SCROLL Y LO QUE
               USE OBSERVER VEA EN PANTALLA */}
-            <HdvButton title='Anterior '   currentStep={currentStep} prevStep={prevStep}/>      
+            <HdvButton title='Anterior '
+              //  currentStep={currentStep} prevStep={prevStep}
+               />      
           </div>
           <div className=" col-span-1 mx-4 ">
-            <HdvButton title='Siguiente'  currentStep={currentStep} nextStep={nextStep}/>      
+            <HdvButton title='Siguiente'
+              // currentStep={currentStep} nextStep={nextStep}
+            />      
           </div>
           </div>
 

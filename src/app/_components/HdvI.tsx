@@ -13,13 +13,14 @@ import { FormFieldConfig } from '../documentos/hdv/page';
 // }
 
 type stepOne = {
-  nextStep: ()=>void;
+  // nextStep: ()=>void;
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
-  currentStep: number
+  // currentStep: number
+  handleClick:(index:number)=>void
   errors: any
 }
 
-const HdvI:React.FC<stepOne> = ({nextStep, currentStep, onChange, errors}) => {
+const HdvI:React.FC<stepOne> = ({onChange, errors}) => {
   // Define the form fields configuration
   const formFields: FormFieldConfig[] = [
     { label: 'DEPARTAMENTO', name: 'departamento', type: 'text' },
@@ -45,7 +46,7 @@ const HdvI:React.FC<stepOne> = ({nextStep, currentStep, onChange, errors}) => {
   return (
     <div className='w-full xl:flex flex-col transition-all duration-150 h-full mb-20 bg-[#FFF] border-4'>
       <div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
-      <>{console.log(currentStep)}</>
+      {/* <>{console.log(currentStep)}</> */}
         <h2 className='w-full text-[#FAFAFA] font-semibold tracking-wider'>I. UBICACION GEOGRÁFICA</h2>
       </div>
       <form action='' className='grid grid-cols-10 w-full border-2 rounded-md h-auto'>
@@ -78,7 +79,7 @@ const HdvI:React.FC<stepOne> = ({nextStep, currentStep, onChange, errors}) => {
       </form>
       <div className='col-span-5'>
 
-        <HdvButton currentStep={currentStep} nextStep={nextStep} />
+        <HdvButton />
       </div>
     </div>
   )

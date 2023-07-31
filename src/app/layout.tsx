@@ -6,6 +6,7 @@ import Navbar from './_components/Navbar'
 import Footer from './_components/Footer'
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
+import { CurrentStepProvider } from './context/useFormStepContext'
 
 const inter = Inter({ subsets: ['latin'] })
 const radjhani = Rajdhani({
@@ -30,10 +31,11 @@ export default function RootLayout({
       <body className='flex flex-col h-screen'>
         <Navbar/>
         <main className='flex-grow'>
-         <LocalizationProvider dateAdapter={AdapterMoment}>
-
-          {children}
-         </LocalizationProvider>
+          <CurrentStepProvider>
+            <LocalizationProvider dateAdapter={AdapterMoment}>
+              {children}
+            </LocalizationProvider>
+          </CurrentStepProvider>
         </main>
         <Footer/>
       </body>
