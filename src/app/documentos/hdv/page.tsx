@@ -561,6 +561,12 @@ const Page = () => {
       }
     });
   }, [entries]);
+  const defaultComponentProps = {
+  prevStep: () => {},
+  nextStep: () => {},
+  onChange: () => {},
+  onSubmit: () => {},
+};
   // const svgCode = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,256L21.8,234.7C43.6,213,87,171,131,149.3C174.5,128,218,128,262,154.7C305.5,181,349,235,393,229.3C436.4,224,480,160,524,165.3C567.3,171,611,245,655,277.3C698.2,309,742,299,785,288C829.1,277,873,267,916,234.7C960,203,1004,149,1047,149.3C1090.9,149,1135,203,1178,197.3C1221.8,192,1265,128,1309,112C1352.7,96,1396,128,1418,144L1440,160L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg>`;
   return (
     <>
@@ -597,12 +603,13 @@ const Page = () => {
         >
           <Component  
           currentStep={formStep}
-          prevStep={prevFormStep} 
-          nextStep={nextFormStep}
-          onSubmit={handleSubmit(onSubmit)}
+          // prevStep={prevFormStep} 
+          // nextStep={nextFormStep}
+           {...defaultComponentProps} // Pass the default props to all components
+          // onSubmit={handleSubmit(onSubmit)}
           register={register}
           errors={errors}
-          onChange={handleChange}
+          // onChange={handleChange}
           validation={validation[0]}
           />
         </div>
