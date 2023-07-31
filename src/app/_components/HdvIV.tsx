@@ -3,7 +3,7 @@ import HdvButton from './HdvButton'
 import { stepSecondToLast } from './HdvII'
 
 {/* IV. Registro tecnico de instalacion */}
-const HdvIV:React.FC<stepSecondToLast> = ({onChange, prevStep, nextStep}) => {
+const HdvIV:React.FC<stepSecondToLast> = ({onChange}) => {
   // #747a80, #00619E,  #C29A95, #E0C4A0, #3B2F3C 
   return (
       <div className='h-full bg-[#E0C4A0] '>
