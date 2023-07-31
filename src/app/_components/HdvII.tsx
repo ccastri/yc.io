@@ -12,6 +12,7 @@ export type stepSecondToLast = {
   register: any // Use your actual form data type here
   errors: any
   validation: string | string[]
+    handleClick:(index:number)=>void
     // currentStep?: number;
   // register: UseFormRegister<FormData>; // Use your actual form data type here
   // errors: DeepMap<FormData, FieldError>

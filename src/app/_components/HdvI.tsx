@@ -15,9 +15,11 @@ import { FormFieldConfig } from '../documentos/hdv/page';
 type stepOne = {
   // nextStep: ()=>void;
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
-  // currentStep: number
-  handleClick:(index:number)=>void
+  onSubmit: ()=>void;
+  register: any // Use your actual form data type here
   errors: any
+  validation: string | string[]
+    handleClick:(index:number)=>void
 }
 
 const HdvI:React.FC<stepOne> = ({onChange, errors}) => {
