@@ -2,22 +2,22 @@
 import { DatePicker } from '@mui/x-date-pickers'
 import React, { ChangeEvent } from 'react'
 import HdvButton from './HdvButton'
-import { DeepMap, FieldError, SubmitHandler, UseFormRegister, useForm } from 'react-hook-form';
+import { DeepMap, FieldError, FieldErrors, SubmitHandler, UseFormRegister, useForm } from 'react-hook-form';
 import { FormFieldConfig } from '../documentos/hdv/page';
 export type stepSecondToLast = {
   // prevStep: ()=>void;
   // nextStep: ()=>void;
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   onSubmit: ()=>void;
-  register: {} // Use your actual form data type here
-  errors: any
+  register: UseFormRegister<any> // Use your actual form data type here
+  errors: FieldErrors<any>
   validation: string | string[]
     handleClick:(index:number)=>void
     // currentStep?: number;
   // register: UseFormRegister<FormData>; // Use your actual form data type here
   // errors: DeepMap<FormData, FieldError>
 }
-  const HdvII:React.FC<stepSecondToLast> = ({onChange, register, errors, validation}) => {
+const HdvII:React.FC<stepSecondToLast> = ({onChange, register, errors, validation}) => {
 
 
   const formFields: FormFieldConfig[] = [

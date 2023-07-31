@@ -1,7 +1,7 @@
 'use client'
 import React, { ChangeEvent, useState } from 'react'
 import {FileUploader} from './DragAndDrop'
-import { useFormContext } from 'react-hook-form';
+import { FieldErrors, UseFormRegister, useFormContext } from 'react-hook-form';
 import Image from 'next/image';
 import HdvButton from './HdvButton';
 import { FormFieldConfig } from '../documentos/hdv/page';
@@ -16,8 +16,8 @@ type stepOne = {
   // nextStep: ()=>void;
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   onSubmit: ()=>void;
-  register: {} // Use your actual form data type here
-  errors: any
+ register: UseFormRegister<any> // Use your actual form data type here
+  errors: FieldErrors<any>
   validation: string | string[]
     handleClick:(index:number)=>void
 }
