@@ -22,15 +22,15 @@ type stepOne = {
     handleClick:(index:number)=>void
 }
 
-const HdvI:React.FC<stepOne> = ({onChange, errors}) => {
+const HdvI:React.FC<stepOne> = ({onChange, register, errors}) => {
   // Define the form fields configuration
   const formFields: FormFieldConfig[] = [
-    { label: 'DEPARTAMENTO', name: 'departamento', type: 'text' },
-    { label: 'MUNICIPIO', name: 'municipio', type: 'text' },
-    { label: 'ENTIDAD', name: 'entidad', type: 'text' },
-    { label: 'CORREO', name: 'correo', type: 'text' },
-    { label: 'DIRECCION', name: 'direccion', type: 'text' },
-    { label: 'TELEFONO', name: 'telefono', type: 'text' },
+    { label: 'DEPARTAMENTO', name: 'departamento', type: 'text', validation:'Este campo es obligatorio'  },
+    { label: 'MUNICIPIO', name: 'municipio', type: 'text', validation:'Este campo es obligatorio'  },
+    { label: 'ENTIDAD', name: 'entidad', type: 'text', validation:'Este campo es obligatorio'  },
+    { label: 'CORREO', name: 'correo', type: 'text', validation:'Este campo es obligatorio'  },
+    { label: 'DIRECCION', name: 'direccion', type: 'text', validation:'Este campo es obligatorio'  },
+    { label: 'TELEFONO', name: 'telefono', type: 'text', validation:'Este campo es obligatorio'  },
   ];
 
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
@@ -54,15 +54,17 @@ const HdvI:React.FC<stepOne> = ({onChange, errors}) => {
       <form action='' className='grid grid-cols-10 w-full border-2 rounded-md h-auto'>
         <div className='flex flex-col col-span-5 space-y-8 py-4 px-6 '>
           {formFields.map((field) => (
-            <label key={field.name} className='font-semibold tracking-widest h-7 text-center text-xs'>
+            <label key={field.name} className='font-semibold tracking-widest h-12 text-center text-xs pb-4'>
               {field.label}
               <input
                 type={field.type}
-                name={field.name}
+ {...register(`${field.name}`, {
+                required: `${field.validation}`,
+              })}
                 onChange={()=>{}}
                 className='mb-3 focus:outline-none focus:border-b-blue-500 w-full h-7 border-b'
               />
-              {errors[field.name] && <span className="text-red-500 font-semibold text-center text-sm w-36">{errors[field.name]?.message}</span>}
+              {errors[field.name] && <span className="text-red-500 pb-4 font-semibold text-center text-sm w-36">{errors[field.name]?.message}</span>}
             </label>
           ))}
         </div>

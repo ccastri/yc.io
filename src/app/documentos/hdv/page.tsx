@@ -401,9 +401,9 @@ import {useFormCurrentStep } from '../../context/useFormStepContext'
 const hdvElementList = [
 {name:'Ubicacion Geografica', component:HdvI},
 {name:'Informacion general', component:HdvII},
-{name:'Registro historico', component:HdvIII},
-{name:'Registro tecnico de instalacion', component:HdvIV},
-{name:'Registro tecnico de funcionamiento', component:HdvV},
+// {name:'Registro historico', component:HdvIII},
+// {name:'Registro tecnico de instalacion', component:HdvIV},
+// {name:'Registro tecnico de funcionamiento', component:HdvV},
 // {name:'Clasificacion biomedica', component:HdvVI},
 // {name:'Clasificacion segun nivel de riesgo', component:HdvVII},
 // {name:'Periodicidad de mantenimiento', component:HdvVIII},

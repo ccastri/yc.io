@@ -10,6 +10,7 @@ export type stepSecondToLast = {
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   onSubmit: ()=>void;
   register: UseFormRegister<any> // Use your actual form data type here
+  // register: UseFormRegister<any> // Use your actual form data type here
   errors: any
   validation: string | string[]
     handleClick:(index:number)=>void
@@ -49,7 +50,7 @@ const HdvII:React.FC<stepSecondToLast> = ({onChange, register, errors, validatio
               className={`focus:border-blue-500 bottom-0 font-normal h-full focus:outline-none text-center text-sm pt-2 w-full  text-slate-500 mx-auto border-b border-[#0D202F]`}
               // name={`${field.name}`}
               {...register(`${field.name}`, {
-                required: `${validation}`,
+                required: `${field.validation}`,
               })}
               onChange={() => {}}
             />
