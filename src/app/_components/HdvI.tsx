@@ -17,7 +17,7 @@ type stepOne = {
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   onSubmit: ()=>void;
  register: UseFormRegister<any> // Use your actual form data type here
-  errors: FieldErrors<any>
+  errors: any
   validation: string | string[]
     handleClick:(index:number)=>void
 }
