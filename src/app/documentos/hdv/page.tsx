@@ -411,7 +411,9 @@ const hdvElementList = [
 // {name:'', component:HdvXII},
 
 ]
-const names: string[]= []
+const validation: string[]= [
+  'este campo es obligatorio'
+]
 const stepNames = hdvElementList.map(field=> ( field.name))
 console.log(stepNames)
 export type FormFieldConfig = {
@@ -422,6 +424,14 @@ export type FormFieldConfig = {
   // onChange:() => void;
   // You can add more properties like placeholder, required, etc. as needed
 }
+const getVisibleElementIndex = (entries:any) => {
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      return parseInt(entry.target.getAttribute('data-index'), 10);
+    }
+  }
+  return -1;
+};
 
 // const hdvElementsList = [
 //   {
@@ -468,12 +478,15 @@ export type FormFieldConfig = {
 // ];
 
 const Page = () => {
+
+  
   //! Multi step form:
   const [formStep, setFormStep] = useState<number>(0);
   const nextFormStep = () => {
   setFormStep((currentStep) => {
     const nextStep = currentStep + 1;
     scrollToForm(nextStep); // Scroll to the next step
+ localStorage.setItem('formStep', nextStep.toString()); // Store the previous step in localStorage
     return nextStep; // Return the updated value of currentStep
   });
 };
@@ -481,9 +494,17 @@ const Page = () => {
   setFormStep((currentStep) => {
     const prevStep = currentStep - 1;
     scrollToForm(prevStep); // Scroll to the next step
+     localStorage.setItem('formStep', prevStep.toString()); // Store the previous step in localStorage
     return prevStep; // Return the updated value of currentStep
   });
 };
+
+ useEffect(() => {
+    const storedFormStep = localStorage.getItem('formStep');
+    if (storedFormStep) {
+      setFormStep(parseInt(storedFormStep, 10));
+    }
+  }, []);
 
   // const methods = useForm<User>();
 
@@ -508,28 +529,38 @@ const Page = () => {
     }
   };
 //! UseObserveHook
+
   // const elementIds = hdvElementList.map((_, index) => `${index}`);
-  // const { setElements, entries} = useObserver({
-  //   threshold:0.2, root:null
-  // })
+ const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+    const visibleIndex = getVisibleElementIndex(entries);
+    if (visibleIndex !== -1) {
+      setFormStep(visibleIndex);
+    }
+  };
+
+  const { setElements, entries } = useObserver({
+    threshold: 0.2,
+    root: null,
+    callback: handleIntersection, // Pass the handleIntersection function as the callback
+  });
   const elementsRefs = useRef<(HTMLDivElement | null)[]>([]);
   const mainContainerRef = useRef<(HTMLDivElement | null)>(null);
 
-  // useEffect(() => {
-  //   // When the component mounts, populate elementsRefs with refs to each element
-  //   elementsRefs.current = elementsRefs.current.slice(0, hdvElementList.length).map((_, index) => elementsRefs.current[index] || null);
-  // }, []);
+  useEffect(() => {
+    // When the component mounts, populate elementsRefs with refs to each element
+    elementsRefs.current = elementsRefs.current.slice(0, hdvElementList.length).map((_, index) => elementsRefs.current[index] || null);
+  }, []);
 
-  // useEffect(() => {
-  //   // When the observer entries change, update the visibility of components
-  //   entries.forEach((entry, index) => {
-  //     if (entry.intersectionRatio > 0.05) {
-  //       elementsRefs.current[index]?.classList.remove('hidden');
-  //     } else {
-  //       elementsRefs.current[index]?.classList.add('hidden');
-  //     }
-  //   });
-  // }, [entries]);
+  useEffect(() => {
+    // When the observer entries change, update the visibility of components
+    entries.forEach((entry, index) => {
+      if (entry.intersectionRatio > 0.05) {
+        elementsRefs.current[index]?.classList.remove('hidden');
+      } else {
+        elementsRefs.current[index]?.classList.add('hidden');
+      }
+    });
+  }, [entries]);
   // const svgCode = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,256L21.8,234.7C43.6,213,87,171,131,149.3C174.5,128,218,128,262,154.7C305.5,181,349,235,393,229.3C436.4,224,480,160,524,165.3C567.3,171,611,245,655,277.3C698.2,309,742,299,785,288C829.1,277,873,267,916,234.7C960,203,1004,149,1047,149.3C1090.9,149,1135,203,1178,197.3C1221.8,192,1265,128,1309,112C1352.7,96,1396,128,1418,144L1440,160L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg>`;
   return (
     <>
@@ -572,12 +603,13 @@ const Page = () => {
           register={register}
           errors={errors}
           onChange={handleChange}
+          validation={validation[0]}
           />
         </div>
           )
 })}
     </div>
-      <div className='sticky  rounded bottom-0 w-full z-10'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#123CD0" fill-opacity="1" d="M0,256L21.8,234.7C43.6,213,87,171,131,149.3C174.5,128,218,128,262,154.7C305.5,181,349,235,393,229.3C436.4,224,480,160,524,165.3C567.3,171,611,245,655,277.3C698.2,309,742,299,785,288C829.1,277,873,267,916,234.7C960,203,1004,149,1047,149.3C1090.9,149,1135,203,1178,197.3C1221.8,192,1265,128,1309,112C1352.7,96,1396,128,1418,144L1440,160L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg></div>
+      <div className='sticky  rounded bottom-0 w-full z-10'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#123CD0" fillOpacity="1" d="M0,256L21.8,234.7C43.6,213,87,171,131,149.3C174.5,128,218,128,262,154.7C305.5,181,349,235,393,229.3C436.4,224,480,160,524,165.3C567.3,171,611,245,655,277.3C698.2,309,742,299,785,288C829.1,277,873,267,916,234.7C960,203,1004,149,1047,149.3C1090.9,149,1135,203,1178,197.3C1221.8,192,1265,128,1309,112C1352.7,96,1396,128,1418,144L1440,160L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg></div>
           </>
   )
 }

@@ -20,7 +20,7 @@ const FormStepper: React.FC<IFormStep> = ({ setCurrentStep, stepNames, scrollToF
   };
 
   return (
-    <div className='w-[95%] mt-16 h-28 py-2 bg-[#FAFAFA] rounded-md border-2'>
+    <div className='w-[95%] mt-16 h-28 py-2 bg-[#FAFAFA] rounded-md border-2 opacity-10 hover:opacity-100'>
       <ol className="flex h-28  items-center w-full px-4 space-x-2 text-sm font-medium text-center text-gray-500  border-gray-200 rounded-lg shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4 overflow-x-auto">
         {stepNames.map((step: string, index: number) => (
           <div key={index} onClick={() => handleClick(index)} className={`${!showAllSteps && index > 2 ? 'hidden' : ''}`}>

@@ -2,17 +2,21 @@
 import { DatePicker } from '@mui/x-date-pickers'
 import React, { ChangeEvent } from 'react'
 import HdvButton from './HdvButton'
-import { SubmitHandler, UseFormRegister, useForm } from 'react-hook-form';
+import { DeepMap, FieldError, SubmitHandler, UseFormRegister, useForm } from 'react-hook-form';
 import { FormFieldConfig } from '../documentos/hdv/page';
 export type stepSecondToLast = {
   prevStep: ()=>void;
   nextStep: ()=>void;
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   onSubmit: ()=>void;
-  register: UseFormRegister<any>
+  register: any // Use your actual form data type here
   errors: any
+  validation: string | string[]
+    currentStep?: number;
+  // register: UseFormRegister<FormData>; // Use your actual form data type here
+  // errors: DeepMap<FormData, FieldError>
 }
-  const HdvII:React.FC<stepSecondToLast> = ({nextStep, prevStep, onChange, register, errors}) => {
+  const HdvII:React.FC<stepSecondToLast> = ({nextStep, currentStep, prevStep, onChange, register, errors, validation}) => {
 
 
   const formFields: FormFieldConfig[] = [
@@ -26,34 +30,37 @@ export type stepSecondToLast = {
   ];
 
   return (
-    <div className='w-full flex flex-col h-full mb-6 bg-[#FFF] border-4'>
-      <div className='w-full flex h-full bg-[#FFF]'>
-
-        <div className='px-4 py-2 rounded-t-md flex flex-row bg-blue-400'>
-
-      <h2 className ="w-full font-semibold tracking-wider  text-bg[#FFF]"> II. INFORMACION GENERAL</h2>
+    <div className='w-full flex flex-col h-[30%] bg-[#FFF] border-4 rounded-md mb-6'>
+    <div className='w-full xl:flex transition-all duration-150 h-full overflow-y-auto  bg-[#FFF]'><div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
+      <h2 className ="w-full text-[#FAFAFA] font-semibold tracking-wider "> I. UBICACION GEOGRÁFICA</h2>
       </div>
-      
-    <form className='grid grid-cols-10 items-center w-full  rounded-b-md h-full '>
-
-      <div className="flex flex-col  col-span-10 items-center px-6 py-4 border  h-full space-y-8">
-        {formFields.map((field, index)=>(
-          <div  key={index}  className=''>
-          <label  className=' text-md text-center flex flex-col  w-auto text-slate-600 mx-auto '>
+            <form action=""
+            className=' w-full  '
+            >
+      <div className="flex flex-col items-center  px-20 py-4 border space-y-8">
+      <div className="col-span-2 grid grid-cols-2 bottom-0 gap-12"> {/* Wrap the form fields in a container with two columns */}
+      {formFields.map((field, index) => (
+        <div key={index} className='h-full bottom-0 border-'>
+          <label className={`text-md font-bold tracking-widetext-center bottom-0 flex flex-col w-full  text-slate-600 mx-auto ${errors[field.name] && 'text-red-500'}`}>
             {field.label}
-            <input 
-            placeholder='Tu empresa S.A.S.'
-            className={` focus:border-blue-500 focus:outline-none text-center text-sm  pt-2 w-40 text-slate-500 mx-auto border-b border-[#0D202F] `}
-            // name={`${field.name}`}
-             {...register(`${field.name}` , {
-              required: 'Digite el nombre de la empresa a la que pertenece',
+            <input
+              placeholder="Tu empresa S.A.S."
+              className={`focus:border-blue-500 bottom-0 font-normal h-full focus:outline-none text-center text-sm pt-2 w-full  text-slate-500 mx-auto border-b border-[#0D202F]`}
+              // name={`${field.name}`}
+              {...register(`${field.name}`, {
+                required: `${validation}`,
               })}
-            onChange={()=>{}}
+              onChange={() => {}}
             />
-            {errors[field.name] && <span className="text-red-500 font-semibold text-center text-sm w-36">{errors[field.name]?.message}</span>}
-            </label>
-            </div>
-        ))}
+            {errors[field.name] && (
+              <span className="text-red-500 font-semibold text-center text-sm">
+                {errors[field.name]?.message}
+              </span>
+            )}
+          </label>
+        </div>
+      ))}
+    </div>
       </div>
 
         {/* <div className='col-span-10 '>
@@ -61,17 +68,19 @@ export type stepSecondToLast = {
 
       </form>
         </div>
-          <div className='w-full  flex justify-between relative flex-row h-full'>
-            <div className=' w-[38%]  bg-blue-500 z-50 h-full'/>
-            <div className="w-[62%]  flex flex-col  px-12 bg-[#E0C4A0] ">
-            <div className="  ">
-            <HdvButton title='Anterior ' prevStep={prevStep}/>      
+
+            
+            <div className="grid grid-cols-2  px-12 bg-gradient-to-r from-[#C29A95] to-[#E0C4A0] ">
+            <div className=" cols-span-1 mx-4 ">
+              {/* fALTA ANIMAR QUE EL CURRENT SE ACTUALICE CON EL SCROLL Y LO QUE
+              USE OBSERVER VEA EN PANTALLA */}
+            <HdvButton title='Anterior '   currentStep={currentStep} prevStep={prevStep}/>      
           </div>
-          <div className="  ">
-            <HdvButton title='Siguiente' nextStep={nextStep}/>      
+          <div className=" col-span-1 mx-4 ">
+            <HdvButton title='Siguiente'  currentStep={currentStep} nextStep={nextStep}/>      
           </div>
           </div>
-        </div>
+
     </div>
   )
 }
