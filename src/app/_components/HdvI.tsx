@@ -4,7 +4,8 @@ import {FileUploader} from './DragAndDrop'
 import { FieldErrors, UseFormRegister, useFormContext } from 'react-hook-form';
 import Image from 'next/image';
 import HdvButton from './HdvButton';
-import { FormFieldConfig } from '../documentos/hdv/page';
+// import { FormFieldConfig } from '../documentos/hdv/page';
+import { UbicacionGeograficaData } from '../../../hdv';
 // export type FormFieldConfig = {
 //   label: string;
 //   name: string;
@@ -12,17 +13,29 @@ import { FormFieldConfig } from '../documentos/hdv/page';
 //   // You can add more properties like placeholder, required, etc. as needed
 // }
 
-type stepOne = {
-  // nextStep: ()=>void;
+// type stepOne = {
+//   // nextStep: ()=>void;
+//  register: UseFormRegister<any> // Use your actual form data type here
+//   errors: any
+//   // validation: string | string[]
+// }
+interface HdvIProps {
+  register: UseFormRegister<UbicacionGeograficaData>;
+  errors: FieldErrors<UbicacionGeograficaData>;
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   onSubmit: ()=>void;
- register: UseFormRegister<any> // Use your actual form data type here
-  errors: any
-  validation: string | string[]
-    handleClick:(index:number)=>void
+  handleClick:(index:number)=>void
+}
+export type FormFieldConfig = {
+  label: string;
+  name: keyof UbicacionGeograficaData 
+  type: string;
+  validation?: string | null;
+  // onChange:() => void;
+  // You can add more properties like placeholder, required, etc. as needed
 }
 
-const HdvI:React.FC<stepOne> = ({onChange, register, errors}) => {
+const HdvI:React.FC<HdvIProps> = ({onChange, register, errors}) => {
   // Define the form fields configuration
   const formFields: FormFieldConfig[] = [
     { label: 'DEPARTAMENTO', name: 'departamento', type: 'text', validation:'Este campo es obligatorio'  },

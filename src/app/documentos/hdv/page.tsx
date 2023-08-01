@@ -397,18 +397,19 @@ import useObserver from '../../hooks/useObserver'
 import FormStepper from '@/app/_components/FormStepper'
 import { useForm } from 'react-hook-form'
 import {useFormCurrentStep } from '../../context/useFormStepContext'
+import { InformacionGeneralData, UbicacionGeograficaData } from '../../../../hdv'
 
 const hdvElementList = [
 {name:'Ubicacion Geografica', component:HdvI},
 {name:'Informacion general', component:HdvII},
-// {name:'Registro historico', component:HdvIII},
-// {name:'Registro tecnico de instalacion', component:HdvIV},
-// {name:'Registro tecnico de funcionamiento', component:HdvV},
-// {name:'Clasificacion biomedica', component:HdvVI},
-// {name:'Clasificacion segun nivel de riesgo', component:HdvVII},
-// {name:'Periodicidad de mantenimiento', component:HdvVIII},
-// {name:'Requiere Calibracion', component:HdvIX},
-// {name:'Accesorios', component:HdvX},
+{name:'Registro historico', component:HdvIII},
+{name:'Registro tecnico de instalacion', component:HdvIV},
+{name:'Registro tecnico de funcionamiento', component:HdvV},
+{name:'Clasificacion biomedica', component:HdvVI},
+{name:'Clasificacion segun nivel de riesgo', component:HdvVII},
+{name:'Periodicidad de mantenimiento', component:HdvVIII},
+{name:'Requiere Calibracion', component:HdvIX},
+{name:'Accesorios', component:HdvX},
 {name:'Observaciones', component:HdvXI},
 // {name:'', component:HdvXII},
 
@@ -420,7 +421,7 @@ const stepNames = hdvElementList.map(field=> ( field.name))
 console.log(stepNames)
 export type FormFieldConfig = {
   label: string;
-  name: string;
+  name: keyof UbicacionGeograficaData | keyof InformacionGeneralData
   type: string;
   validation?: string | null;
   // onChange:() => void;
@@ -483,23 +484,6 @@ const Page = () => {
 
   
   //! Multi step form:
-  // const [formStep, setFormStep] = useState<number>(0);
-  // const nextFormStep = () => {
-//   setFormStep((currentStep) => {
-//     const nextStep = currentStep + 1;
-//     scrollToForm(nextStep); // Scroll to the next step
-//  localStorage.setItem('formStep', nextStep.toString()); // Store the previous step in localStorage
-//     return nextStep; // Return the updated value of currentStep
-//   });
-// };
-//   const prevFormStep = () => {
-//   setFormStep((currentStep) => {
-//     const prevStep = currentStep - 1;
-//     scrollToForm(prevStep); // Scroll to the next step
-//      localStorage.setItem('formStep', prevStep.toString()); // Store the previous step in localStorage
-//     return prevStep; // Return the updated value of currentStep
-//   });
-// };
 
 //  useEffect(() => {
 //     const storedFormStep = localStorage.getItem('formStep');
@@ -598,15 +582,12 @@ const Page = () => {
            // className={`transition-opacity duration-500 ${index === 0 ? 'block' : 'hidden'}`}
           className='z-50'
         >
+
           <Component  
-          // currentStep={formStep}
-          // prevStep={prevFormStep} 
-          // nextStep={nextFormStep}
          onChange={handleChange}
         onSubmit={handleSubmit(onSubmit)}
         register={register}
         errors={errors}
-        validation={validation[0]}
         handleClick={scrollToForm}
           />
         </div>

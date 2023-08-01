@@ -1,6 +1,6 @@
 'use client'
 import './globals.css'
-import type { Metadata } from 'next'
+// import type { Metadata } from 'next'
 import { Inter, Rajdhani } from 'next/font/google'
 import Navbar from './_components/Navbar'
 import Footer from './_components/Footer'

@@ -3,22 +3,31 @@ import { DatePicker } from '@mui/x-date-pickers'
 import React, { ChangeEvent } from 'react'
 import HdvButton from './HdvButton'
 import { DeepMap, FieldError, FieldErrors, SubmitHandler, UseFormRegister, useForm } from 'react-hook-form';
-import { FormFieldConfig } from '../documentos/hdv/page';
+// import { FormFieldConfig } from '../documentos/hdv/page';
+import { InformacionGeneralData } from '../../../hdv';
 export type stepSecondToLast = {
   // prevStep: ()=>void;
   // nextStep: ()=>void;
   onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   onSubmit: ()=>void;
-  register: UseFormRegister<any> // Use your actual form data type here
+  register: UseFormRegister<InformacionGeneralData> // Use your actual form data type here
   // register: UseFormRegister<any> // Use your actual form data type here
-  errors: any
-  validation: string | string[]
+  errors:FieldErrors<InformacionGeneralData>
+  // validation: string | string[]
     handleClick:(index:number)=>void
     // currentStep?: number;
   // register: UseFormRegister<FormData>; // Use your actual form data type here
   // errors: DeepMap<FormData, FieldError>
 }
-const HdvII:React.FC<stepSecondToLast> = ({onChange, register, errors, validation}) => {
+export type FormFieldConfig = {
+  label: string;
+  name: keyof InformacionGeneralData
+  type: string;
+  validation?: string | null;
+  // onChange:() => void;
+  // You can add more properties like placeholder, required, etc. as needed
+}
+const HdvII:React.FC<stepSecondToLast> = ({onChange, register, errors}) => {
 
 
   const formFields: FormFieldConfig[] = [
@@ -26,8 +35,8 @@ const HdvII:React.FC<stepSecondToLast> = ({onChange, register, errors, validatio
     { label: 'MARCA', name: 'marca', type: 'text', validation:'Este campo es obligatorio', },
     { label: 'MODELO', name: 'modelo', type: 'text', validation:'Este campo es obligatorio', },
     { label: 'SERIE N°', name: 'serie', type: 'text', validation:'Este campo es obligatorio', },
-    { label: 'ACTIVO FIJO', name: 'activo-fijo', type: 'text', validation:'Este campo es obligatorio', },
-    { label: 'REGISTRO SANITARIO', name: 'registro-sanitario', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'ACTIVO FIJO', name: 'activoFijo', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'REGISTRO SANITARIO', name: 'registroSanitario', type: 'text', validation:'Este campo es obligatorio', },
     { label: 'UBICACION', name: 'ubicacion', type: 'text', validation:'Este campo es obligatorio', },
   ];
 
