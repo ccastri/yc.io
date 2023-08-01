@@ -1,7 +1,7 @@
 // FormProviderWrapper.tsx
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { InformacionGeneralData, UbicacionGeograficaData, RegistroHistorico, RegistroTecnicoInstalacion } from './path/to/interfaces';
+import { InformacionGeneralData, UbicacionGeograficaData, RegistroHistorico, RegistroTecnicoInstalacion } from '../../../hdv';
 
 interface FormProviderWrapperProps {
   children: React.ReactNode;
