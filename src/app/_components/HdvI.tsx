@@ -1,7 +1,7 @@
 'use client'
 import React, { ChangeEvent, useState } from 'react'
 import {FileUploader} from './DragAndDrop'
-import { FieldErrors, UseFormRegister, useFormContext } from 'react-hook-form';
+import { FieldErrors, UseFormRegister, useForm, useFormContext } from 'react-hook-form';
 import Image from 'next/image';
 import HdvButton from './HdvButton';
 // import { FormFieldConfig } from '../documentos/hdv/page';
@@ -35,7 +35,7 @@ export type FormFieldConfig = {
   // You can add more properties like placeholder, required, etc. as needed
 }
 
-const HdvI:React.FC<HdvIProps> = ({onChange, register, errors}) => {
+const HdvI:React.FC<HdvIProps> = ({onChange}) => {
   // Define the form fields configuration
   const formFields: FormFieldConfig[] = [
     { label: 'DEPARTAMENTO', name: 'departamento', type: 'text', validation:'Este campo es obligatorio'  },
@@ -47,37 +47,41 @@ const HdvI:React.FC<HdvIProps> = ({onChange, register, errors}) => {
   ];
 
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-  // const { register } = useFormContext();
+  const { register, handleSubmit, formState: { errors } } = useFormContext();
 
   const handleUpload = (files: File[]) => {
     setSelectedFiles(files);
   };
 
-  const handleSubmit = (data: FormData) => {
-    // Handle form submission here
+  // const handleSubmit = (data: FormData) => {
+  //   // Handle form submission here
     
-    console.log('data submitted');
-  };
+  //   console.log('data submitted');
+  // };
+  // const methods = useForm<UbicacionGeograficaData>();
+  // const { register, handleSubmit, formState: { errors } } = methods;
+
   return (
     <div className='w-full xl:flex flex-col transition-all duration-150 h-full mb-20 bg-[#FFF] border-4'>
       <div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
       {/* <>{console.log(currentStep)}</> */}
         <h2 className='w-full text-[#FAFAFA] font-semibold tracking-wider'>I. UBICACION GEOGRÁFICA</h2>
       </div>
-      <form action='' className='grid grid-cols-10 w-full border-2 rounded-md h-auto'>
-        <div className='flex flex-col col-span-5 space-y-8 py-4 px-6 '>
+      <form action='' className='grid grid-cols-10 w-full border-2 rounded-md pb-8 h-auto'>
+        <div className='flex flex-col col-span-5 space-y-4 py-2  px-6 '>
           {formFields.map((field) => (
-            <label key={field.name} className='font-semibold tracking-widest h-12 text-center text-xs pb-4'>
-              {field.label}
-              <input
-                type={field.type}
- {...register(`${field.name}`, {
+             <label key={field.name} className={`text-md font-bold tracking-wide  bottom-0 flex flex-col w-full  text-slate-600 mx-auto ${errors[field.name] && 'text-red-500'}`}>
+            {field.label}
+            <input
+              placeholder="Tu empresa S.A.S."
+              className={`focus:border-blue-500 bottom-0 font-normal h-full focus:outline-none text-center text-sm pt-2 w-full  text-slate-500 mx-auto border-b border-[#0D202F]`}
+              // name={`${field.name}`}
+              {...register(`${field.name}`, {
                 required: `${field.validation}`,
               })}
-                onChange={()=>{}}
-                className='mb-3 focus:outline-none focus:border-b-blue-500 w-full h-7 border-b'
-              />
-              {errors[field.name] && <span className="text-red-500 pb-4 font-semibold text-center text-sm w-36">{errors[field.name]?.message}</span>}
+              onChange={() => {}}
+            />
+              {errors[field.name] && <span className="text-red-500 pb-4 font-semibold text-center text-sm w-full">{errors[field.name]?.message}</span>}
             </label>
           ))}
         </div>
@@ -94,9 +98,11 @@ const HdvI:React.FC<HdvIProps> = ({onChange, register, errors}) => {
         </div>
         <div className='col-span-5' />
       </form>
-      <div className='col-span-5'>
+      <div className='w-full bg-gradient-to-r from-[#badaed] to-[rgb(5,137,75)] '>
+<div className='w-[60%] ml-20'>
 
         <HdvButton />
+</div>
       </div>
     </div>
   )

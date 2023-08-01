@@ -2,7 +2,7 @@
 import { DatePicker } from '@mui/x-date-pickers'
 import React, { ChangeEvent } from 'react'
 import HdvButton from './HdvButton'
-import { DeepMap, FieldError, FieldErrors, SubmitHandler, UseFormRegister, useForm } from 'react-hook-form';
+import { DeepMap, FieldError, FieldErrors, SubmitHandler, UseFormRegister, useForm, useFormContext } from 'react-hook-form';
 // import { FormFieldConfig } from '../documentos/hdv/page';
 import { InformacionGeneralData } from '../../../hdv';
 export type stepSecondToLast = {
@@ -14,7 +14,7 @@ export type stepSecondToLast = {
   // register: UseFormRegister<any> // Use your actual form data type here
   errors:FieldErrors<InformacionGeneralData>
   // validation: string | string[]
-    handleClick:(index:number)=>void
+    handleClick?:(index:number)=>void
     // currentStep?: number;
   // register: UseFormRegister<FormData>; // Use your actual form data type here
   // errors: DeepMap<FormData, FieldError>
@@ -27,8 +27,9 @@ export type FormFieldConfig = {
   // onChange:() => void;
   // You can add more properties like placeholder, required, etc. as needed
 }
-const HdvII:React.FC<stepSecondToLast> = ({onChange, register, errors}) => {
-
+const HdvII:React.FC<stepSecondToLast> = ({onChange,}) => {
+  const { register, handleSubmit, formState: { errors } } = useFormContext<InformacionGeneralData>();
+console.log(errors)
 
   const formFields: FormFieldConfig[] = [
     { label: 'EQUIPO', name: 'equipo', type: 'text', validation:'Este campo es obligatorio', },
@@ -48,11 +49,11 @@ const HdvII:React.FC<stepSecondToLast> = ({onChange, register, errors}) => {
             <form action=""
             className=' w-full  '
             >
-      <div className="flex flex-col items-center  px-20 py-4 border space-y-8">
-      <div className="col-span-2 grid grid-cols-2 bottom-0 gap-12"> {/* Wrap the form fields in a container with two columns */}
+      <div className="flex flex-col items-center  px-12 py-4 border space-y-8">
+      <div className="col-span-2 grid grid-cols-2 bottom-0 gap-8"> {/* Wrap the form fields in a container with two columns */}
       {formFields.map((field, index) => (
-        <div key={index} className='h-full bottom-0 border-'>
-          <label className={`text-md font-bold tracking-widetext-center bottom-0 flex flex-col w-full  text-slate-600 mx-auto ${errors[field.name] && 'text-red-500'}`}>
+        <div key={index} className='h-full bottom-0 border- '>
+          <label className={`text-md font-bold tracking-wide text-center bottom-0 flex flex-col w-full  text-slate-600 mx-auto ${errors[field.name] && 'text-red-500'}`}>
             {field.label}
             <input
               placeholder="Tu empresa S.A.S."

@@ -23,12 +23,13 @@ const Navbar = () => {
 // Here youre getting the url parameters from the Submenu html component
 
     const SubMenu = ({ parentRoute, options }:any) => {
-          const handleOptionClick = (option: string) => {
-              // Assuming your routes are in the format '/option' (e.g., '/Mantenimiento', '/Calibracion', etc.)
-              const parentLowered =  parentRoute.toLowerCase()
-              option=== 'hojas de vida'? router.push(`/${parentLowered}/hdv`): router.push(`/${parentLowered}/${option.toLowerCase()}`)
-
-          };
+           const handleOptionClick = (option: string) => {
+    // Assuming your routes are in the format '/option' (e.g., '/Mantenimiento', '/Calibracion', etc.)
+    const parentLowered = parentRoute.toLowerCase();
+    const optionLowered = option.toLowerCase();
+    const firstLetter = optionLowered.slice(0, 1);
+    router.push(`/${parentLowered}/${firstLetter}`);
+  };
         return (
             <div 
     className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y  divide-gray-100 rounded-md bg-slate-300 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-dashed"

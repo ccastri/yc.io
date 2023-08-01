@@ -5,6 +5,8 @@ import HdvButton from './HdvButton'
 import {stepSecondToLast} from './HdvII'
 import { DatePicker } from '@mui/x-date-pickers'
 import { useField } from '@mui/x-date-pickers/internals'
+import { DeepMap, FieldError, FieldErrors, SubmitHandler, UseFormRegister, useForm, useFormContext } from 'react-hook-form';
+import { RegistroHistorico } from '../../../hdv'
 type IDateConfig ={
    label: string,
    name: string,
@@ -12,6 +14,7 @@ type IDateConfig ={
 }
 const HdvIII:React.FC<stepSecondToLast> = ({onChange}) => {
    // console.log(currentStep)
+    const { register, handleSubmit, formState: { errors } } = useFormContext<RegistroHistorico>();
    const formFields: IDateConfig[] = [
     { label: 'AÑO DE FABRICACION', name: 'equipo', validation:'Este campo es obligatorio', },
     { label: 'FECHA DE COMPRA', name: 'marca', validation:'Este campo es obligatorio', },
@@ -30,25 +33,32 @@ const HdvIII:React.FC<stepSecondToLast> = ({onChange}) => {
       </div>
             <form action=""
             
-            className='grid grid-cols-10 w-full border-2  rounded-md h-auto'
+            className='w-full border-2 pb-6 px-24 rounded-md h-auto'
             >
 
-      <div className=" col-span-10 space-y-8 py-4 px-6 ">
-        <div className=' flex flex-wrap'  >
+      <div className=" w-full flex flex-col space-y-8 py-4 px-6 ">
+        <div className=' flex flex-col space-y-12'  >
 {formFields.map(field=>(
          <label 
          key={field.name}
-         className='font-semibold tracking-widest h-7 text-center text-xs' 
+         className='font-semibold tracking-widest h-7 w-full text-center text-xs' 
          id={field.name}
          htmlFor=''
          >{field.label} 
+         <div className='w-full'>
 
+<DatePicker/>
+         </div>
         </label>
    ))}
         </div>
         </div>
-        <HdvButton />   
           </form>
+        <div className='flex w-full items-center justify-center mx-2'>
+
+        <HdvButton title='Anterior' />   
+        <HdvButton title='Siguiente' />   
+        </div>
         
          </div>
     )

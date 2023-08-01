@@ -391,6 +391,7 @@ import HdvVIII from '../../_components/HdvVIII'
 import HdvIX from '../../_components/HdvIX'
 import HdvX from '../../_components/HdvX'
 import HdvXI from '../../_components/HdvXI'
+import FormProviderWrapper from '../../_components/FormProviderWrapper'
 // import HdvXII from '../../_components/HdvXII'
 import useObserver from '../../hooks/useObserver'
  
@@ -570,6 +571,8 @@ const Page = () => {
     <div className='rounded-full bg-[#123CD0] w-20 h-20  '/>
   </div>
   </div>
+  <FormProviderWrapper>
+
   <div ref={mainContainerRef} className=' relative z-30 mt-16 flex flex-col items-center space-y-6 p-12 '>
       {hdvElementList.map((field, index) => {
          const Component = field.component;
@@ -585,15 +588,16 @@ const Page = () => {
 
           <Component  
          onChange={handleChange}
-        onSubmit={handleSubmit(onSubmit)}
-        register={register}
-        errors={errors}
+        // onSubmit={handleSubmit(onSubmit)}
+        // register={register}
+        // errors={errors}
         handleClick={scrollToForm}
           />
         </div>
           )
         })}
     </div>
+  </FormProviderWrapper>
       <div className='sticky  rounded bottom-0 w-full z-10'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#123CD0" fillOpacity="1" d="M0,256L21.8,234.7C43.6,213,87,171,131,149.3C174.5,128,218,128,262,154.7C305.5,181,349,235,393,229.3C436.4,224,480,160,524,165.3C567.3,171,611,245,655,277.3C698.2,309,742,299,785,288C829.1,277,873,267,916,234.7C960,203,1004,149,1047,149.3C1090.9,149,1135,203,1178,197.3C1221.8,192,1265,128,1309,112C1352.7,96,1396,128,1418,144L1440,160L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg></div>
           </>
   )
