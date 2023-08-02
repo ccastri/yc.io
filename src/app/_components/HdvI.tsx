@@ -20,11 +20,11 @@ import { UbicacionGeograficaData } from '../../../hdv';
 //   // validation: string | string[]
 // }
 interface HdvIProps {
-  register: UseFormRegister<UbicacionGeograficaData>;
-  errors: FieldErrors<UbicacionGeograficaData>;
-  onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
-  onSubmit: ()=>void;
-  handleClick:(index:number)=>void
+  // register: UseFormRegister<UbicacionGeograficaData>;
+  // errors: FieldErrors<UbicacionGeograficaData>;
+  onChange?:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
+  onSubmit?: ()=>void;
+  handleClick?:(index:number)=>void
 }
 export type FormFieldConfig = {
   label: string;
@@ -47,7 +47,7 @@ const HdvI:React.FC<HdvIProps> = ({onChange}) => {
   ];
 
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-  const { register, handleSubmit, formState: { errors } } = useFormContext();
+  const { register, handleSubmit, formState: { errors } } = useFormContext<UbicacionGeograficaData>();
 
   const handleUpload = (files: File[]) => {
     setSelectedFiles(files);

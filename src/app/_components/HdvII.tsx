@@ -8,11 +8,11 @@ import { InformacionGeneralData } from '../../../hdv';
 export type stepSecondToLast = {
   // prevStep: ()=>void;
   // nextStep: ()=>void;
-  onChange:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
-  onSubmit: ()=>void;
-  register: UseFormRegister<InformacionGeneralData> // Use your actual form data type here
+  onChange?:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void |number|null;
+  onSubmit?: ()=>void;
+  // register: UseFormRegister<InformacionGeneralData> // Use your actual form data type here
   // register: UseFormRegister<any> // Use your actual form data type here
-  errors:FieldErrors<InformacionGeneralData>
+  // errors:FieldErrors<InformacionGeneralData>
   // validation: string | string[]
     handleClick?:(index:number)=>void
     // currentStep?: number;
