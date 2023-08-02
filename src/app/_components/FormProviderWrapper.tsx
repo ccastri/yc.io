@@ -9,7 +9,7 @@ interface FormProviderWrapperProps {
 
 const FormProviderWrapper: React.FC<FormProviderWrapperProps> = ({ children }) => {
   // Use a union type for all form data types used in the child components
-  type AllFormData = UbicacionGeograficaData | InformacionGeneralData | RegistroTecnicoInstalacion |RegistroHistorico | RegistroTecnicoFuncionamiento;
+  type AllFormData = UbicacionGeograficaData | InformacionGeneralData | RegistroTecnicoInstalacion |RegistroHistorico | RegistroTecnicoFuncionamiento | ClasificacionBiomedica;
 
   // Create your form instance here with the union type
   const methods = useForm<AllFormData>();
