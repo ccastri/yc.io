@@ -17,7 +17,7 @@ export type FormFieldVIConfig = {
   // onChange:() => void;
   // You can add more properties like placeholder, required, etc. as needed
 }
-const HdvVI:React.FC<stepSecondToLast> = ({onChange,}) => {
+const HdvVI:React.FC<stepSecondToLast> = ({}) => {
   const { register, handleSubmit, formState: { errors } } = useFormContext<InformacionGeneralData>();
 console.log(errors)
 

@@ -12,7 +12,7 @@ import HdvX from './HdvX'
 import { useFormContext } from 'react-hook-form'
 import { AllFormData } from './FormProviderWrapper'
 import { useFormCurrentStep } from '../context/useFormStepContext'
-// import HdvXI from '../../_components/HdvXI'
+import HdvXI from './HdvXI'
 
 
 // import React, { useRef } from 'react'
@@ -27,22 +27,33 @@ export const hdvElementList = [
 {name:'Periodicidad de mantenimiento', component:HdvVIII},
 {name:'Requiere Calibracion', component:HdvIX},
 {name:'Accesorios', component:HdvX},
-// {name:'Observaciones', component:HdvXI},
+{name:'DocumentosSoportes', component:HdvXI},
 // {name:'', component:HdvXII},
 
 ]
 
 const FormParent = () => {
     const { register, control, handleSubmit, formState: { errors  } } = useFormContext<AllFormData>();
-    const { nextFormStep, prevFormStep, elementsRefs, scrollToForm, setFormStep } = useFormCurrentStep()
+    const { selectedOptions, setSelectedOptions, elementsRefs, scrollToForm, setFormStep } = useFormCurrentStep()
     const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
       const { name, value } = e.currentTarget
       // setUser({ ...user, [name]: value })
     }
+    const [hdvData, setHdvData] = useState({})
+
     const onSubmit = async (data: AllFormData) => {
-        alert(JSON.stringify(data));
+      console.log(data)
+      console.log(selectedOptions)
+      // console.log(data)
+        setHdvData((prevVal)=>({
+          ...prevVal,
+          ...selectedOptions,
+          ...data
+        }))
+        alert(JSON.stringify(hdvData));
         
     }
+    
     const mainContainerRef = useRef<(HTMLDivElement | null)>(null);
     console.log(errors)
   return (

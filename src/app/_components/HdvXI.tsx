@@ -1,114 +1,95 @@
-// import React from 'react';
-// import { useForm, Controller, useFormContext } from 'react-hook-form';
-// import { Observaciones } from '../../../hdv';
-// import { stepSecondToLast } from './HdvII';
+import React, { useState } from 'react';
+import ToggleOnIcon from '@mui/icons-material/ToggleOn';
+import ToggleOffIcon from '@mui/icons-material/ToggleOff';
+import { DocumentOption, DocumentosSoportes } from '../../../hdv';
+import { stepSecondToLast } from './HdvII';
+import { useFormCurrentStep } from '../context/useFormStepContext';
 
-// type FormFieldXIConfig = {
-//   label: string;
-//   name: keyof Observaciones;
-//   type: string;
-//   validation?: string | null;
-// };
+const HdvXI: React.FC<stepSecondToLast> = ({}) => {
+  const { selectedOptions, setSelectedOptions } = useFormCurrentStep()
+// const { control, handleSubmit } = useFormContext<DocumentosSoportes>()
+  const handleOptionToggle = (field: keyof DocumentosSoportes, option: DocumentOption) => {
+    setSelectedOptions((prevOptions) => ({
+      ...prevOptions,
+      [field]: prevOptions[field] === option ? null : option,
+    }));
+  };
 
-// // Define your form fields as an array of objects adhering to FormFieldXIConfig
-// const formFields: FormFieldXIConfig[] = [
-//   {
-//     label: 'Field 1',
-//     name: 'observacion1',
-//     type: 'text',
-//     validation: 'Field 1 is required',
-//   },
-//   {
-//     label: 'Field 2',
-//     name: 'observacion2',
-//     type: 'text',
-//     validation: 'Field 2 is required',
-//   },
-//   {
-//     label: 'Field 3',
-//     name: 'observacion3',
-//     type: 'text',
-//     validation: 'Field 3 is required',
-//   },
-//   {
-//     label: 'Field 4',
-//     name: 'observacion4',
-//     type: 'text',
-//     validation: 'Field 4 is required',
-//   },
-//   {
-//     label: 'Field 5',
-//     name: 'observacion5',
-//     type: 'text',
-//     validation: 'Field 5 is required',
-//   },
-//   // {
-//   //   label: 'Field 6',
-//   //   name: 'observacion6',
-//   //   type: 'text',
-//   //   validation: 'Field 6 is required',
-//   // },
-//   // Add more fields as needed
-// ];
+  const options = Object.keys(selectedOptions);
 
-// // type FormValues: FormFieldXIConfig[] = {
-// //   observacion1: string;
-// //   observacion2: string;
-// //   observacion3: string;
-// //   observacion4: string;
-// //   observacion5: string;
-//   // observacion6: string;
-//   // Add more fields as needed
-// // };
+  return (
+    <div className='w-full px-12 py-6 xl:flex'>
+     <div className='  bg-[#E0C4A0] p-6'>
+      <h2 className='text-xl w-28 font-semibold'>XII. Lista de chequeo de documentos soportes anexos a la hoja de vida</h2>
+     </div>
+    <table className="border-collapse border border-black">
+      <thead>
+        <tr>
+          <th className="border border-black p-2">Item</th>
+          <th className="border border-black p-2 text-center">AX</th>
+          <th className="border border-black p-2 text-center">NAX</th>
+          <th className="border border-black p-2 text-center">NA</th>
+          <th className="border border-black p-2 text-center">NT</th>
+          <th className="border border-black p-2 text-center">NR</th>
+        </tr>
+      </thead>
+      <tbody>
+        {options.map((fieldName) => (
+          <tr key={fieldName}>
+            <td className="border border-black p-2">{fieldName}</td>
+            <td
+            className={`p-2 ${selectedOptions[fieldName as keyof DocumentosSoportes] === 'AX' ? 'text-green-600 bg-green-400' : 'text-red-600 bg-red-400'}`}>
 
-// type FormValues = {
-//   [K in keyof Observaciones]: string;
-// };
+                  <span className='p-2'
+                   onClick={() => handleOptionToggle(fieldName as keyof DocumentosSoportes, 'AX')}>
 
-// const HdvXI: React.FC<stepSecondToLast> = ({onSubmit}) => {
-//   const {
-//     control,
-//     handleSubmit,
-//     formState: { errors },
-//     register, // Add the register function here
-//   } = useForm<FormValues>(); // Use FormValues type here
+                {selectedOptions[fieldName as keyof DocumentosSoportes] === 'AX' ? <ToggleOnIcon /> : <ToggleOffIcon />}
+                  </span>
+              
+            </td>
+            <td
+            className={`p-2 ${selectedOptions[fieldName as keyof DocumentosSoportes] === 'NT' ? 'text-green-600 bg-green-400' : 'text-red-600 bg-red-400'}`}>
 
-//   const onSubmit = (data: FormValues) => {
-//     console.log(data);
-//     // Add your form submission logic here
-//   };
+                  <span className='p-2'
+                   onClick={() => handleOptionToggle(fieldName as keyof DocumentosSoportes, 'NT')}>
 
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <div className="grid grid-cols-5 gap-4">
-//         {formFields.map((field, index) => (
-//           <div key={index} className="h-full bottom-0 border-">
-//             <label
-//               className={`text-md font-bold tracking-wide text-center bottom-0 flex flex-col w-full  text-slate-600 mx-auto ${
-//                 errors[field.name] && 'text-red-500'
-//               }`}
-//             >
-//               {field.label}
-//               <input
-//                 placeholder="Tu empresa S.A.S."
-//                 className={`focus:border-blue-500 bottom-0 font-normal h-full focus:outline-none text-center text-sm pt-2 w-full  text-slate-500 mx-auto border-b border-[#0D202F]`}
-//                 {...register(field.name, {
-//                   required: `${field.validation}`,
-//                 })}
-//                 onChange={() => {}}
-//               />
-//               {errors[field.name] && (
-//                 <span className="text-red-500 font-semibold text-center text-sm">
-//                   {errors[field.name]?.message}
-//                 </span>
-//               )}
-//             </label>
-//           </div>
-//         ))}
-//       </div>
-//       <button type="submit">Submit</button>
-//     </form>
-//   );
-// };
+                {selectedOptions[fieldName as keyof DocumentosSoportes] === 'NT' ? <ToggleOnIcon /> : <ToggleOffIcon />}
+                  </span>
+            </td>
+        <td
+            className={`p-2 ${selectedOptions[fieldName as keyof DocumentosSoportes] === 'NAX' ? 'text-green-600 bg-green-400' : 'text-red-600 bg-red-400'}`}>
 
-// export default HdvXI;
+                  <span className='p-2'
+                   onClick={() => handleOptionToggle(fieldName as keyof DocumentosSoportes, 'NAX')}>
+
+                {selectedOptions[fieldName as keyof DocumentosSoportes] === 'NAX' ? <ToggleOnIcon /> : <ToggleOffIcon />}
+                  </span>
+            </td>
+             <td
+            className={`p-2 ${selectedOptions[fieldName as keyof DocumentosSoportes] === 'NA' ? 'text-green-600 bg-green-400' : 'text-red-600 bg-red-400'}`}>
+
+                  <span className='p-2'
+                   onClick={() => handleOptionToggle(fieldName as keyof DocumentosSoportes, 'NA')}>
+
+                {selectedOptions[fieldName as keyof DocumentosSoportes] === 'NA' ? <ToggleOnIcon /> : <ToggleOffIcon />}
+                  </span>
+            </td>
+            <td
+            className={`p-2 ${selectedOptions[fieldName as keyof DocumentosSoportes] === 'NR' ? 'text-green-600 bg-green-400' : 'text-red-600 bg-red-400'}`}>
+
+                  <span className='p-2'
+                   onClick={() => handleOptionToggle(fieldName as keyof DocumentosSoportes, 'NR')}>
+
+                {selectedOptions[fieldName as keyof DocumentosSoportes] === 'NR' ? <ToggleOnIcon /> : <ToggleOffIcon />}
+                  </span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+                </div>
+  );
+};
+
+export default HdvXI;
+  

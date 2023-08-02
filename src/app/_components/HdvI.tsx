@@ -1,27 +1,12 @@
 'use client'
-import React, { ChangeEvent, useState } from 'react'
-import {FileUploader} from './DragAndDrop'
-import { FieldErrors, UseFormRegister, useForm, useFormContext } from 'react-hook-form';
 import Image from 'next/image';
+import React, { ChangeEvent, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
+import { FileUploader } from './DragAndDrop';
 import HdvButton from './HdvButton';
-// import { FormFieldConfig } from '../documentos/hdv/page';
 import { UbicacionGeograficaData } from '../../../hdv';
-// export type FormFieldConfig = {
-//   label: string;
-//   name: string;
-//   type: string;
-//   // You can add more properties like placeholder, required, etc. as needed
-// }
 
-// type stepOne = {
-//   // nextStep: ()=>void;
-//  register: UseFormRegister<any> // Use your actual form data type here
-//   errors: any
-//   // validation: string | string[]
-// }
 interface HdvIProps {
-  // register: UseFormRegister<UbicacionGeograficaData>;
-  // errors: FieldErrors<UbicacionGeograficaData>;
   onChange?:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   onSubmit?: ()=>void;
   handleClick?:(index:number)=>void
@@ -31,12 +16,9 @@ export type FormFieldConfig = {
   name: keyof UbicacionGeograficaData 
   type: string;
   validation?: string | null;
-  // onChange:() => void;
-  // You can add more properties like placeholder, required, etc. as needed
 }
 
 const HdvI:React.FC<HdvIProps> = ({onChange}) => {
-  // Define the form fields configuration
   const formFields: FormFieldConfig[] = [
     { label: 'DEPARTAMENTO', name: 'departamento', type: 'text', validation:'Este campo es obligatorio'  },
     { label: 'MUNICIPIO', name: 'municipio', type: 'text', validation:'Este campo es obligatorio'  },
@@ -53,18 +35,9 @@ const HdvI:React.FC<HdvIProps> = ({onChange}) => {
     setSelectedFiles(files);
   };
 
-  // const handleSubmit = (data: FormData) => {
-  //   // Handle form submission here
-    
-  //   console.log('data submitted');
-  // };
-  // const methods = useForm<UbicacionGeograficaData>();
-  // const { register, handleSubmit, formState: { errors } } = methods;
-
   return (
     <div className='w-full xl:flex flex-col transition-all duration-150 h-full mb-20 bg-[#FFF] border-4'>
       <div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
-      {/* <>{console.log(currentStep)}</> */}
         <h2 className='w-full text-[#FAFAFA] font-semibold tracking-wider'>I. UBICACION GEOGRÁFICA</h2>
       </div>
       <form action='' className='grid grid-cols-10 w-full border-2 rounded-md pb-8 h-auto'>
@@ -75,7 +48,6 @@ const HdvI:React.FC<HdvIProps> = ({onChange}) => {
             <input
               placeholder="Tu empresa S.A.S."
               className={`focus:border-blue-500 bottom-0 font-normal h-full focus:outline-none text-center text-sm pt-2 w-full  text-slate-500 mx-auto border-b border-[#0D202F]`}
-              // name={`${field.name}`}
               {...register(`${field.name}`, {
                 required: `${field.validation}`,
               })}

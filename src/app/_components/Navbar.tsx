@@ -26,7 +26,9 @@ const Navbar = () => {
           const handleOptionClick = (option: string) => {
               // Assuming your routes are in the format '/option' (e.g., '/Mantenimiento', '/Calibracion', etc.)
               const parentLowered =  parentRoute.toLowerCase()
-              option=== 'Hojas de vida'? router.push(`/${parentLowered}/hdv`): router.push(`/${parentLowered}/${option.toLowerCase()}`)
+              option=== 'Hojas de vida' ?
+              router.push(`/${parentLowered}/hdv`) :
+              router.push(`/${parentLowered}/${option.toLowerCase()}`)
           };
         return (
             <div 

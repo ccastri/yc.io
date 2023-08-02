@@ -94,7 +94,7 @@ export interface Observaciones {
   observacion4: string;
   observacion5: string;
 }
-export type DocumentOption = "NR" | "NT" | "AX" | "NAX" | "NA";
+export type DocumentOption = "NR" | "NT" | "AX" | "NAX" | "NA" | null;
 
 export interface DocumentosSoportes {
   copiaRegistroSanitario: DocumentOption;

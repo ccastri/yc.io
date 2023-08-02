@@ -1,9 +1,9 @@
 // FormProviderWrapper.tsx
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { InformacionGeneralData, UbicacionGeograficaData, RegistroHistorico, RegistroTecnicoInstalacion, RegistroTecnicoFuncionamiento, ClasificacionBiomedica } from '../../../hdv';
+import { InformacionGeneralData, UbicacionGeograficaData, RegistroHistorico, RegistroTecnicoInstalacion, RegistroTecnicoFuncionamiento, ClasificacionBiomedica, ClasificacionNivelRiesgo, PeriodicidadMantenimiento, DocumentosSoportes } from '../../../hdv';
 
-export type AllFormData = UbicacionGeograficaData | InformacionGeneralData | RegistroTecnicoInstalacion |RegistroHistorico | RegistroTecnicoFuncionamiento | ClasificacionBiomedica;
+export type AllFormData = UbicacionGeograficaData | InformacionGeneralData | RegistroTecnicoInstalacion |RegistroHistorico | RegistroTecnicoFuncionamiento | ClasificacionBiomedica |ClasificacionNivelRiesgo| PeriodicidadMantenimiento | DocumentosSoportes;
 interface FormProviderWrapperProps {
   children: React.ReactNode;
 }

@@ -1,4 +1,5 @@
 import { Dispatch, MutableRefObject, SetStateAction, createContext, useContext, useRef, useState } from "react";
+import { DocumentosSoportes } from "../../../hdv";
 
 type IFormStepsType = {
   prevFormStep: ()=>void
@@ -7,6 +8,9 @@ type IFormStepsType = {
   setFormStep: Dispatch<SetStateAction<number>>;
   elementsRefs: MutableRefObject<(HTMLDivElement | null)[]>
   scrollToForm: (index:number)=>void
+  selectedOptions: DocumentosSoportes,
+  setSelectedOptions: Dispatch<SetStateAction<DocumentosSoportes>>
+
 }
 
 const CurrentFormStepContext = createContext<IFormStepsType | null>(null);
@@ -35,7 +39,19 @@ export const CurrentStepProvider:React.FC<{ children: React.ReactNode }> = ({chi
         elementsRefs.current[index]?.scrollIntoView({ behavior: 'smooth' }); // Step 3: Scroll to the form
         }
     };
-
+const [selectedOptions, setSelectedOptions] = useState<DocumentosSoportes>({
+    copiaRegistroSanitario: null,
+    copiaRegistroImportacion: null,
+    copiaFactura: null,
+    copiaIngresoAlmacen: null,
+    copiaActaReciboSatisfaccion: null,
+    guiaRapidaOperacion: null,
+    recomendacionUsoAccesorios: null,
+    recomendacionAseguramientoMetrologico: null,
+    estimativoCostoAccesorios: null,
+    recomendacionesLimpiezaDesinfeccion: null,
+    registroCapacitacion: null,
+  });
 
     const contextValue: IFormStepsType = {
         prevFormStep,
@@ -43,7 +59,9 @@ export const CurrentStepProvider:React.FC<{ children: React.ReactNode }> = ({chi
         scrollToForm,
         elementsRefs,
         formStep,
-        setFormStep
+        setFormStep,
+        selectedOptions,
+        setSelectedOptions
     
   };
 
