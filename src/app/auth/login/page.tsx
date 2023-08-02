@@ -373,7 +373,7 @@ const svgString = iconToSvg(<SmartToyOutlinedIcon />);
 
     <div className=' absolute flex z-10 h-full w-full px-12  transform skew-y-12 my-auto overflow-auto  scrollbar-track-transparent overflow-y-scroll scrollbar-thin scrollbar-thumb-[#747a80] scrollbar-thumb-rounded-md'>
 
-      <div className='shadow-2xl mt-14 flex flex-col w-8/12 overflow-y-auto space-y-4 my-auto py-16  items-center opacity-100 bg-[#FFFF] shadow-slate-900  transition-all duration-300 transform '>
+      <div className='shadow-2xl mt-14 flex flex-col w-8/12 xs:w-full overflow-y-auto space-y-4 my-auto py-16  items-center opacity-100 bg-[#FFFF] shadow-slate-900  transition-all duration-300 transform '>
         
         <p className= 'text-[#fafafa] font-bold text-2xl text-center w-full py-6 tracking-wider bg-[#E0C4A0] '>Inicio de sesion <span> <LoginOutlinedIcon/></span></p>
   <form
