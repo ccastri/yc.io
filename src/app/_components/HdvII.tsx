@@ -42,14 +42,16 @@ console.log(errors)
   ];
 
   return (
-    <div className='w-full flex flex-col h-[30%] bg-[#FFF] border-4 rounded-md mb-6'>
-    <div className='w-full xl:flex transition-all duration-150 h-full overflow-y-auto  bg-[#FFF]'><div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
+    <div className='border-4 bg-[#fafafa rounded'>
+    <div className='w-full flex flex-col h-[30%] bg-[#FFF]  rounded-md mb-6 '>
+    <div className='w-full xl:flex transition-all duration-150 h-full overflow-y-auto  bg-[#FFF]'>
+      <div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
       <h2 className ="w-full text-[#FAFAFA] font-semibold tracking-wider "> I. UBICACION GEOGRÁFICA</h2>
       </div>
             <form action=""
             className=' w-full  '
             >
-      <div className="flex flex-col items-center  px-12 py-4 border space-y-8">
+      <div className="flex flex-col items-center  px-12 py-4  space-y-8">
       <div className="col-span-2 grid grid-cols-2 bottom-0 gap-8"> {/* Wrap the form fields in a container with two columns */}
       {formFields.map((field, index) => (
         <div key={index} className='h-full bottom-0 border- '>
@@ -82,22 +84,23 @@ console.log(errors)
         </div>
 
             
-            <div className="grid grid-cols-2  px-12 bg-gradient-to-r from-[#C29A95] to-[#E0C4A0] ">
-            <div className=" cols-span-1 mx-4 ">
+
+    </div>
+            <div className="flex justify-end  flex-row">
+            {/* <div className="  w-auto mx-4 "> */}
               {/* fALTA ANIMAR QUE EL CURRENT SE ACTUALICE CON EL SCROLL Y LO QUE
               USE OBSERVER VEA EN PANTALLA */}
             <HdvButton title='Anterior '
               //  currentStep={currentStep} prevStep={prevStep}
                />      
-          </div>
-          <div className=" col-span-1 mx-4 ">
+          {/* </div> */}
+          {/* <div className=" w-auto mx-4 "> */}
             <HdvButton title='Siguiente'
               // currentStep={currentStep} nextStep={nextStep}
             />      
+          {/* </div> */}
           </div>
           </div>
-
-    </div>
   )
 }
 
