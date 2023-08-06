@@ -21,7 +21,7 @@ export interface InformacionGeneralData {
   // Add other fields relevant to this subset
 }
 export interface RegistroHistorico {
-  formaAdquisicion: "1. Compra" | "2. Donación" | "3. Incautación" | null;
+  AdquisitionWay: "1. Compra" | "2. Donación" | "3. Incautación" | null;
   yearOfFabrication: string | Dayjs | null;
   boughtDate: string | Dayjs | null;
   installationDate: string | Dayjs | null;
