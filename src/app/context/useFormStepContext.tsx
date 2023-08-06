@@ -1,5 +1,6 @@
 import { Dispatch, MutableRefObject, SetStateAction, createContext, useContext, useRef, useState } from "react";
-import { DocumentosSoportes } from "../../../hdv";
+import { DocumentosSoportes, RegistroHistorico } from "../../../hdv";
+import dayjs from "dayjs";
 
 type IFormStepsType = {
   prevFormStep: ()=>void
@@ -10,6 +11,8 @@ type IFormStepsType = {
   scrollToForm: (index:number)=>void
   selectedOptions: DocumentosSoportes,
   setSelectedOptions: Dispatch<SetStateAction<DocumentosSoportes>>
+  selectedDate: RegistroHistorico,
+  setSelectedDate: Dispatch<SetStateAction<RegistroHistorico>>
 
 }
 
@@ -39,6 +42,15 @@ export const CurrentStepProvider:React.FC<{ children: React.ReactNode }> = ({chi
         elementsRefs.current[index]?.scrollIntoView({ behavior: 'smooth' }); // Step 3: Scroll to the form
         }
     };
+const [selectedDate, setSelectedDate] = useState<RegistroHistorico>({
+  AdquisitionWay: null,
+  yearOfFabrication:  dayjs(),
+  boughtDate: dayjs(),
+  installationDate: dayjs(),
+  startingOppDate: dayjs(),
+  warrantyEnd: dayjs(),
+  fabricante: null,
+  });
 const [selectedOptions, setSelectedOptions] = useState<DocumentosSoportes>({
     copiaRegistroSanitario: null,
     copiaRegistroImportacion: null,
@@ -61,7 +73,9 @@ const [selectedOptions, setSelectedOptions] = useState<DocumentosSoportes>({
         formStep,
         setFormStep,
         selectedOptions,
-        setSelectedOptions
+        setSelectedOptions,
+        selectedDate,
+        setSelectedDate
     
   };
 

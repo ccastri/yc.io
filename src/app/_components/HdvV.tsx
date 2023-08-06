@@ -25,11 +25,12 @@ const HdvV :React.FC<stepSecondToLast> = ({onChange}) => {
   console.log(errors.rangoVoltaje)
   return (
 
-      <div className=' flex flex-row py-6'>
+    <div className=' xl:flex py-6'>
 
-          <div className=' grid grid-cols-10  border-2  border-black'>
-            <h2 className='bg-blue-200 h- col-span-10'>V. REGISTRO TECNICO DE FUNCIONAMIENTO</h2>
-            <div className='col-span-10 border-2 px-12 border-black'>
+          <div className='bg-blue-200 w-full'>
+            <h2 className=' w-44 col-span-10'>V. REGISTRO TECNICO DE FUNCIONAMIENTO</h2>
+        </div>
+            <div className='p-6 border-2 px-12 border-black'>
         <label htmlFor="default-range" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
           RANGO DE CORRIENTE
           <input
@@ -149,13 +150,13 @@ className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark
                 </span>
               )}
         </label>
-            <div className='w-full right-4'>
+            <div className='w-full flex right-4'>
 
+          <HdvButton title='Anterior'/>
           <HdvButton/>
             </div>
             </div>
           </div>
-      </div>
 
 )
 }

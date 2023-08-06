@@ -30,6 +30,7 @@ import LocationCityOutlinedIcon from '@mui/icons-material/LocationCityOutlined';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import { IconButton } from '@mui/material';
 import Image from 'next/image';
+import axios from 'axios';
 const location=[
 
   
@@ -142,7 +143,7 @@ const formFields: FormField[] = [
   {
     label: 'Nombre de la empresa',
     icon: <LocationCityOutlinedIcon/>,
-    name: 'empresa',
+    name: 'company',
     type: 'text',
     placeholder: 'Tu empresa S.A.S.',
     validation: {
@@ -161,7 +162,7 @@ const formFields: FormField[] = [
   },
   {
     label: 'Ciudad',
-    name: 'ciudad',
+    name: 'city',
     icon: <PersonPinCircleOutlinedIcon/>,
     type: 'select',
     placeholder: 'Seleccione ciudad',
@@ -172,7 +173,7 @@ const formFields: FormField[] = [
   },
   {
     label: 'Departamento',
-    name: 'departamento',
+    name: 'department',
     icon: <PersonPinCircleOutlinedIcon/>,
     type: 'select',
     placeholder: 'Seleccione Departamento',
@@ -183,7 +184,7 @@ const formFields: FormField[] = [
   },
   {
     label: 'Correo',
-    name: 'correo',
+    name: 'email',
     icon: <EmailOutlinedIcon/>,
     type: 'email',
     placeholder: 'Correo',
@@ -197,7 +198,7 @@ const formFields: FormField[] = [
   },
   {
     label: 'Contraseña',
-    name: 'contraseña',
+    name: 'password',
     icon: <PasswordOutlinedIcon/>,
     type: 'password',
     placeholder: 'Contraseña',
@@ -211,7 +212,7 @@ const formFields: FormField[] = [
   },
   {
     label: 'Confirmar Contraseña',
-    name: 'confirmarContraseña',
+    name: 'password_confirm',
     icon: <PasswordOutlinedIcon/>,
     type: 'password',
     placeholder: 'Confirmar contraseña',
@@ -245,13 +246,13 @@ const formFields: FormField[] = [
   },
 ];
 type User={
-  'empresa' : string,
+  'company' : string,
   'nit': string,
-  'ciudad': string,
-  'departamento': string,
-  'correo': string,
-  'contraseña': string,
-  'confirmarContraseña': string,
+  'city': string,
+  'department': string,
+  'email': string,
+  'password': string,
+  'password_confirm': string,
   'role': string,
   'tos': boolean,
 }
@@ -262,13 +263,22 @@ export default function Home() {
 
   const { register, handleSubmit, control, formState: { errors  } } = methods
 
-  // const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
-  //   'const' { name, value } = e.currentTarget
-  //   setUser({ ...user, [name]: value })
-  // }
-  // const onSubmit: SubmitHandler<User> = async (data: User) => {
     const onSubmit = async (data: User) => {
+      console.log(`data: ${JSON.stringify(data)}`)
       alert(JSON.stringify(data));
+      try{
+        const response = await axios.post('http://127.0.0.1:8000/auth/register', JSON.stringify(data), {
+        headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      withCredentials: true
+    })
+    const user: User = response.data;
+    console.log(user)
+      }catch(error){
+      console.error('Error al crear el usuario:', error);
+      }
       
     }
 
@@ -298,20 +308,7 @@ const svgString = iconToSvg(<SmartToyOutlinedIcon />);
            <HealingIcon/>
            </div>
            <div className='flex justify-center items-center'>
-            {/* 
-            <Image
-      src={svgString}
-      width={120}
-      height={120}
-      alt="Smart Toy Outlined Icon"
-    />
-            <Image
-      src={svgString}
-      width={120}
-      height={120}
-      alt="Smart Toy Outlined Icon"
-    />
-     */}
+         
            
            </div>
            {/* <div className='flex justify-center items-center'>

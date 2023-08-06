@@ -19,31 +19,31 @@ const HdvIV:React.FC<stepSecondToLast> = ({onChange}) => {
   // #747a80, #00619E,  #C29A95, #E0C4A0, #3B2F3C 
   const formFields: FormFieldIVConfig[] = [
   {
-    label: 'Tensión',
+    label: 'Tensión (V)',
     name: 'tension',
     type: 'text',
     validation: 'Este campo es obligatorio',
   },
   {
-    label: 'Corriente',
+    label: 'Corriente (A)',
     name: 'corriente',
     type: 'text',
     validation: 'Este campo es obligatorio',
   },
   {
-    label: 'Peso',
+    label: 'Peso (kg)',
     name: 'peso',
     type: 'text',
     validation: 'Este campo es obligatorio',
   },
   {
-    label: 'Potencia',
+    label: 'Potencia (W)',
     name: 'potencia',
     type: 'text',
     validation: 'Este campo es obligatorio',
   },
   {
-    label: 'Frecuencia',
+    label: 'Frecuencia (Hz)',
     name: 'frecuencia',
     type: 'text',
     validation: 'Este campo es obligatorio',
@@ -75,14 +75,18 @@ const HdvIV:React.FC<stepSecondToLast> = ({onChange}) => {
 ];
 
 return (
-  <div className='h-full border-4 xl:flex'>
-    <h2 className='text-[#3B2F3C] bg-[#E0C4A0] font-semibold  px-4 text-xl text-center py-4'>IV.REGISTRO TECNICO DE INSTALACION</h2>
+<div className='border-4 rounded'>
+  <div className='h-full border-b-4 xl:flex'>
+    <div className='flex flex-row bg-[#E0C4A0] '>
+
+    <h2 className='w-44 text-[#FAFAFA] font-semibold  px-4 text-xl text-center py-4'>IV.REGISTRO TECNICO DE INSTALACION</h2>
+    </div>
     <div className='grid grid-cols-3 gap-2 p-4 '>
 
       {/* Render your form fields inside the grid */}
       {formFields.map((field) => (
-        <div key={field.name} className='border-2 h-auto font-semibold tracking-widest text-center text-xs p-4'>
-            {field.label}
+        <div key={field.name} className=' h-auto font-semibold tracking-widest text-center text-xs p-4'>
+            {/* {field.label} */}
    <label className={`text-md font-bold tracking-wide text-center bottom-0 flex flex-col w-full  text-slate-600 mx-auto ${errors[field.name] && 'text-red-500'}`}>
             {field.label}
             <input
@@ -104,11 +108,12 @@ return (
       ))}
 
     </div>
-    <div className='flex xl:flex-col xl:items-center bg-[#fafafa] justify-center'>
+  </div>
+    <div className='flex xl:flex-row xl:justify-end bg-[#fafafa] justify-center'>
       <HdvButton title= 'Anterior' />
       <HdvButton title='Siguiente' />
     </div>
-  </div>
+    </div>
 );
 }
 

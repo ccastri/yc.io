@@ -34,7 +34,7 @@ export const hdvElementList = [
 
 const FormParent = () => {
     const { register, control, handleSubmit, formState: { errors  } } = useFormContext<AllFormData>();
-    const { selectedOptions, setSelectedOptions, elementsRefs, scrollToForm, setFormStep } = useFormCurrentStep()
+    const { selectedOptions, selectedDate, elementsRefs } = useFormCurrentStep()
     const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
       const { name, value } = e.currentTarget
       // setUser({ ...user, [name]: value })
@@ -42,15 +42,18 @@ const FormParent = () => {
     const [hdvData, setHdvData] = useState({})
 
     const onSubmit = async (data: AllFormData) => {
-      console.log(data)
-      console.log(selectedOptions)
+      console.log(JSON.stringify(data))
+      console.log(JSON.stringify(selectedDate))
+      console.log(JSON.stringify(selectedOptions))
       // console.log(data)
         setHdvData((prevVal)=>({
           ...prevVal,
           ...selectedOptions,
+          // ...selectedDate,
           ...data
         }))
-        alert(JSON.stringify(hdvData));
+        alert(hdvData);
+        console.log(hdvData);
         
     }
     
@@ -59,7 +62,7 @@ const FormParent = () => {
   return (
     <>
          <form onSubmit={handleSubmit(onSubmit)}>
-          <div ref={mainContainerRef} className=' relative z-30 mt-16 flex flex-col items-center space-y-6 p-12 '>
+          <div ref={mainContainerRef} className=' relative z-30 flex flex-col items-center space-y-6 py-4 '>
             {hdvElementList.map((field, index) => {
               const Component = field.component;
               return (

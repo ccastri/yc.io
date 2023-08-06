@@ -40,7 +40,7 @@ console.log(errors)
             className=' w-full  '
             >
       <div className="flex flex-col items-center  px-12 py-4 border space-y-8">
-      <div className="col-span-2 grid grid-cols-2 bottom-0 gap-8"> {/* Wrap the form fields in a container with two columns */}
+      <div className="col-span-2 grid grid-cols-2 xl:grid-cols-3 bottom-0 gap-8"> {/* Wrap the form fields in a container with two columns */}
       {formFields.map((field, index) => (
         <div key={index} className='h-full bottom-0 border- '>
           <label className={`text-md font-bold tracking-wide text-center bottom-0 flex flex-col w-full  text-slate-600 mx-auto ${errors[field.name] && 'text-red-500'}`}>

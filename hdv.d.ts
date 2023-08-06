@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 export interface UbicacionGeograficaData {
   departamento: string;
   municipio: string;
@@ -19,20 +21,13 @@ export interface InformacionGeneralData {
   // Add other fields relevant to this subset
 }
 export interface RegistroHistorico {
-  equipo: string;
-  formaAdquisicion: "1. Compra" | "2. Donación" | "3. Incautación";
-  marca: string;
-  documento: string;
-  modelo: string;
-  añoFabricacion: string;
-  fechaCompra: string;
-  fechaInstalacion: string;
-  inicioOperacion: string;
-  vencimientoGarantia: string;
-  registroSanitario: string;
-  ubicacion: string;
-  proveedor: string;
-  fabricante: string;
+  formaAdquisicion: "1. Compra" | "2. Donación" | "3. Incautación" | null;
+  yearOfFabrication: string | Dayjs | null;
+  boughtDate: string | Dayjs | null;
+  installationDate: string | Dayjs | null;
+  startingOppDate: string | Dayjs | null;
+  warrantyEnd: string | Dayjs | null;
+  fabricante: string | null;
 }
 export interface RegistroTecnicoInstalacion {
   tension: string;

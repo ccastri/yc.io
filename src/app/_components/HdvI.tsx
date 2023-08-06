@@ -36,11 +36,12 @@ const HdvI:React.FC<HdvIProps> = ({onChange}) => {
   };
 
   return (
-    <div className='w-full xl:flex flex-col transition-all duration-150 h-full mb-20 bg-[#FFF] border-4'>
+    <div className= 'mb-20 border-4 rounded-md'>
+    <div className='w-full xl:flex  transition-all duration-150 h-full  bg-[#FFF] border-b-4'>
       <div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
         <h2 className='w-full text-[#FAFAFA] font-semibold tracking-wider'>I. UBICACION GEOGRÁFICA</h2>
       </div>
-      <form action='' className='grid grid-cols-10 w-full border-2 rounded-md pb-8 h-auto'>
+      <div  className='grid grid-cols-10 w-full border-2 rounded-md pb-8 h-auto'>
         <div className='flex flex-col col-span-5 space-y-4 py-2  px-6 '>
           {formFields.map((field) => (
              <label key={field.name} className={`text-md font-bold tracking-wide  bottom-0 flex flex-col w-full  text-slate-600 mx-auto ${errors[field.name] && 'text-red-500'}`}>
@@ -68,15 +69,16 @@ const HdvI:React.FC<HdvIProps> = ({onChange}) => {
             </div>
           ))}
         </div>
-        <div className='col-span-5' />
-      </form>
-      <div className='w-full bg-gradient-to-r from-[#badaed] to-[rgb(5,137,75)] '>
-<div className='w-[60%] ml-20'>
-
-        <HdvButton />
-</div>
+        {/* <div className='col-span-5' /> */}
       </div>
     </div>
+      <div className='w-full justify-end flex flex-row bg-[#fafafa]'>
+
+
+        <HdvButton />
+
+      </div>
+      </div>
   )
 }
 // #747a80, #00619E,  #C29A95, #E0C4A0, #3B2F3C 

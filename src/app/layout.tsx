@@ -5,7 +5,7 @@ import { Inter, Rajdhani } from 'next/font/google'
 import Navbar from './_components/Navbar'
 import Footer from './_components/Footer'
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { CurrentStepProvider } from './context/useFormStepContext'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -32,7 +32,7 @@ export default function RootLayout({
         <Navbar/>
         <main className='flex-grow'>
           <CurrentStepProvider>
-            <LocalizationProvider dateAdapter={AdapterMoment}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
               {children}
             </LocalizationProvider>
           </CurrentStepProvider>

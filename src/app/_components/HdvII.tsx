@@ -42,17 +42,14 @@ console.log(errors)
   ];
 
   return (
-    <div className='border-4 bg-[#fafafa rounded'>
-    <div className='w-full flex flex-col h-[30%] bg-[#FFF]  rounded-md mb-6 '>
-    <div className='w-full xl:flex transition-all duration-150 h-full overflow-y-auto  bg-[#FFF]'>
-      <div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
-      <h2 className ="w-full text-[#FAFAFA] font-semibold tracking-wider "> I. UBICACION GEOGRÁFICA</h2>
+    <div className='mb-20  border-4 bg-[#fafafa rounded'>
+    <div className='w-full xl:flex transition-all duration-150 h-full overflow-y-auto border-b-4 bg-[#FFF]'>
+      <div className='px-4 py-2 rounded-t-md   bg-blue-400'>
+      <h2 className ="w-full text-[#FAFAFA] font-semibold tracking-wider "> II. INFORMACIÓN GENERAL</h2>
       </div>
-            <form action=""
-            className=' w-full  '
-            >
-      <div className="flex flex-col items-center  px-12 py-4  space-y-8">
-      <div className="col-span-2 grid grid-cols-2 bottom-0 gap-8"> {/* Wrap the form fields in a container with two columns */}
+            
+      <div className="  items-center  px-24 xl:px-8 w-full pt-12 space-y-8">
+      <div className="grid grid-cols-2 xl:grid-cols-3 bottom-0 gap-12"> {/* Wrap the form fields in a container with two columns */}
       {formFields.map((field, index) => (
         <div key={index} className='h-full bottom-0 border- '>
           <label className={`text-md font-bold tracking-wide text-center bottom-0 flex flex-col w-full  text-slate-600 mx-auto ${errors[field.name] && 'text-red-500'}`}>
@@ -75,32 +72,19 @@ console.log(errors)
         </div>
       ))}
     </div>
-      </div>
-
-        {/* <div className='col-span-10 '>
-        <div className='col-span-2'/> */}
-
-      </form>
+            <div className="flex justify-center py-6 xl:justify-end  bg-[#fafafa] flex-row">
+            <HdvButton title='Anterior '
+               />      
+            <HdvButton title='Siguiente'
+            />      
+          </div>
+      </div>   
         </div>
 
             
 
     </div>
-            <div className="flex justify-end  flex-row">
-            {/* <div className="  w-auto mx-4 "> */}
-              {/* fALTA ANIMAR QUE EL CURRENT SE ACTUALICE CON EL SCROLL Y LO QUE
-              USE OBSERVER VEA EN PANTALLA */}
-            <HdvButton title='Anterior '
-              //  currentStep={currentStep} prevStep={prevStep}
-               />      
-          {/* </div> */}
-          {/* <div className=" w-auto mx-4 "> */}
-            <HdvButton title='Siguiente'
-              // currentStep={currentStep} nextStep={nextStep}
-            />      
-          {/* </div> */}
-          </div>
-          </div>
+          
   )
 }
 
