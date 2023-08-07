@@ -5,7 +5,7 @@ import { useFormContext } from 'react-hook-form';
 import { FileUploader } from './DragAndDrop';
 import HdvButton from './HdvButton';
 import { UbicacionGeograficaData } from '../../../hdv';
-
+import LocationCityOutlinedIcon from '@mui/icons-material/LocationCityOutlined';
 interface HdvIProps {
   onChange?:(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>)=>void;
   onSubmit?: ()=>void;
@@ -37,9 +37,10 @@ const HdvI:React.FC<HdvIProps> = ({onChange}) => {
 
   return (
     <div className= 'mb-20 border-4 rounded-md'>
-    <div className='w-full xl:flex  transition-all duration-150 h-full  bg-[#FFF] border-b-4'>
-      <div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
-        <h2 className='w-full text-[#FAFAFA] font-semibold tracking-wider'>I. UBICACION GEOGRÁFICA</h2>
+    <div className='w-full xl:flex   transition-all duration-150 h-full  bg-[#FFF] border-b-4'>
+      <div className='p-6 space-x-6 xl:space-y-6 items-center rounded-t-md flex  flex-row xl:flex-col bg-[#3B2F3C]'>
+        <span className='p-4 h-28 w-28 bg-[#C29A95]  rounded-full border-slate-600 border-5 text-[#fafafa'><LocationCityOutlinedIcon style={{ color: '#FFFFFF', justifyContent:'center', textAlign:'center'}} sx= {{fontSize:'80px'}}/></span>
+        <h2 className='w-full h-auto text-3xl pl-6 flex-row text-[#FAFAFA] font-semibold mt-2 tracking-wider'>I. UBICACION GEOGRÁFICA </h2>
       </div>
       <div  className='grid grid-cols-10 w-full border-2 rounded-md pb-8 h-auto'>
         <div className='flex flex-col col-span-5 space-y-4 py-2  px-6 '>
@@ -61,13 +62,20 @@ const HdvI:React.FC<HdvIProps> = ({onChange}) => {
         <div className='col-span-5 h-full p-4 space-y-2  '>
           <FileUploader onUpload={handleUpload} />
           {selectedFiles.map((file) => (
-            <div key={file.name} className='border-2'>
-              <Image className='h-auto w-full' src={URL.createObjectURL(file)} alt={file.name} width={100} height={30} />
+            <div key={file.name} className='border-2 w-full '>
+              <Image 
+              // onClick={()=>handleUpload}
+              className='w-64 h-44 ' src={URL.createObjectURL(file)} alt={file.name} width={256} height={256} />
               <ul className='flex flex-col text-xs my-auto text-center h-full rounded-xl flex-wrap'>
                 {file.name}-{file.size / 1000}kb{' '}
               </ul>
             </div>
           ))}
+          {errors['deviceImg'] && (
+           <span className="text-red-500 font-semibold text-center text-sm">
+             {errors['deviceImg']?.message}
+           </span>
+         )}
         </div>
         {/* <div className='col-span-5' /> */}
       </div>

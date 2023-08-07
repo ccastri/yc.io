@@ -1,6 +1,6 @@
 'use client'
 import axios from 'axios';
-
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 const MyComponent = () => {
   
 
@@ -37,7 +37,7 @@ const handleDownload = async () => {
   return (
     <div className='mt-16 p-4 bg-blue-600'>
       {/* Tu formulario aquí */}
-      <span onClick={handleDownload}>Descargar Excel</span>
+      <span onClick={handleDownload}>Descargar Excel <CloudUploadIcon sx={{fontSize:'150px'}} className='text-white  items-center rounded-full border-gray-400'/></span>
     </div>
   );
 };

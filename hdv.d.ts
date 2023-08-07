@@ -7,6 +7,7 @@ export interface UbicacionGeograficaData {
   correo: string;
   direccion: string;
   telefono: string;
+  deviceImg: string;
 }
 
 export interface InformacionGeneralData {
@@ -61,10 +62,10 @@ export interface ClasificacionBiomedica {
   analisisLaboratorio: string;
 }
 export interface ClasificacionNivelRiesgo {
-  claseI: boolean;
-  claseIA: boolean;
-  claseIIB: boolean;
-  claseIII: boolean;
+  CLASEI: boolean;
+  CLASEIIA: boolean;
+  CLASEIIB: boolean;
+  CLASEIII: boolean;
 }
 export interface PeriodicidadMantenimiento {
   cadaTresMeses: boolean;

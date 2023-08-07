@@ -245,6 +245,26 @@ const formFields: FormField[] = [
     },
   },
 ];
+const iconList = [
+  { icon: LocationOnIcon, sx: { fontSize: '50px' } },
+  { icon: HealingIcon, sx: { fontSize: '50px' } },
+  { icon: MonitorHeartIcon, sx: { fontSize: '50px' } },
+  { icon: MedicalInformationIcon, sx: { fontSize: '50px' } },
+  { icon: BuildIcon, sx: { fontSize: '40px' } },
+  { icon: HandymanIcon, sx: { fontSize: '60px' } },
+  { icon: EngineeringIcon, sx: { fontSize: '100px' } },
+  { icon: PrecisionManufacturingOutlinedIcon, sx: { fontSize: '50px' } },
+  { icon: LocalConvenienceStoreOutlinedIcon, sx: { fontSize: '60px' } },
+  { icon: HomeRepairServiceOutlinedIcon, sx: { fontSize: '50px' } },
+  { icon: MedicalServicesOutlinedIcon, sx: { fontSize: '50px' } },
+  { icon: TireRepairOutlinedIcon, sx: { fontSize: '50px' } },
+  { icon: Groups2OutlinedIcon, sx: { fontSize: '50px' } },
+  { icon: ManageAccountsOutlinedIcon, sx: { fontSize: '50px' } },
+  { icon: SettingsSuggestOutlinedIcon, sx: { fontSize: '50px' } },
+  { icon: PrivacyTipOutlinedIcon, sx: { fontSize: '50px' } },
+  { icon: ManageHistoryOutlinedIcon, sx: { fontSize: '80px' } },
+];
+
 type User={
   'company' : string,
   'nit': string,
@@ -289,88 +309,29 @@ export default function Home() {
 const svgString = iconToSvg(<SmartToyOutlinedIcon />);
 
     return (
-      // xl:flex clase del primer div
+     
 
       // #747a80, #00619E,  #C29A95, #E0C4A0, #3B2F3C  #0D202F
       <>
 <div className="relative mt-16 w-100  h-screen bg-[#fafafa]   xl:flex-col transition-all duration-200 scrollbar-track-transparent overflow-y-scroll scrollbar-thin scrollbar-thumb-[#747a80] scrollbar-thumb-rounded-md">
-{/* <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#123CD0" fill-opacity="1" d="M0,64L13.3,69.3C26.7,75,53,85,80,112C106.7,139,133,181,160,197.3C186.7,213,213,203,240,192C266.7,181,293,171,320,154.7C346.7,139,373,117,400,128C426.7,139,453,181,480,208C506.7,235,533,245,560,256C586.7,267,613,277,640,250.7C666.7,224,693,160,720,154.7C746.7,149,773,203,800,224C826.7,245,853,235,880,202.7C906.7,171,933,117,960,106.7C986.7,96,1013,128,1040,160C1066.7,192,1093,224,1120,202.7C1146.7,181,1173,107,1200,101.3C1226.7,96,1253,160,1280,208C1306.7,256,1333,288,1360,266.7C1386.7,245,1413,171,1427,133.3L1440,96L1440,0L1426.7,0C1413.3,0,1387,0,1360,0C1333.3,0,1307,0,1280,0C1253.3,0,1227,0,1200,0C1173.3,0,1147,0,1120,0C1093.3,0,1067,0,1040,0C1013.3,0,987,0,960,0C933.3,0,907,0,880,0C853.3,0,827,0,800,0C773.3,0,747,0,720,0C693.3,0,667,0,640,0C613.3,0,587,0,560,0C533.3,0,507,0,480,0C453.3,0,427,0,400,0C373.3,0,347,0,320,0C293.3,0,267,0,240,0C213.3,0,187,0,160,0C133.3,0,107,0,80,0C53.3,0,27,0,13,0L0,0Z"></path></svg></div> */}
+
   <div className=" w-full absolute h-screen  bg-[#fafafa] opacity- flex items-center transition-all duration-200 transform -skew-y-12 mb-32 z-40 overflow-y-hidden "  >
     <div className= ' bg-gradient-to-b rounded-t-md from-[#6A6257] to-[#E0C4A0] ml-6 w-[30%] h-full'>
-
     <h1 className= '  px-4 bg-[#E0C4A0] p-6 mt-20  my-auto text-xl text-center font-bold text-slate-100 '>¡Bienvenido abordo!</h1>
     </div>
     <div className= "grid grid-cols-4 my-0 text-[#fafafa]  py-16  items-center ml-6 border rounded  w-[70%] h-full bg-gradient-to-b from-[#123CD0] to-[#E0C4A0]">
-      <div className='flex justify-center  items-center'>
-           <LocationOnIcon/>
-           </div>
-           <div className='flex justify-center items-center '>
-           <HealingIcon/>
-           </div>
-           <div className='flex justify-center items-center'>
-         
-           
-           </div>
-           {/* <div className='flex justify-center items-center'>
-           <MonitorHeartIcon/>
-           </div >
-           <div className='flex justify-center items-center'>
-           <MedicalInformationIcon/>
-           </div> */}
-{/*
-           <div className='flex justify-center items-center'>
-      <BuildIcon/>
-      </div>
-      <div className='flex justify-center items-center'>
-      <HandymanIcon/>
-      </div>
-      <div className='flex justify-center items-center'>
-      <EngineeringIcon/>
-      </div>
-      <div className='flex justify-center items-center'>
-      <LocationCitySharpIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<PrecisionManufacturingOutlinedIcon />
-</div>
-<div className='flex justify-center items-center'>
-<LocalConvenienceStoreOutlinedIcon/>
-</div>
-<div className='flex justify-center items-center'>
-  
-<HomeRepairServiceOutlinedIcon />
-</div>
-<div className='flex justify-center items-center'>
-<MedicalServicesOutlinedIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<TireRepairOutlinedIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<Groups2OutlinedIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<BuildOutlinedIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<ManageAccountsOutlinedIcon/>
-</div>
-<div className='flex  justify-center items-center'>
-<SettingsSuggestOutlinedIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<PrivacyTipOutlinedIcon/>
-</div>
-<div className='flex justify-center items-center'>
-<ManageHistoryOutlinedIcon/>
-</div> 
-*/}
+      {iconList.map((item, index) => (
+        <div key={index} className="flex justify-center items-center">
+          < item.icon  sx={item.sx}/>
+        </div>
+      ))}
+
 
 </div>
 
     <div className=' absolute flex z-10 h-full w-full px-12  transform skew-y-12 my-auto overflow-auto  scrollbar-track-transparent overflow-y-scroll scrollbar-thin scrollbar-thumb-[#747a80] scrollbar-thumb-rounded-md'>
 
-      <div className='shadow-2xl mt-14 flex flex-col w-8/12 xs:w-full overflow-y-auto space-y-4 my-auto py-16  items-center opacity-100 bg-[#FFFF] shadow-slate-900  transition-all duration-300 transform '>
+      <div className='shadow-2xl mt-14 flex  hover:opacity-100 flex-col w-full xs:w-full overflow-y-auto space-y-4 my-auto py-16  items-center opacity-20 bg-[#FFFF] shadow-slate-900  transition-all duration-300 transform '>
         
         <p className= 'text-[#fafafa] font-bold text-2xl text-center w-full py-6 tracking-wider bg-[#E0C4A0] '>Inicio de sesion <span> <LoginOutlinedIcon/></span></p>
   <form
@@ -432,18 +393,7 @@ const svgString = iconToSvg(<SmartToyOutlinedIcon />);
           </form>
       </div>
     </div>
-
-    {/* <div className=" h-screen  bg-slate-700 pt-36 clip-triangle -rotate-180   w-full"   /> */}
     </div>
-    {/* <div className='absolute  right-0 h-screen  border-black bg-[#0D202F] hidden xl:flex w-[50%]'>
-      <h1>Here Immmmm</h1>
-    </div> */}
-    {/* <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#123CD0" fill-opacity="1" d="M0,64L13.3,69.3C26.7,75,53,85,80,112C106.7,139,133,181,160,197.3C186.7,213,213,203,240,192C266.7,181,293,171,320,154.7C346.7,139,373,117,400,128C426.7,139,453,181,480,208C506.7,235,533,245,560,256C586.7,267,613,277,640,250.7C666.7,224,693,160,720,154.7C746.7,149,773,203,800,224C826.7,245,853,235,880,202.7C906.7,171,933,117,960,106.7C986.7,96,1013,128,1040,160C1066.7,192,1093,224,1120,202.7C1146.7,181,1173,107,1200,101.3C1226.7,96,1253,160,1280,208C1306.7,256,1333,288,1360,266.7C1386.7,245,1413,171,1427,133.3L1440,96L1440,320L1426.7,320C1413.3,320,1387,320,1360,320C1333.3,320,1307,320,1280,320C1253.3,320,1227,320,1200,320C1173.3,320,1147,320,1120,320C1093.3,320,1067,320,1040,320C1013.3,320,987,320,960,320C933.3,320,907,320,880,320C853.3,320,827,320,800,320C773.3,320,747,320,720,320C693.3,320,667,320,640,320C613.3,320,587,320,560,320C533.3,320,507,320,480,320C453.3,320,427,320,400,320C373.3,320,347,320,320,320C293.3,320,267,320,240,320C213.3,320,187,320,160,320C133.3,320,107,320,80,320C53.3,320,27,320,13,320L0,320Z"></path></svg></div> */}
-
-    {/* <div className='w-full  fixed h-auto bottom-0  opacity-60 z-50'>
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0f34bb" fillOpacity="1" d="M0,128L80,144C160,160,320,192,480,186.7C640,181,800,139,960,117.3C1120,96,1280,96,1360,96L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
-        </div> */}
 </div>
         </>
   )

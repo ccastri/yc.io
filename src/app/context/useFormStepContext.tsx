@@ -64,6 +64,11 @@ const [selectedOptions, setSelectedOptions] = useState<DocumentosSoportes>({
     recomendacionesLimpiezaDesinfeccion: null,
     registroCapacitacion: null,
   });
+const [classOptions, setClassOptions] = useState<string[]>([
+    'clase I',
+    'clase II',
+    'clase III'
+]);
 
     const contextValue: IFormStepsType = {
         prevFormStep,
