@@ -75,7 +75,7 @@ const HdvIII:React.FC<stepSecondToLast> = ({onChange}) => {
               defaultValue={dayjs().toDate().toISOString()}
             format= 'YYYY-MM-DD'
             value={selectedDate[field.name]}
-            onChange={(newValue: any) => setSelectedDate((prev) => ({ ...prev,   [field.name]: newValue ? newValue.toDate().toISOString() : null,
+            onChange={(newValue: any) => setSelectedDate((prev) => ({ ...prev,   [field.name]: newValue ,
     }))}
           />
   {/* Nu funciona el error porque el campo siempre tiene un valor */}

@@ -43,30 +43,27 @@ const FormParent = () => {
       // setUser({ ...user, [name]: value })
     }
     const [hdvData, setHdvData] = useState({})
-
-    const onSubmit = async (data: AllFormData) => {
+    
+    const onSubmit = async (data: AllFormData, ) => {
       try{
         
-        // console.log(JSON.stringify(data))
-        const imgBlobUrl = URL.createObjectURL(files[0]);
-        const img = imgBlobUrl.replace(/^blob:/, '')
-      // console.log(JSON.stringify(img))
-      // console.log(JSON.stringify(selectedOptions))
-      // console.log(data)
-        const registroHistoricoData = data as RegistroHistorico;
-
-    // const formattedData = {
-    //   yearOfFabricationF: dayjs(registroHistoricoData?.yearOfFabrication, 'MM/DD/YYYY').format('YYYY-MM-DDTHH:mm:ss'),
-    //   boughtDate: dayjs(registroHistoricoData?.boughtDate, 'MM/DD/YYYY').format('YYYY-MM-DD'),
-    //   installationDate: dayjs(registroHistoricoData?.installationDate, 'MM/DD/YYYY').format('YYYY-MM-DD'),
-    //   warrantyEnd: dayjs(registroHistoricoData?.warrantyEnd, 'MM/DD/YYYY').format('YYYY-MM-DD'),
-    // };
+        
+        // const imgBlobUrl = URL.createObjectURL(files[0]);
+        // const img = imgBlobUrl.replace(/^blob:/, '')
+        // console.log(JSON.stringify(selectedOptions))
+        // console.log(data)
+        console.log(files[0])
+       
+        const formData = new FormData();
+        formData.append("image", files[0]);
+        console.log(JSON.stringify(formData))
+  
         setHdvData((prevVal)=>({
           ...prevVal,
           ...selectedOptions,
           // ...files,
           // formattedData,
-          img,
+           img: URL.createObjectURL(files[0]),
           ...data
         }))
         // alert(JSON.stringify(hdvData));
