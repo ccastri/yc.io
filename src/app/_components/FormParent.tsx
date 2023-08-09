@@ -68,7 +68,7 @@ const FormParent = () => {
         }))
         // alert(JSON.stringify(hdvData));
         console.log(JSON.stringify(hdvData));
-        const response = await axios.post('http://127.0.0.1:8000/hdv/fill_excel', hdvData, {
+        const response = await axios.post('http://127.0.0.1:8000/api/hdv/fill_excel', hdvData, {
         responseType: 'blob', // Indicar que se espera una respuesta binaria (archivo)
       });
 
