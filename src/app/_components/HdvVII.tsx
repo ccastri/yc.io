@@ -5,19 +5,11 @@ import { stepSecondToLast } from './HdvII';
 import { ClasificacionNivelRiesgo } from '../../../hdv';
 import { FieldError } from 'react-hook-form';
 
-type Option = {
-  value: keyof ClasificacionNivelRiesgo;
-  label: string;
-};
+
 
 const HdvVII: React.FC<stepSecondToLast> = ({ onChange }) => {
-  const options: Option[] = [
-    { value: 'CLASEI', label: 'CLASE I' },
-    { value: 'CLASEIIA', label: 'CLASE IIA' },
-    { value: 'CLASEIIB', label: 'CLASE IIB' },
-    { value: 'CLASEIII', label: 'CLASE III' },
-  ];
-  const { register, formState: { errors } } = useFormContext();
+  
+  const { register, formState: { errors } } = useFormContext<ClasificacionNivelRiesgo>();
 
   return (
     <div className='xl:flex flex-row py-6'>
@@ -33,15 +25,16 @@ const HdvVII: React.FC<stepSecondToLast> = ({ onChange }) => {
                   {...register('clasificacion', { required: 'Este campo es requerido.' })}
                 >
                   <option value=''>Seleccione</option>
-                  {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
+                  <option value='CLASE I'>CLASEI</option>
+                  <option value='CLASE IIA'>CLASEIIA</option>
+                  <option value='CLASE IIB'>CLASE IIB</option>
+                  <option value='CLASE III'>CLASE III</option>
+                  {/* <option value=''>Seleccione</option> */}
+                  
                 </select>
-                 {errors.clasificacion && typeof errors.clasificacion === 'string' && (
+                 {errors.clasificacion &&(
                   <span className="text-red-500 font-semibold text-center text-sm">
-                    {errors.clasificacion.message}
+                    {errors?.clasificacion.message}
                   </span>
                 )}
               </label>

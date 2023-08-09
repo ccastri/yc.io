@@ -18,6 +18,7 @@ type IDateConfig ={
 const HdvIII:React.FC<stepSecondToLast> = ({onChange}) => {
    // console.log(currentStep)
    const {selectedDate, setSelectedDate} = useFormCurrentStep()
+   console.log(typeof (selectedDate.yearOfFabrication))
     const { register, control, handleSubmit, formState: { errors } } = useFormContext<RegistroHistorico>();
     console.log(errors)
    const formFields: IDateConfig[] = [
@@ -71,8 +72,11 @@ const HdvIII:React.FC<stepSecondToLast> = ({onChange}) => {
             {...register(field.name, {
                 required: 'Este Campo es requerido',
               })}
+              defaultValue={dayjs().toDate().toISOString()}
+            format= 'YYYY-MM-DD'
             value={selectedDate[field.name]}
-            onChange={(newValue: any) => setSelectedDate((prev) => ({ ...prev, [field.name]: newValue }))}
+            onChange={(newValue: any) => setSelectedDate((prev) => ({ ...prev,   [field.name]: newValue ? newValue.toDate().toISOString() : null,
+    }))}
           />
   {/* Nu funciona el error porque el campo siempre tiene un valor */}
     </div>

@@ -39,6 +39,7 @@ console.log(errors)
     { label: 'ACTIVO FIJO', name: 'activoFijo', type: 'text', validation:'Este campo es obligatorio', },
     { label: 'REGISTRO SANITARIO', name: 'registroSanitario', type: 'text', validation:'Este campo es obligatorio', },
     { label: 'UBICACION', name: 'ubicacion', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'PROVEEDDOR', name: 'proveedor', type: 'text', validation:'Este campo es obligatorio', },
   ];
 
   return (

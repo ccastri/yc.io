@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useCallback, useMemo, useState } from 'react'
 import { useDropzone } from 'react-dropzone';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useFormContext, FieldErrors, RegisterOptions, ValidationRule } from 'react-hook-form';
+import { useFormCurrentStep } from '../context/useFormStepContext';
 // import { RegisterForm, User } from './RegisterForm';
 interface FileUploaderProps {
   onUpload: (files: File[]) => void;
@@ -11,7 +12,7 @@ interface FileUploaderProps {
 
 export const FileUploader = ({ onUpload}:FileUploaderProps) => {
 // console.log(onUpload)
-  const [files, setFiles] = useState<File[]>([]);
+  const {files, setFiles} = useFormCurrentStep()
   const {register, formState:{errors}} = useFormContext()
 
   
@@ -31,10 +32,10 @@ export const FileUploader = ({ onUpload}:FileUploaderProps) => {
       >
         <input
           {...getInputProps()}
-          {...register('deviceImg',{
-            // required:'Imagen es requerida',
-            validate: value => files.length > 0 || 'Seleccione una imagen'
-          })}
+          // {...register('deviceImg',{
+          //   // required:'Imagen es requerida',
+          //   validate: value => files.length > 0 || 'Seleccione una imagen'
+          // })}
           className="h-full border-2 border-red-600"
         />
         <span 

@@ -71,9 +71,9 @@ const HdvI:React.FC<HdvIProps> = ({onChange}) => {
               </ul>
             </div>
           ))}
-          {errors['deviceImg'] && (
+          {selectedFiles.length <1 && (
            <span className="text-red-500 font-semibold text-center text-sm">
-             {errors['deviceImg']?.message}
+             Este campo es obligatorio
            </span>
          )}
         </div>

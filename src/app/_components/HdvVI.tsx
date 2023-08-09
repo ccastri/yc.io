@@ -7,34 +7,32 @@ import { DeepMap, FieldError, FieldErrors, SubmitHandler, UseFormRegister, useFo
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 // import { FormFieldConfig } from '../documentos/hdv/page';
-import { InformacionGeneralData } from '../../../hdv';
+import { ClasificacionBiomedica } from '../../../hdv';
 
 export type FormFieldVIConfig = {
   label: string;
-  name: keyof InformacionGeneralData
+  name: keyof ClasificacionBiomedica
   type: string;
   validation?: string | null;
   // onChange:() => void;
   // You can add more properties like placeholder, required, etc. as needed
 }
-const HdvVI:React.FC<stepSecondToLast> = ({}) => {
-  const { register, handleSubmit, formState: { errors } } = useFormContext<InformacionGeneralData>();
+const HdvVI:React.FC<stepSecondToLast> = () => {
+  const { register, handleSubmit, formState: { errors } } = useFormContext<ClasificacionBiomedica>();
 console.log(errors)
 
   const formFields: FormFieldVIConfig[] = [
-    { label: 'EQUIPO', name: 'equipo', type: 'text', validation:'Este campo es obligatorio', },
-    { label: 'MARCA', name: 'marca', type: 'text', validation:'Este campo es obligatorio', },
-    { label: 'MODELO', name: 'modelo', type: 'text', validation:'Este campo es obligatorio', },
-    { label: 'SERIE N°', name: 'serie', type: 'text', validation:'Este campo es obligatorio', },
-    { label: 'ACTIVO FIJO', name: 'activoFijo', type: 'text', validation:'Este campo es obligatorio', },
-    { label: 'REGISTRO SANITARIO', name: 'registroSanitario', type: 'text', validation:'Este campo es obligatorio', },
-    { label: 'UBICACION', name: 'ubicacion', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'DIAGNOSTICO', name: 'diagnostico', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'REHABILITACION', name: 'rehabilitacion', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'PREVENCION', name: 'prevencion', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'TRATAMIENTO|MNTO DE VIDA', name: 'tratamientoVida', type: 'text', validation:'Este campo es obligatorio', },
+    { label: 'ANALISIS DE LABORATORIO', name: 'analisisLaboratorio', type: 'text', validation:'Este campo es obligatorio', },
   ];
 
   return (
     <div className='w-full flex flex-col h-[30%] bg-[#FFF] border-4 rounded-md mb-6'>
     <div className='w-full xl:flex transition-all duration-150 h-full overflow-y-auto  bg-[#FFF]'><div className='px-4 py-2 rounded-t-md flex flex-row bg-[#3B2F3C]'>
-      <h2 className ="w-full text-[#FAFAFA] font-semibold tracking-wider "> I. UBICACION GEOGRÁFICA</h2>
+      <h2 className ="w-full text-[#FAFAFA] font-semibold tracking-wider "> VI. CLASIFICACION BIOMEDICA</h2>
       </div>
             <form action=""
             className=' w-full  '

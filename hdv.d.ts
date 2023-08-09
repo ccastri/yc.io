@@ -23,11 +23,11 @@ export interface InformacionGeneralData {
 }
 export interface RegistroHistorico {
   AdquisitionWay: "1. Compra" | "2. Donación" | "3. Incautación" | null;
-  yearOfFabrication: string | Dayjs | null;
-  boughtDate: string | Dayjs | null;
-  installationDate: string | Dayjs | null;
-  startingOppDate: string | Dayjs | null;
-  warrantyEnd: string | Dayjs | null;
+  yearOfFabrication: string | Date | dayjs | null;
+  boughtDate: string | Date | dayjs | null;
+  installationDate: string | dayjs | Date | null;
+  startingOppDate: string | dayjs | Date | null;
+  warrantyEnd: string | Date | dayjs | null;
   fabricante: string | null;
 }
 export interface RegistroTecnicoInstalacion {
@@ -54,7 +54,6 @@ export interface RegistroTecnicoFuncionamiento {
   analisisLaboratorio: string;
 }
 export interface ClasificacionBiomedica {
-  rangoVoltaje: string;
   diagnostico: string;
   rehabilitacion: string;
   prevencion: string;
@@ -62,18 +61,13 @@ export interface ClasificacionBiomedica {
   analisisLaboratorio: string;
 }
 export interface ClasificacionNivelRiesgo {
-  CLASEI: boolean;
-  CLASEIIA: boolean;
-  CLASEIIB: boolean;
-  CLASEIII: boolean;
+  clasificacion: string;
 }
 export interface PeriodicidadMantenimiento {
-  cadaTresMeses: boolean;
-  anual: boolean;
+  periodicidad: string;
 }
 export interface RequiereCalibracion {
-  si: boolean;
-  no: boolean;
+  calibracion: string;
 }
 export interface Accesorios {
   accesorio1: string;

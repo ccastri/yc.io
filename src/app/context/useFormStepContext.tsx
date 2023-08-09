@@ -9,6 +9,10 @@ type IFormStepsType = {
   setFormStep: Dispatch<SetStateAction<number>>;
   elementsRefs: MutableRefObject<(HTMLDivElement | null)[]>
   scrollToForm: (index:number)=>void
+  files: File[]
+  setFiles:Dispatch<SetStateAction<File[]>>
+  selectedFiles: File[]
+  setSelectedFiles:Dispatch<SetStateAction<File[]>>
   selectedOptions: DocumentosSoportes,
   setSelectedOptions: Dispatch<SetStateAction<DocumentosSoportes>>
   selectedDate: RegistroHistorico,
@@ -42,6 +46,8 @@ export const CurrentStepProvider:React.FC<{ children: React.ReactNode }> = ({chi
         elementsRefs.current[index]?.scrollIntoView({ behavior: 'smooth' }); // Step 3: Scroll to the form
         }
     };
+    const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+    const [files, setFiles] = useState<File[]>([]);
 const [selectedDate, setSelectedDate] = useState<RegistroHistorico>({
   AdquisitionWay: null,
   yearOfFabrication:  dayjs(),
@@ -77,6 +83,10 @@ const [classOptions, setClassOptions] = useState<string[]>([
         elementsRefs,
         formStep,
         setFormStep,
+        selectedFiles,
+        setSelectedFiles,
+        files,
+        setFiles,
         selectedOptions,
         setSelectedOptions,
         selectedDate,
