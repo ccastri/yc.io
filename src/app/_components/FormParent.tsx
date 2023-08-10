@@ -43,32 +43,38 @@ const FormParent = () => {
       // setUser({ ...user, [name]: value })
     }
     const [hdvData, setHdvData] = useState({})
-    
     const onSubmit = async (data: AllFormData, ) => {
       try{
         
+        
+        const formDataImage = new FormData();
+        formDataImage.append("image", files[0]); // Tomar la primera imagen
+        
+        // Obtener la URL de la imagen cargada
         
         // const imgBlobUrl = URL.createObjectURL(files[0]);
         // const img = imgBlobUrl.replace(/^blob:/, '')
         // console.log(JSON.stringify(selectedOptions))
         // console.log(data)
         console.log(files[0])
-       
+        
         const formData = new FormData();
         formData.append("image", files[0]);
         console.log(JSON.stringify(formData))
-  
+        const responseImage = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/upload_image`, formData);
+        
+        const uploadedImageUrl = responseImage.data.url;
         setHdvData((prevVal)=>({
           ...prevVal,
           ...selectedOptions,
           // ...files,
           // formattedData,
-           img: URL.createObjectURL(files[0]),
+           img: uploadedImageUrl,
           ...data
         }))
         // alert(JSON.stringify(hdvData));
         console.log(JSON.stringify(hdvData));
-        const response = await axios.post('http://127.0.0.1:8000/api/hdv/fill_excel', hdvData, {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/hdv/fill_excel`, hdvData, {
         responseType: 'blob', // Indicar que se espera una respuesta binaria (archivo)
       });
 

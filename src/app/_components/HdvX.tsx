@@ -3,7 +3,7 @@ import { stepSecondToLast } from './HdvII';
 
 const HdvX: React.FC<stepSecondToLast> = ({ onChange }) => {
   const [inputFields, setInputFields] = useState<string[]>(['']); // Initial input fields with an empty string
-
+console.log(inputFields)
   // Function to handle adding a new input field
   const addInputField = () => {
     setInputFields([...inputFields, '']);
