@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { stepSecondToLast } from './HdvII';
+import { useFormCurrentStep } from '../context/useFormStepContext';
 
 const HdvX: React.FC<stepSecondToLast> = ({ onChange }) => {
-  const [inputFields, setInputFields] = useState<string[]>(['']); // Initial input fields with an empty string
+  const {inputFields, setInputFields} = useFormCurrentStep() // Initial input fields with an empty string
 console.log(inputFields)
   // Function to handle adding a new input field
   const addInputField = () => {
-    setInputFields([...inputFields, '']);
+       inputFields.length <= 5 && setInputFields([...inputFields, '']);
   };
 
   // Function to handle changing the input value for a specific field
   const handleInputChange = (index: number, value: string) => {
     const newInputFields = [...inputFields];
     newInputFields[index] = value;
-    setInputFields(newInputFields);
+    setInputFields(newInputFields) ;
   };
 
   // Function to handle removing an input field
@@ -43,7 +44,7 @@ console.log(inputFields)
             </span>
           </div>
         ))}
-        <span onClick={addInputField} className="bg-blue-500 text-white px-4 py-2 mt-2">
+        <span onClick={addInputField} className={`bg-blue-500 text-white px-4 py-2 mt-2 ${inputFields.length > 5 ?'opacity-0':'opacity-100'}`}>
           Add Input Field
         </span>
       </div>

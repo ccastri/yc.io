@@ -21,14 +21,14 @@ import { RegistroHistorico } from '../../../hdv'
 // import React, { useRef } from 'react'
 export const hdvElementList = [
 {name:'Ubicacion Geografica', component:HdvI},
-{name:'Informacion general', component:HdvII},
-{name:'Registro historico', component:HdvIII},
-{name:'Registro tecnico de instalacion', component:HdvIV},
-{name:'Registro tecnico de funcionamiento', component:HdvV},
-{name:'Clasificacion biomedica', component:HdvVI},
-{name:'Clasificacion segun nivel de riesgo', component:HdvVII},
-{name:'Periodicidad de mantenimiento', component:HdvVIII},
-{name:'Requiere Calibracion', component:HdvIX},
+// {name:'Informacion general', component:HdvII},
+// {name:'Registro historico', component:HdvIII},
+// {name:'Registro tecnico de instalacion', component:HdvIV},
+// {name:'Registro tecnico de funcionamiento', component:HdvV},
+// {name:'Clasificacion biomedica', component:HdvVI},
+// {name:'Clasificacion segun nivel de riesgo', component:HdvVII},
+// {name:'Periodicidad de mantenimiento', component:HdvVIII},
+// {name:'Requiere Calibracion', component:HdvIX},
 {name:'Accesorios', component:HdvX},
 {name:'DocumentosSoportes', component:HdvXI},
 // {name:'', component:HdvXII},
@@ -37,43 +37,48 @@ export const hdvElementList = [
 
 const FormParent = () => {
     const { register, control, handleSubmit, formState: { errors  } } = useFormContext<AllFormData>();
-    const { selectedOptions, files, selectedDate, elementsRefs } = useFormCurrentStep()
+    const { selectedOptions, files, selectedDate, inputFields, elementsRefs } = useFormCurrentStep()
     const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
       const { name, value } = e.currentTarget
       // setUser({ ...user, [name]: value })
     }
     const [hdvData, setHdvData] = useState({})
+    // const formData = new FormData();
+    // formData.append("image", files[0]);
     const onSubmit = async (data: AllFormData, ) => {
       try{
         
         
-        const formDataImage = new FormData();
-        formDataImage.append("image", files[0]); // Tomar la primera imagen
-        
+        console.log(files[0])
+        // const add
+        const formData = new FormData();
+        formData.append("img", files[0]); // Tomar la primera imagen
+        console.log(formData)
+        const filteredInputs= inputFields.filter(input=> input !== '')
+        console.log(filteredInputs)
         // Obtener la URL de la imagen cargada
+        
+        // console.log(JSON.stringify(selectedOptions))
+        // console.log(data)
+        // console.log(typeof(files[0].name))
         
         // const imgBlobUrl = URL.createObjectURL(files[0]);
         // const img = imgBlobUrl.replace(/^blob:/, '')
-        // console.log(JSON.stringify(selectedOptions))
-        // console.log(data)
-        console.log(files[0])
         
-        const formData = new FormData();
-        formData.append("image", files[0]);
-        console.log(JSON.stringify(formData))
-        const responseImage = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/upload_image`, formData);
-        
-        const uploadedImageUrl = responseImage.data.url;
+        // console.log(JSON.stringify(formData))
+        // const responseImage = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/middleware/upload_image`, formData);
+        // const uploadedImageUrl = await responseImage.data.url;
         setHdvData((prevVal)=>({
           ...prevVal,
           ...selectedOptions,
-          // ...files,
-          // formattedData,
-           img: uploadedImageUrl,
+          formData: formData,
+          filteredInputs,
+          // img: formData,
+
           ...data
         }))
-        // alert(JSON.stringify(hdvData));
         console.log(JSON.stringify(hdvData));
+        // console.log(JSON.stringify(hdvData));
         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/hdv/fill_excel`, hdvData, {
         responseType: 'blob', // Indicar que se espera una respuesta binaria (archivo)
       });

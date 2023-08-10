@@ -17,6 +17,8 @@ type IFormStepsType = {
   setSelectedOptions: Dispatch<SetStateAction<DocumentosSoportes>>
   selectedDate: RegistroHistorico,
   setSelectedDate: Dispatch<SetStateAction<RegistroHistorico>>
+  inputFields: string[]
+   setInputFields: Dispatch<SetStateAction<string[]>>
 
 }
 
@@ -57,6 +59,7 @@ const [selectedDate, setSelectedDate] = useState<RegistroHistorico>({
   warrantyEnd: dayjs(),
   fabricante: null,
   });
+  const [inputFields, setInputFields] = useState<string[]>(['']);
 const [selectedOptions, setSelectedOptions] = useState<DocumentosSoportes>({
     copiaRegistroSanitario: null,
     copiaRegistroImportacion: null,
@@ -90,7 +93,9 @@ const [classOptions, setClassOptions] = useState<string[]>([
         selectedOptions,
         setSelectedOptions,
         selectedDate,
-        setSelectedDate
+        setSelectedDate,
+        inputFields, 
+        setInputFields,
     
   };
 
