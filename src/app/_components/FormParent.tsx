@@ -18,7 +18,7 @@ import dayjs from 'dayjs'
 import { RegistroHistorico } from '../../../hdv'
 
 const URL = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+  ? `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
   : "http://http://127.0.0.1:8000/api";
 // import React, { useRef } from 'react'
 export const hdvElementList = [
