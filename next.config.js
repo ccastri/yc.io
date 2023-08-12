@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
+const urlObject = new URL(fullURL);
 
+// Extrae la parte base de la URL (protocolo + dominio)
+const baseURL = urlObject.protocol + "//" + urlObject.host;
+
+// console.log(baseURL);
 const nextConfig = {
+
     rewrites: async () => {
         return [
             {
@@ -8,7 +14,7 @@ const nextConfig = {
                 destination:
                     process.env.NODE_ENV === "development"
                         ? "http://127.0.0.1:8000/api/:path*"
-                        : "/api/",
+                        : `${baseURL}/api/`,
             },
         ];
     },

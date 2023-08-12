@@ -48,8 +48,15 @@ const FormParent = () => {
     // formData.append("image", files[0]);
     const onSubmit = async (data: AllFormData, ) => {
       try{
-        const urlCompleta = window.location.href;
-        console.log(urlCompleta)
+var fullURL = window.location.href;
+
+// Crea un objeto URL a partir de la URL completa
+var urlObject = new URL(fullURL);
+
+// Extrae la parte base de la URL (protocolo + dominio)
+var baseURL = urlObject.protocol + "//" + urlObject.host;
+
+console.log(baseURL);
          setLoading(true); 
         // console.log(files[0])
         // const add
