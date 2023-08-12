@@ -18,8 +18,8 @@ import dayjs from 'dayjs'
 import { RegistroHistorico } from '../../../hdv'
 
 const URL = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://http://127.0.0.1:8000/api`
-  : "http://localhost:3000/api";
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+  : "http://http://127.0.0.1:8000/api";
 // import React, { useRef } from 'react'
 export const hdvElementList = [
 {name:'Ubicacion Geografica', component:HdvI},
@@ -113,6 +113,7 @@ var fullURL = window.location.href;
         // }))
         // console.log(JSON.stringify(hdvData));
         // console.log(JSON.stringify(hdvData));
+        console.log(URL)
         const response = await axios.post(`${URL}/hdv/fill_excel`, formData, {
         headers:{
           "Content-Type": 'multipart/form-data'
