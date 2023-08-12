@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
-const urlObject = new URL(fullURL);
+// const urlObject = new URL(fullURL);
 
-// Extrae la parte base de la URL (protocolo + dominio)
-const baseURL = urlObject.protocol + "//" + urlObject.host;
+// // Extrae la parte base de la URL (protocolo + dominio)
+// const baseURL = urlObject.protocol + "//" + urlObject.host;
 
-console.log(baseURL);
+// console.log(baseURL);
 const nextConfig = {
 
     rewrites: async () => {
