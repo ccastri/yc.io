@@ -18,7 +18,7 @@ import dayjs from 'dayjs'
 import { RegistroHistorico } from '../../../hdv'
 
 const URL = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+  ? `${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
   : "http://127.0.0.1:8000/api";
 // import React, { useRef } from 'react'
 export const hdvElementList = [
@@ -119,6 +119,17 @@ var fullURL = window.location.href;
           "Content-Type": 'multipart/form-data'
         },
         responseType: 'blob', // Indicar que se espera una respuesta binaria (archivo)
+ onDownloadProgress: progressEvent => {
+        if (progressEvent.total !== undefined) {
+          const percentCompleted = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
+          console.log(`Descargando: ${percentCompleted}% completado`);
+          // Actualiza la barra de progreso en tu interfaz con percentCompleted
+        } else {
+          console.log('Descargando...');
+        }
+      },
       });
 
       // Crear un enlace temporal y simular un clic para descargar el archivo
