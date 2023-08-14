@@ -1,4 +1,4 @@
-
+import os
 from typing import Union
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -6,19 +6,21 @@ from .hoja_de_vida import hdv
 from .middlewares import upload_image
 from . import users
 from fastapi.middleware.cors import CORSMiddleware
-
+from dotenv import load_dotenv
+load_dotenv()
 app = FastAPI(docs_url="/api/docs", openapi_url="/api/openapi.json")
 # encoded_url = os.environ.get("NEXT_PUBLIC_VERCEL_URL")
 # decoded_url = urllib.parse.unquote(encoded_url)
 
 # Cors enabled to receive http request from nextjs frontend
-# origins = [
-#     "http://localhost:3000",
-# ]
+origins = [
+    'http://localhost:3000',
+    os.getenv('NEXT_PUBLIC_VERCEL_URL'),
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
