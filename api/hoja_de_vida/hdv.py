@@ -126,7 +126,7 @@ async def fill_excel(
         # print(telefono)
         # print(data.img)
         module_directory = os.path.dirname(__file__)
-        excel_template_path = os.path.join(module_directory, "hdv.xlsx")
+        excel_template_path = os.path.join(module_directory, "hdv_template.xlsx")
         # Cargar el archivo Excel hoja_De_vida.xlsx
         workbook = load_workbook(excel_template_path)
         sheet = workbook.active
@@ -276,7 +276,7 @@ async def fill_excel(
         end_time = time.time()
         processing_time = end_time - start_time
         print(processing_time) 
-        return FileResponse(temp_excel_file_path, filename="hdv.xlsx")
+        return FileResponse(temp_excel_file_path, filename="hdv_template.xlsx")
     
     except FileNotFoundError as file_error:
         error_message = f"Error al abrir el archivo de plantilla: {str(file_error)}"
