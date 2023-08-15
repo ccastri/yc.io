@@ -114,7 +114,8 @@ var fullURL = window.location.href;
         // console.log(JSON.stringify(hdvData));
         // console.log(JSON.stringify(hdvData));
         console.log(URL)
-        const response = await axios.post(`${URL}/hdv/fill_excel`, formData, {
+        // const response = await axios.post(`${URL}/hdv/fill_excel`, formData, {
+        const response = await axios.post(`https://backend_fastapi-1-u4860301.deta.app/api/hdv/fill_excel`, formData, {
         headers:{
           "Content-Type": 'multipart/form-data'
         },
