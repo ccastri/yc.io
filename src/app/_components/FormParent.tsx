@@ -120,7 +120,7 @@ var fullURL = window.location.href;
           "Content-Type": 'multipart/form-data',
           'Access-Control-Allow-Origin': '*',
       },
-        withCredentials: true,
+        // withCredentials: true,
         responseType: 'blob', // Indicar que se espera una respuesta binaria (archivo)
  onDownloadProgress: progressEvent => {
         if (progressEvent.total !== undefined) {
