@@ -19,7 +19,7 @@ import { RegistroHistorico } from '../../../hdv'
 
 const URL = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
-  : "http://127.0.0.1:8000/api";
+  : `${process.env.DETA_SPACE_URL}/api`;
 // import React, { useRef } from 'react'
 export const hdvElementList = [
 {name:'Ubicacion Geografica', component:HdvI},
