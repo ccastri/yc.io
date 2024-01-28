@@ -8,7 +8,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { CurrentStepProvider } from './context/useFormStepContext'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 const radjhani = Rajdhani({
   weight: ["300", "400", "500", "600", "700", "300", "400", "500", "600", "700"],
   subsets:['devanagari'],

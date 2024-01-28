@@ -393,7 +393,7 @@ import FormParent, { hdvElementList } from '@/app/_components/FormParent'
 const validation: string[]= [
   'este campo es obligatorio'
 ]
-const stepNames = hdvElementList.map(field=> ( field.name))
+const stepNames: any = hdvElementList.map(field=> ( field.name))
 console.log(stepNames)
 export type FormFieldConfig = {
   label: string;

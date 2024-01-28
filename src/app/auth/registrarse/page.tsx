@@ -16,17 +16,23 @@ const handleDownload = async () => {
   
     try {
       // Realizar una solicitud POST para obtener el archivo Excel desde FastAPI
-      const response = await axios.post('http://127.0.0.1:8000/hdv/fill_excel', itemData, {
-        responseType: 'blob', // Indicar que se espera una respuesta binaria (archivo)
-      });
+      const response = await axios.get('https://backend_fastapi-1-u4860301.deta.app/api/hola', {
+        headers:{
+          "Content-Type": 'application/json',
+          'Access-Control-Allow-Origin': '*',
+      },
+    }
+    // responseType: 'application/json', // Indicar que se espera una respuesta binaria (archivo)
+    );
+    console.log('Respuesta:', response);
 
       // Crear un enlace temporal y simular un clic para descargar el archivo
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'hoja_De_vida.xlsx');
-      document.body.appendChild(link);
-      link.click();
+      // const url = window.URL.createObjectURL(new Blob([response.data]));
+      // const link = document.createElement('a');
+      // link.href = url;
+      // link.setAttribute('download', 'hoja_De_vida.xlsx');
+      // document.body.appendChild(link);
+      // link.click();
     } catch (error) {
       console.error('Error al descargar el archivo:', error);
     }
